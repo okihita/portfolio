@@ -169,7 +169,6 @@ export const PORTFOLIO_DATA = {
         "/images/mmaaii/mmaaii-2.webp",
         "/images/mmaaii/mmaaii-3.webp",
         "/images/mmaaii/mmaaii-4.webp",
-        "/images/mmaaii/mmaaii-5.webp",
       ],
       metrics: [
         { label: "Languages", value: "Bilingual (EN/ID)" },
