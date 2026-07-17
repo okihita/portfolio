@@ -58,74 +58,76 @@ export default function ProjectMockup({
     setCurrentIdx((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // Frameless Slideable Carousel (Request #1: For Zenius or direct carousel projects)
+  // Frameless Slideable Carousel matching 9:16 Portrait Screenshots (Zero Black Bars)
   if (project.mockType === "carousel" && images && images.length > 0) {
     return (
-      <div
-        className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-black shadow-xl aspect-video sm:aspect-[16/10] group"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIdx}
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="relative w-full h-full"
-          >
-            <Image
-              src={images[currentIdx]}
-              alt={`${project.title} Screenshot ${currentIdx + 1}`}
-              fill
-              className="object-contain bg-black"
-              priority={currentIdx === 0}
-            />
-          </motion.div>
-        </AnimatePresence>
+      <div className="py-2 flex justify-center w-full">
+        <div
+          className="relative w-full max-w-[270px] sm:max-w-[310px] aspect-[9/16] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-900 dark:bg-zinc-950 shadow-2xl group transition-all"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIdx}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={images[currentIdx]}
+                alt={`${project.title} Screenshot ${currentIdx + 1}`}
+                fill
+                className="object-cover object-top"
+                priority={currentIdx === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Carousel Overlay Header Pill */}
-        <div className="absolute top-3 left-3 z-30 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-mono text-white flex items-center gap-2 border border-white/10">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Slide {currentIdx + 1} of {images.length}</span>
+          {/* Overlay Pill */}
+          <div className="absolute top-3 left-3 z-30 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-mono text-white flex items-center gap-2 border border-white/10">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Slide {currentIdx + 1} of {images.length}</span>
+          </div>
+
+          {/* Left/Right Slide Arrows */}
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
+                aria-label="Previous Screenshot"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
+                aria-label="Next Screenshot"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Bottom Slide Indicators */}
+              <div className="absolute bottom-3 left-0 right-0 z-30 flex items-center justify-center gap-1.5 px-4">
+                {images.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    onClick={() => setCurrentIdx(dotIdx)}
+                    className={`h-1.5 rounded-full transition-all ${
+                      dotIdx === currentIdx
+                        ? "bg-emerald-400 w-5"
+                        : "bg-white/50 hover:bg-white/90 w-1.5"
+                    }`}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
-
-        {/* Left/Right Slide Arrows */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={handlePrev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
-              aria-label="Previous Screenshot"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
-              aria-label="Next Screenshot"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-
-            {/* Bottom Slide Indicators */}
-            <div className="absolute bottom-3 left-0 right-0 z-30 flex items-center justify-center gap-1.5 px-4">
-              {images.map((_, dotIdx) => (
-                <button
-                  key={dotIdx}
-                  onClick={() => setCurrentIdx(dotIdx)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    dotIdx === currentIdx
-                      ? "bg-emerald-400 w-5"
-                      : "bg-white/40 hover:bg-white/80 w-1.5"
-                  }`}
-                  aria-label={`Go to slide ${dotIdx + 1}`}
-                />
-              ))}
-            </div>
-          </>
-        )}
       </div>
     );
   }
