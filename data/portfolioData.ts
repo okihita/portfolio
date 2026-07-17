@@ -169,6 +169,7 @@ export const PORTFOLIO_DATA = {
         "/images/mmaaii/mmaaii-2.png",
         "/images/mmaaii/mmaaii-3.png",
         "/images/mmaaii/mmaaii-4.png",
+        "/images/mmaaii/mmaaii-5.png",
       ],
       metrics: [
         { label: "Languages", value: "Bilingual (EN/ID)" },
