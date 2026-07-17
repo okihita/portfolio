@@ -19,7 +19,7 @@ export default function SkillsGrid() {
 
   return (
     <section id="skills" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-[#09090b]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-12">
         {/* Header */}
         <div className="space-y-2">
           <div className="text-xs font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">

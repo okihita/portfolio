@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Okihita H. Sihaloho | AI-Supercharged Tech Lead & Full-Stack Engineer",
+  title: "Okihita | Superstack Engineer",
   description: "Portfolio of Okihita H. Sihaloho, Tech Lead & Senior Software Engineer specializing in React Native, Next.js, AI/LLM agentic workflows, Android super-apps, and low-latency systems.",
   keywords: ["Okihita H. Sihaloho", "Tech Lead", "Software Engineer", "React Native", "Next.js", "Kotlin", "TypeScript", "AI Engineer", "Android Super-App"],
   authors: [{ name: "Okihita H. Sihaloho" }],
   openGraph: {
-    title: "Okihita H. Sihaloho | AI-Supercharged Tech Lead & Full-Stack Engineer",
+    title: "Okihita | Superstack Engineer",
     description: "Architecting resilient web platforms, React Native mobile apps, and agentic AI systems.",
     type: "website",
   },

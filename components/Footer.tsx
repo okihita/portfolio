@@ -23,15 +23,13 @@ export default function Footer() {
 
   return (
     <footer className="py-10 border-t border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-[#070709] text-xs font-mono text-zinc-500">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Systems Nominal — Built with Next.js 16 & Tailwind v4</span>
+          <span>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.personal.name}</span>
         </div>
 
         <div className="flex items-center gap-6">
           {timeStr && <span>LOCAL TIME: {timeStr}</span>}
-          <span>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.personal.name}</span>
         </div>
       </div>
     </footer>

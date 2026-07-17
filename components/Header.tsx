@@ -60,7 +60,7 @@ export default function Header() {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Left: Branding & Status */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono font-semibold text-xs flex items-center justify-center border border-zinc-300 dark:border-zinc-700/80 group-hover:border-zinc-400 dark:group-hover:border-zinc-500 transition-colors">

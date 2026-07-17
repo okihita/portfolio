@@ -5,12 +5,12 @@ import { ArrowRight, Terminal, ShieldCheck, Cpu, Layers } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-radial-gradient">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="max-w-3xl space-y-6">
           {/* Category Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-zinc-700 dark:text-zinc-400 bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-blue-500" />
-            AI Systems, Mobile Platforms & Technical Leadership
+            AI Systems, Mobile Platforms, and Technical Leadership
           </div>
 
           {/* Main Headline */}
@@ -48,10 +48,9 @@ export default function Hero() {
           <div className="pt-4 flex flex-wrap items-center gap-4">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all shadow-xs"
             >
-              Explore Featured Work
-              <ArrowRight className="w-4 h-4" />
+              Explore Projects <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#contact"
@@ -63,7 +62,7 @@ export default function Hero() {
         </div>
 
         {/* Metric Bar */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-white/70 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-white/70 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs">
           <div className="space-y-1">
             <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">10+</div>
             <div className="text-xs text-zinc-500 dark:text-zinc-400">Years Software Engineering</div>
@@ -74,11 +73,7 @@ export default function Hero() {
           </div>
           <div className="space-y-1">
             <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">100% Solo</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Zenius React Native App</div>
-          </div>
-          <div className="space-y-1">
-            <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">Top 5 / 15</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">GDG & RedAI Competition Standing</div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">Zenius EdTech Mobile App</div>
           </div>
         </div>
       </div>

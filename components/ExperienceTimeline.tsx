@@ -6,7 +6,7 @@ import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 export default function ExperienceTimeline() {
   return (
     <section id="experience" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-[#09090b]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-12">
         {/* Section Title */}
         <div className="space-y-2">
           <div className="text-xs font-mono text-purple-600 dark:text-purple-400 uppercase tracking-widest">

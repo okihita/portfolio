@@ -69,7 +69,7 @@ This repository contains the source code for Okihita's official engineering port
   * Open-source bilingual (EN & ID) platform built with EngageMedia documenting AI harm incidents in Indonesia using international risk taxonomies and regulatory article mappers (PASAL).
   * Automated Internet Archive (Wayback Machine SPN2) API integration for permanent source preservation against dead links.
   * Serverless Cloudflare Pages Functions with 60s KV caching protecting backend rate limits while achieving <200ms TTFB page load times.
-* **Live Platform & Repo**: [MMAAII Portal](https://mmaaii.engagemedia.org/en/) • [GitLab Repository](https://gitlab.com/emopentech/mmaaii)
+* **Live Platform & Repo**: [MMAAII Portal](https://mmaaii.engagemedia.org/) • [GitLab Repository](https://gitlab.com/emopentech/mmaaii)
 
 ---
 

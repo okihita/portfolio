@@ -197,7 +197,7 @@ export const PORTFOLIO_DATA = {
           "Used serverless Functions API caching (60s KV TTL) to protect Airtable rate limits while keeping static page load times under 200ms.",
       },
       links: {
-        live: "https://mmaaii.engagemedia.org/en/",
+        live: "https://mmaaii.engagemedia.org/",
         github: "https://gitlab.com/emopentech/mmaaii",
       },
     },

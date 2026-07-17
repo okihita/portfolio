@@ -28,7 +28,7 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-[#09090b]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left Info Column */}
         <div className="lg:col-span-5 space-y-6">
           <div className="space-y-2">
