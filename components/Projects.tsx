@@ -114,7 +114,20 @@ export default function Projects() {
                       <Code2 className="w-3.5 h-3.5" />
                       Architecture Deep-Dive
                     </button>
-                    {project.links.playstore && (
+                    {project.links.playstores ? (
+                      project.links.playstores.map((pl) => (
+                        <a
+                          key={pl.url}
+                          href={pl.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                          aria-label={`View ${pl.label} on Google Play Store`}
+                        >
+                          <Smartphone className="w-3.5 h-3.5" /> {pl.label}
+                        </a>
+                      ))
+                    ) : project.links.playstore ? (
                       <a
                         href={project.links.playstore}
                         target="_blank"
@@ -124,7 +137,7 @@ export default function Projects() {
                       >
                         <Smartphone className="w-3.5 h-3.5" /> Play Store
                       </a>
-                    )}
+                    ) : null}
                     {project.links.github && (
                       <a
                         href={project.links.github}

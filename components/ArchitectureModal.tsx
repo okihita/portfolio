@@ -120,7 +120,19 @@ export default function ArchitectureModal({
 
         {/* Modal Actions */}
         <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-end gap-3">
-          {project.links.playstore && (
+          {project.links.playstores ? (
+            project.links.playstores.map((pl) => (
+              <a
+                key={pl.url}
+                href={pl.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+              >
+                <Smartphone className="w-3.5 h-3.5" /> {pl.label}
+              </a>
+            ))
+          ) : project.links.playstore ? (
             <a
               href={project.links.playstore}
               target="_blank"
@@ -129,7 +141,7 @@ export default function ArchitectureModal({
             >
               <Smartphone className="w-3.5 h-3.5" /> Google Play Store
             </a>
-          )}
+          ) : null}
           {project.links.github && (
             <a
               href={project.links.github}

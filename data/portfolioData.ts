@@ -1,3 +1,8 @@
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -19,6 +24,7 @@ export interface Project {
     github?: string;
     live?: string;
     playstore?: string;
+    playstores?: ProjectLink[];
   };
 }
 
@@ -237,26 +243,37 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "bank-super-app",
-      title: "Bank Super-App & NFC Payments",
+      title: "BNI wondr & Mandiri Livin' Mobile Super-Apps",
       category: "Mobile (React Native)",
-      tagline: "Mission-Critical Banking & NFC Payment Engine serving 25M+ Users",
+      tagline: "Lead Mobile Engineer for Tier-1 Indonesian Digital Banking Platforms",
       description:
-        "Architected and led mobile engineering squads at Accenture delivering 6 core banking features, including innovative Android NFC tap-to-pay and modern Jetpack Compose/React Native modules.",
-      mockType: "mobile",
+        "Architected and led mobile engineering squads at Accenture for tier-1 national bank flagship super-apps—wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin). Engineered Android NFC tap-to-pay engines, modern Jetpack Compose UI modules, and cross-platform React Native features serving 25M+ active users.",
+      mockType: "carousel",
+      images: [
+        "/images/bni-wondr/shot1.png",
+        "/images/bni-wondr/shot2.png",
+        "/images/bni-wondr/shot3.png",
+        "/images/bni-wondr/shot4.png",
+        "/images/livin-mandiri/shot1.png",
+        "/images/livin-mandiri/shot2.png",
+        "/images/livin-mandiri/shot3.png",
+        "/images/livin-mandiri/shot4.png",
+        "/images/livin-mandiri/shot5.png",
+      ],
       metrics: [
-        { label: "Active Users", value: "25M+" },
-        { label: "Squad Features", value: "6 Core" },
-        { label: "NFC Reliability", value: "99.99%" },
+        { label: "Active Scale", value: "25M+ Users" },
+        { label: "Engineering Role", value: "Lead Mobile Engineer" },
+        { label: "NFC Uptime", value: "99.99% Reliability" },
       ],
       engineeringFeats: [
-        "Oversaw mobile squad delivering 6 high-value banking features including Android NFC tap-to-pay deployed to 25M+ active users.",
-        "Migrated legacy Android architecture to Jetpack Compose, Hilt, and modern reactive patterns with zero downtime.",
-        "Maintained strict backward compatibility across 100+ Android device profiles and legacy dependency trees.",
+        "Lead mobile engineer at Accenture delivering core modules for wondr by BNI and Livin' by Mandiri.",
+        "Engineered high-security Android Host Card Emulation (HCE) NFC tap-to-pay payments for millions of daily retail transactions.",
+        "Migrated legacy banking architectures to Jetpack Compose, Kotlin Hilt DI, and React Native native modules with strict zero-downtime compliance.",
       ],
       techStack: [
         "React Native",
         "Kotlin",
-        "Android NFC",
+        "Android NFC / HCE",
         "Jetpack Compose",
         "Hilt",
         "Java",
@@ -265,13 +282,17 @@ export const PORTFOLIO_DATA = {
       ],
       architectureDetails: {
         problem:
-          "Orchestrating mission-critical banking transactions and NFC payment payloads across millions of fragmented Android devices without breaking legacy backward compatibility.",
+          "Orchestrating mission-critical banking transactions, biometric authentication, and NFC payment payloads across millions of fragmented devices for BNI and Bank Mandiri without breaking legacy backward compatibility.",
         solution:
-          "Designed a decoupled feature-module architecture with strict DI boundaries and automated hardware integration test suites.",
+          "Designed decoupled feature-module architectures with strict DI boundaries, encrypted local payload persistence, and automated hardware integration test suites.",
         keyTradeoff:
           "Maintained dual-path legacy Dagger + Hilt bridges to allow incremental modern UI migrations without risky full-codebase refactors.",
       },
       links: {
+        playstores: [
+          { label: "wondr by BNI", url: "https://play.google.com/store/apps/details?id=id.bni.wondr&hl=id" },
+          { label: "Livin' by Mandiri", url: "https://play.google.com/store/apps/details?id=id.bmri.livin&hl=id" },
+        ],
         github: "https://github.com/okihita",
       },
     },
@@ -391,14 +412,15 @@ export const PORTFOLIO_DATA = {
       company: "Accenture",
       location: "Jakarta, Indonesia",
       summary:
-        "Tech Lead overseeing mobile engineering, corporate portal development, and enterprise digital transformation for tier-1 banking & FMCG clients.",
+        "Lead Mobile Engineer overseeing enterprise mobile super-apps, corporate portals, and digital transformation for tier-1 banking & FMCG leaders.",
       highlights: [
-        "Mobile squad lead delivering 6 banking features (including innovative Android NFC tap-to-pay) deployed to 25M+ active users.",
-        "Led mobile development for new bank super-app using Jetpack Compose, Hilt, and modern Jetpack architecture from scratch.",
+        "Lead Mobile Engineer delivering core features for flagship digital banking super-apps: wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin), serving 25M+ active users.",
+        "Mobile squad lead delivering 6 banking features including innovative Android HCE NFC tap-to-pay.",
+        "Led mobile development for new bank super-apps using Jetpack Compose, Hilt, React Native modules, and modern Jetpack architecture.",
         "Managed engineering team building corporate portal solution for 170,000+ FMCG employees using Azure Functions & Azure DB.",
         "Role breakdown: 60% hands-on coding, 20% product concepts, 10% R&D/innovation, 10% team mentorship.",
       ],
-      techUsed: ["Kotlin", "Android NFC", "Jetpack Compose", "Hilt", "Azure Functions", "React Native", "PostgreSQL"],
+      techUsed: ["Kotlin", "Android NFC", "Jetpack Compose", "Hilt", "React Native", "Azure Functions", "PostgreSQL"],
     },
     {
       period: "OCT 2021 — MAY 2022",
