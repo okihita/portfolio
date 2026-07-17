@@ -30,10 +30,13 @@ export default function ProjectMockup({
   customImageSrc,
 }: ProjectMockupProps) {
   const images = useMemo(
-    () => project.images || (project.image ? [project.image] : undefined) || (customImageSrc ? [customImageSrc] : undefined),
+    () =>
+      project.images ||
+      (project.image ? [project.image] : undefined) ||
+      (customImageSrc ? [customImageSrc] : undefined),
     [project.images, project.image, customImageSrc]
   );
-  
+
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -55,18 +58,88 @@ export default function ProjectMockup({
     setCurrentIdx((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // Frameless Slideable Carousel (Request #1: For Zenius or direct carousel projects)
+  if (project.mockType === "carousel" && images && images.length > 0) {
+    return (
+      <div
+        className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-black shadow-xl aspect-video sm:aspect-[16/10] group"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIdx}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src={images[currentIdx]}
+              alt={`${project.title} Screenshot ${currentIdx + 1}`}
+              fill
+              className="object-contain bg-black"
+              priority={currentIdx === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Carousel Overlay Header Pill */}
+        <div className="absolute top-3 left-3 z-30 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-mono text-white flex items-center gap-2 border border-white/10">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Slide {currentIdx + 1} of {images.length}</span>
+        </div>
+
+        {/* Left/Right Slide Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={handlePrev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
+              aria-label="Previous Screenshot"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-md transition-all shadow-md"
+              aria-label="Next Screenshot"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            {/* Bottom Slide Indicators */}
+            <div className="absolute bottom-3 left-0 right-0 z-30 flex items-center justify-center gap-1.5 px-4">
+              {images.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  onClick={() => setCurrentIdx(dotIdx)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    dotIdx === currentIdx
+                      ? "bg-emerald-400 w-5"
+                      : "bg-white/40 hover:bg-white/80 w-1.5"
+                  }`}
+                  aria-label={`Go to slide ${dotIdx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    );
+  }
+
+  // Smartphone Mockup Frame
   if (project.mockType === "mobile") {
     return (
       <div className="py-2 flex justify-center">
-        {/* Sleek Smartphone Frame */}
         <div className="w-full max-w-[280px] sm:max-w-[310px] rounded-[36px] p-3 bg-zinc-900 border-2 border-zinc-700/80 shadow-2xl flex flex-col font-sans">
-          {/* Mobile Inner Screen Container */}
           <div
             className="w-full rounded-[26px] bg-[#0c0c10] border border-zinc-800 p-3 space-y-3 flex flex-col justify-between overflow-hidden relative min-h-[350px]"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Top Device Notch & Status Header */}
             <div className="z-20 bg-[#0c0c10]/90 backdrop-blur-sm pb-1">
               <div className="flex items-center justify-between text-[10px] text-zinc-400 font-mono px-1 pb-1.5 border-b border-zinc-800/60">
                 <span>09:41</span>
@@ -79,7 +152,6 @@ export default function ProjectMockup({
               </div>
             </div>
 
-            {/* Display Slideable Animated Gallery if Multiple Screenshots Exist */}
             {images && images.length > 0 ? (
               <div className="relative w-full h-[290px] rounded-lg overflow-hidden border border-zinc-800/60 bg-black">
                 <AnimatePresence mode="wait">
@@ -100,7 +172,6 @@ export default function ProjectMockup({
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Left/Right Slide Controls */}
                 {images.length > 1 && (
                   <>
                     <button
@@ -118,7 +189,6 @@ export default function ProjectMockup({
                       <ChevronRight className="w-4 h-4" />
                     </button>
 
-                    {/* Bottom Slide Dots */}
                     <div className="absolute bottom-2 left-0 right-0 z-30 flex items-center justify-center gap-1.5">
                       {images.map((_, dotIdx) => (
                         <button
@@ -137,7 +207,6 @@ export default function ProjectMockup({
                 )}
               </div>
             ) : (
-              /* Fallback Dynamic Mobile UI */
               <>
                 <div className="pt-2 flex items-center justify-between">
                   <div>
@@ -180,7 +249,6 @@ export default function ProjectMockup({
               </>
             )}
 
-            {/* Mobile Bottom Home Indicator */}
             <div className="pt-1 flex items-center justify-around text-zinc-400">
               <div className="w-8 h-1 bg-zinc-600 rounded-full mx-auto" />
             </div>
@@ -190,10 +258,10 @@ export default function ProjectMockup({
     );
   }
 
+  // Web Browser Mockup
   if (project.mockType === "browser") {
     return (
       <div className="rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-xl flex flex-col font-sans">
-        {/* Browser Chrome Window Header */}
         <div className="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-3.5 py-2.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 inline-block" />
@@ -214,7 +282,6 @@ export default function ProjectMockup({
             <Image src={images[0]} alt={project.title} fill className="object-cover" />
           </div>
         ) : (
-          /* Mock Browser App Dashboard UI Content */
           <div className="p-4 sm:p-5 bg-zinc-50 dark:bg-[#0d0d11] space-y-4 text-xs font-mono text-zinc-700 dark:text-zinc-300 min-h-[260px] flex flex-col justify-between">
             <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800/80 pb-3">
               <div className="flex items-center gap-2">
@@ -234,18 +301,18 @@ export default function ProjectMockup({
             <div className="grid grid-cols-3 gap-3 my-2">
               <div className="p-3 rounded-md bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 space-y-1.5">
                 <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400 text-[11px]">
-                  <span>Theatres Scraped</span>
+                  <span>Status</span>
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <div className="text-zinc-900 dark:text-zinc-100 font-semibold">496 Total</div>
+                <div className="text-zinc-900 dark:text-zinc-100 font-semibold">Active</div>
               </div>
 
               <div className="p-3 rounded-md bg-white dark:bg-zinc-900/90 border border-blue-500/30 space-y-1.5">
                 <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400 text-[11px]">
-                  <span>City Index</span>
+                  <span>Execution</span>
                   <Activity className="w-3 h-3 text-blue-500 animate-pulse" />
                 </div>
-                <div className="text-zinc-900 dark:text-zinc-100 font-semibold">83 Cities</div>
+                <div className="text-zinc-900 dark:text-zinc-100 font-semibold">Native Node</div>
               </div>
 
               <div className="p-3 rounded-md bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 space-y-1.5">
@@ -259,8 +326,8 @@ export default function ProjectMockup({
 
             <div className="p-2.5 rounded bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between text-[11px]">
               <div className="text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
-                <span className="text-blue-600 dark:text-blue-400 font-bold">[DATA STREAM]</span>
-                <span>All 3 cinema chain crawlers healthy.</span>
+                <span className="text-blue-600 dark:text-blue-400 font-bold">[SYSTEM LOG]</span>
+                <span>Services operational.</span>
               </div>
               <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Status: 200 OK</span>
             </div>
@@ -270,7 +337,7 @@ export default function ProjectMockup({
     );
   }
 
-  // Fallback / Systems Terminal Mockup
+  // Fallback Systems Terminal Mockup
   return (
     <div className="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-950 shadow-2xl flex flex-col font-mono text-xs">
       <div className="bg-zinc-900 border-b border-zinc-800 px-3.5 py-2.5 flex items-center justify-between">

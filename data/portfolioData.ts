@@ -4,7 +4,7 @@ export interface Project {
   category: "Web App" | "Mobile (React Native)" | "Systems & Cloud";
   tagline: string;
   description: string;
-  mockType: "browser" | "mobile" | "terminal";
+  mockType: "browser" | "mobile" | "terminal" | "carousel";
   image?: string;
   images?: string[];
   metrics: { label: string; value: string }[];
@@ -43,7 +43,7 @@ export const PORTFOLIO_DATA = {
     title: "AI-Supercharged Tech Lead & Full-Stack Systems Engineer",
     location: "Jakarta, Indonesia",
     status: "Open for Tech Lead & Senior/Staff Roles",
-    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, AI-powered platforms, and Web3/IoT systems.",
+    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, offline-first desktop apps (Rust/Tauri), AI-powered platforms, and Web3/IoT systems.",
     contacts: {
       email: "okihita@gmail.com",
       github: "https://github.com/okihita",
@@ -60,7 +60,7 @@ export const PORTFOLIO_DATA = {
       tagline: "Solo-Created Modern EdTech Platform in React Native",
       description:
         "Single-handedly architected, engineered, and launched the brand new React Native mobile application for Zenius on Google Play Store from scratch (July 2026 release). Delivers video lessons, practice problem engines, and interactive tutoring to millions of students across Indonesia.",
-      mockType: "mobile",
+      mockType: "carousel",
       images: [
         "/images/zenius/shot1.webp",
         "/images/zenius/shot2.webp",
@@ -103,6 +103,84 @@ export const PORTFOLIO_DATA = {
       links: {
         playstore: "https://play.google.com/store/apps/details?id=net.zenius.mobile.android",
         github: "https://github.com/okihita",
+      },
+    },
+    {
+      id: "pakde-tauri",
+      title: "PAKDE — Village Coop Suite",
+      category: "Systems & Cloud",
+      tagline: "Gamified Offline-First Desktop App in Rust & Tauri 2.0",
+      description:
+        "Offline-first desktop application built for Indonesian village cooperatives (Koperasi Desa) using Rust, Tauri 2.0, React 19, and local SQLite. Gamifies compliance (UU No. 25/1992), double-entry accounting (SAK EP), and inventory management into daily quests—running 100% offline from a 10MB USB drive.",
+      mockType: "browser",
+      metrics: [
+        { label: "Tech Stack", value: "Tauri 2 + Rust" },
+        { label: "Database", value: "Local SQLite" },
+        { label: "Installer", value: "~10MB Portable" },
+      ],
+      engineeringFeats: [
+        "Rejected cloud SaaS boilerplates for an offline-first desktop node handling rural 3G/4G connectivity drops.",
+        "Built zero-latency local SQLite persistence with double-entry accounting (SAK EP) and SISA Hasil Usaha (SHU) surplus distribution.",
+        "Engineered Duolingo & Habitica inspired gamification questlines translating complex regulations into daily actionable tasks.",
+      ],
+      techStack: [
+        "Tauri 2.0",
+        "Rust",
+        "React 19",
+        "SQLite",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      architectureDetails: {
+        problem:
+          "Cloud SaaS portals fail in rural Indonesia under intermittent 3G/4G connectivity, while phone screens are too small for SAK EP double-entry auditing.",
+        solution:
+          "Built a native lightweight desktop app (~10MB) in Rust & Tauri 2.0 with a local encrypted SQLite database running directly from a USB drive.",
+        keyTradeoff:
+          "Required custom cross-compilation build pipelines for Windows (.exe), macOS (.dmg), and Linux (.deb) instead of a simple web deployment.",
+      },
+      links: {
+        live: "https://pakde.vercel.app",
+        github: "https://github.com/okihita/PAKDE-tauri",
+      },
+    },
+    {
+      id: "mmaaii",
+      title: "MMAAII — AI Incident Monitor",
+      category: "Web App",
+      tagline: "Bilingual AI Harm Incident Database & Legal Regulations Explorer",
+      description:
+        "Open-source bilingual (English & Indonesian) data platform built with EngageMedia to document and analyze publicly reported AI incidents in Indonesia using international risk taxonomies, legal regulation mappers, and automated Internet Archive (Wayback Machine) source preservation.",
+      mockType: "browser",
+      metrics: [
+        { label: "Languages", value: "Bilingual (EN/ID)" },
+        { label: "Architecture", value: "Astro + Functions" },
+        { label: "Archival", value: "Wayback Machine" },
+      ],
+      engineeringFeats: [
+        "Architected static-first Astro 7 build on Cloudflare Pages with serverless API functions and KV caching.",
+        "Integrated automated Internet Archive (Wayback Machine SPN2) API for source link preservation and verification.",
+        "Built deduplicated legal explorer mapping Indonesian regulatory articles (PASAL) to documented AI harm incidents.",
+      ],
+      techStack: [
+        "Astro 7",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Cloudflare Pages",
+        "Airtable API",
+        "Wayback Machine API",
+      ],
+      architectureDetails: {
+        problem:
+          "Documenting AI harms in Indonesia requires bilingual accessibility, transparent risk taxonomies, and permanent source link preservation against dead links.",
+        solution:
+          "Deployed Astro static site with Cloudflare Pages Functions fetching cached Airtable API data and checking Wayback Machine API status.",
+        keyTradeoff:
+          "Used serverless Functions API caching (60s KV TTL) to protect Airtable rate limits while keeping static page load times under 200ms.",
+      },
+      links: {
+        live: "https://mmaaii.engagemedia.org/en/",
+        github: "https://gitlab.com/emopentech/mmaaii",
       },
     },
     {
@@ -234,6 +312,7 @@ export const PORTFOLIO_DATA = {
         { name: "Kotlin", level: "Expert", highlight: true },
         { name: "TypeScript", level: "Expert", highlight: true },
         { name: "Python", level: "Expert", highlight: true },
+        { name: "Rust", level: "Proficient", highlight: true },
         { name: "Go", level: "Proficient" },
         { name: "C++ (Robotics/IoT)", level: "Proficient" },
         { name: "Swift / iOS", level: "Proficient" },
@@ -255,22 +334,23 @@ export const PORTFOLIO_DATA = {
       title: "Mobile & Frontend",
       skills: [
         { name: "React Native (iOS/Android)", level: "Expert", highlight: true },
+        { name: "Tauri 2.0 (Desktop)", level: "Expert", highlight: true },
         { name: "Next.js 16 / App Router", level: "Expert", highlight: true },
-        { name: "Jetpack Compose (Android)", level: "Expert", highlight: true },
+        { name: "Astro 7 Framework", level: "Proficient" },
+        { name: "Jetpack Compose (Android)", level: "Expert" },
         { name: "Flutter / Dart", level: "Proficient" },
         { name: "Tailwind CSS v4", level: "Expert" },
-        { name: "WebSockets & ExoPlayer", level: "Expert" },
       ],
     },
     {
       title: "Cloud, DevOps & Hardware",
       skills: [
         { name: "AWS (EC2, Lambda, S3)", level: "Expert", highlight: true },
+        { name: "Cloudflare Pages & KV", level: "Proficient", highlight: true },
         { name: "GCP & Azure Functions", level: "Proficient" },
-        { name: "ESP32 & Raspberry Pi", level: "Proficient", highlight: true },
-        { name: "Docker & Containerization", level: "Proficient" },
-        { name: "PostgreSQL & Redis", level: "Expert" },
-        { name: "CI/CD & Git Workflows", level: "Expert" },
+        { name: "ESP32 & Raspberry Pi", level: "Proficient" },
+        { name: "SQLite & PostgreSQL", level: "Expert" },
+        { name: "Redis & In-Memory WAL", level: "Expert" },
       ],
     },
   ] as SkillCategory[],
@@ -282,14 +362,16 @@ export const PORTFOLIO_DATA = {
       company: "Fullstack Development & AI Systems",
       location: "Jakarta, Indonesia",
       summary:
-        "Building AI-powered applications, React Native mobile apps, and web intelligence platforms.",
+        "Building AI-powered applications, React Native mobile apps, Rust desktop apps, and web intelligence platforms.",
       highlights: [
         "Solo-created and launched the brand new Zenius React Native mobile app (net.zenius.mobile.android) on Google Play Store (July 2026).",
+        "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
+        "Developed MMAAII (mmaaii.engagemedia.org), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
         "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Placed Top 5 (out of ~100 teams) at Amartha x GDG Jakarta for AI WhatsApp Financial Coach with OCR ledger processing.",
         "Placed Top 15 (out of ~150 engineers) at RedAI Triathlon 2025 (Red Asia x AWS AI engineering competition).",
       ],
-      techUsed: ["React Native", "Next.js", "Python", "LLM Agents", "AWS", "GCP", "ESP32", "Solidity"],
+      techUsed: ["React Native", "Tauri 2.0", "Rust", "Astro", "Next.js", "Python", "LLM Agents", "Cloudflare"],
     },
     {
       period: "AUG 2022 — DEC 2024",
@@ -360,9 +442,9 @@ export const PORTFOLIO_DATA = {
         "Bulletproof stability, backward compatibility, and strict performance budgets are essential when serving millions of active users.",
     },
     {
-      title: "Solo Greenfield Execution",
+      title: "Ground Reality & Offline-First UX",
       description:
-        "Proven ability to single-handedly architect and ship production mobile apps (like the latest Zenius React Native app) from zero to Play Store launch.",
+        "Building for real-world user conditions—from rural offline desktop nodes (PAKDE) to low-spec Android devices—rather than lazy SaaS defaults.",
     },
     {
       title: "Empathetic Technical Leadership",
