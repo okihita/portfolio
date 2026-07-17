@@ -2,23 +2,28 @@
 
 @layer base {
   :root {
+    --background: #fdfdfd;
+    --foreground: #09090b;
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    --border: #e4e4e7;
+    --accent: #2563eb;
+  }
+
+  .dark {
     --background: #09090b;
     --foreground: #f4f4f5;
     --card: #121215;
     --card-foreground: #f4f4f5;
     --border: #27272a;
-    --accent: #2563eb;
-    --accent-glow: rgba(37, 99, 235, 0.15);
+    --accent: #3b82f6;
   }
 
   html {
-    color-scheme: dark;
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
     font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -31,15 +36,23 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #09090b;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: #d4d4d8;
     border-radius: 3px;
   }
 
+  .dark ::-webkit-scrollbar-thumb {
+    background: #27272a;
+  }
+
   ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
     background: #3f3f46;
   }
 }
@@ -48,29 +61,49 @@
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 .bg-radial-gradient {
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.06) 0%, rgba(253, 253, 253, 0) 70%);
+}
+
+.dark .bg-radial-gradient {
   background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, rgba(9, 9, 11, 0) 70%);
 }
 
-/* Linear-esque Subtle Card Styling */
+/* Craft Card Styling - Light & Dark */
 .craft-card {
-  background: rgba(18, 18, 21, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(228, 228, 231, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.dark .craft-card {
+  background: rgba(18, 18, 21, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+}
+
 .craft-card:hover {
+  border-color: rgba(161, 161, 170, 0.5);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.08);
+}
+
+.dark .craft-card:hover {
   border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
-/* Code Syntax / Terminal feel */
 .code-font {
   font-family: var(--font-geist-mono), monospace;
 }

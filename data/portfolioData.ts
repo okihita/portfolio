@@ -6,6 +6,7 @@ export interface Project {
   description: string;
   mockType: "browser" | "mobile" | "terminal";
   image?: string;
+  images?: string[];
   metrics: { label: string; value: string }[];
   engineeringFeats: string[];
   techStack: string[];
@@ -60,7 +61,18 @@ export const PORTFOLIO_DATA = {
       description:
         "Single-handedly architected, engineered, and launched the brand new React Native mobile application for Zenius on Google Play Store from scratch (July 2026 release). Delivers video lessons, practice problem engines, and interactive tutoring to millions of students across Indonesia.",
       mockType: "mobile",
-      image: "/images/zenius/screenshot1.webp",
+      images: [
+        "/images/zenius/shot1.webp",
+        "/images/zenius/shot2.webp",
+        "/images/zenius/shot3.webp",
+        "/images/zenius/shot4.webp",
+        "/images/zenius/shot5.webp",
+        "/images/zenius/shot6.webp",
+        "/images/zenius/shot7.webp",
+        "/images/zenius/shot8.webp",
+        "/images/zenius/shot9.webp",
+        "/images/zenius/shot10.webp",
+      ],
       metrics: [
         { label: "Engineering Scope", value: "100% Solo" },
         { label: "Core Framework", value: "React Native" },

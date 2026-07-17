@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Rivers | Senior Full-Stack & Systems Engineer",
-  description: "Portfolio of Alex Rivers, Senior Full-Stack & Systems Engineer specializing in React Native, Next.js, high-throughput distributed systems, and modern web application architecture.",
-  keywords: ["Software Engineer", "Full-Stack Developer", "React Native", "Next.js", "TypeScript", "Systems Engineering", "Distributed Systems"],
-  authors: [{ name: "Alex Rivers" }],
+  title: "Okihita H. Sihaloho | AI-Supercharged Tech Lead & Full-Stack Engineer",
+  description: "Portfolio of Okihita H. Sihaloho, Tech Lead & Senior Software Engineer specializing in React Native, Next.js, AI/LLM agentic workflows, Android super-apps, and low-latency systems.",
+  keywords: ["Okihita H. Sihaloho", "Tech Lead", "Software Engineer", "React Native", "Next.js", "Kotlin", "TypeScript", "AI Engineer", "Android Super-App"],
+  authors: [{ name: "Okihita H. Sihaloho" }],
   openGraph: {
-    title: "Alex Rivers | Senior Full-Stack & Systems Engineer",
-    description: "Architecting resilient web applications, mobile apps, and distributed backend services.",
+    title: "Okihita H. Sihaloho | AI-Supercharged Tech Lead & Full-Stack Engineer",
+    description: "Architecting resilient web platforms, React Native mobile apps, and agentic AI systems.",
     type: "website",
   },
 };
@@ -32,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
     >
-      <body className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-blue-500/30 selection:text-blue-200">
+      <body className="min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-blue-500/30 selection:text-blue-600 dark:selection:text-blue-200 transition-colors duration-200">
         {children}
       </body>
     </html>
