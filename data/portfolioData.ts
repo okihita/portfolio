@@ -57,9 +57,9 @@ export const PORTFOLIO_DATA = {
       id: "zenius-mobile",
       title: "Zenius React Native App (Latest Launch)",
       category: "Mobile (React Native)",
-      tagline: "Solo-Created Modern EdTech Platform in React Native",
+      tagline: "Solo-Created Modern EdTech Platform in React Native (iOS Pending Publication)",
       description:
-        "Single-handedly architected, engineered, and launched the brand new React Native mobile application for Zenius on Google Play Store from scratch (July 2026 release). Delivers video lessons, practice problem engines, and interactive tutoring to millions of students across Indonesia.",
+        "Single-handedly architected, engineered, and launched the brand new cross-platform React Native mobile application for Zenius on Google Play Store from scratch (July 2026 release; iOS build pending App Store publication). Delivers video lessons, practice problem engines, and interactive tutoring to millions of students across Indonesia.",
       mockType: "carousel",
       images: [
         "/images/zenius/shot1.webp",
@@ -76,27 +76,27 @@ export const PORTFOLIO_DATA = {
       metrics: [
         { label: "Engineering Scope", value: "100% Solo" },
         { label: "Core Framework", value: "React Native" },
-        { label: "Play Store Status", value: "Live Launch" },
+        { label: "App Store Status", value: "Android Live / iOS Pending" },
       ],
       engineeringFeats: [
-        "Solo-built the entire next-generation React Native Android app from greenfield codebase to Google Play production release in 2026.",
+        "Solo-built the entire next-generation cross-platform React Native app (Android live on Google Play, iOS build pending App Store publication) from greenfield codebase to production.",
         "Engineered smooth video streaming playback, interactive quiz engines, and offline content bookmarking.",
-        "Optimized JavaScript bundle splitting and Hermes bytecode execution for sub-second cold starts on mid-to-entry-level Android devices.",
+        "Optimized JavaScript bundle splitting and Hermes bytecode execution for sub-second cold starts on mid-to-entry-level mobile devices.",
       ],
       techStack: [
-        "React Native",
+        "React Native (iOS/Android)",
         "TypeScript",
         "Hermes Engine",
-        "ExoPlayer",
+        "ExoPlayer / AVPlayer",
         "Zustand",
         "REST APIs",
-        "Android Native Bridge",
+        "Native Bridges",
       ],
       architectureDetails: {
         problem:
-          "Rebuilding a complex legacy mobile experience into a clean, modern React Native architecture as a solo engineer within a tight launch deadline.",
+          "Rebuilding a complex legacy mobile experience into a clean, modern cross-platform React Native architecture (with iOS pending publication) as a solo engineer within a tight launch deadline.",
         solution:
-          "Established a modular TypeScript architecture with strictly typed API contracts, Hermes optimization, and zero-redundancy state management.",
+          "Established a modular TypeScript architecture with strictly typed API contracts, Hermes optimization, cross-platform UI components, and zero-redundancy state management.",
         keyTradeoff:
           "Prioritized core video streaming and practice test performance over non-critical secondary UI animations for the initial v1 launch.",
       },
@@ -158,6 +158,12 @@ export const PORTFOLIO_DATA = {
       description:
         "Open-source bilingual (English & Indonesian) data platform built with EngageMedia to document and analyze publicly reported AI incidents in Indonesia using international risk taxonomies, legal regulation mappers, and automated Internet Archive (Wayback Machine) source preservation.",
       mockType: "browser",
+      images: [
+        "/images/mmaaii/mmaaii-1.png",
+        "/images/mmaaii/mmaaii-2.png",
+        "/images/mmaaii/mmaaii-3.png",
+        "/images/mmaaii/mmaaii-4.png",
+      ],
       metrics: [
         { label: "Languages", value: "Bilingual (EN/ID)" },
         { label: "Architecture", value: "Astro + Functions" },
@@ -370,7 +376,7 @@ export const PORTFOLIO_DATA = {
       summary:
         "Building AI-powered applications, React Native mobile apps, Rust desktop apps, and web intelligence platforms.",
       highlights: [
-        "Solo-created and launched the brand new Zenius React Native mobile app (net.zenius.mobile.android) on Google Play Store (July 2026).",
+        "Solo-created and launched the brand new cross-platform Zenius React Native mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
         "Developed MMAAII (mmaaii.engagemedia.org), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
         "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
