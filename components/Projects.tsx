@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
 import ProjectMockup from "./ProjectMockup";
 import ArchitectureModal from "./ArchitectureModal";
 import { GithubIcon } from "./SocialIcons";
-import { ArrowUpRight, Code2, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Code2, CheckCircle2, Smartphone } from "lucide-react";
 import { useState } from "react";
 
 export default function Projects() {
@@ -105,6 +105,17 @@ export default function Projects() {
                     <Code2 className="w-3.5 h-3.5" />
                     Architecture Deep-Dive
                   </button>
+                  {project.links.playstore && (
+                    <a
+                      href={project.links.playstore}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                      aria-label="View on Google Play Store"
+                    >
+                      <Smartphone className="w-3.5 h-3.5" /> Play Store
+                    </a>
+                  )}
                   {project.links.github && (
                     <a
                       href={project.links.github}

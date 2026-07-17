@@ -5,6 +5,7 @@ export interface Project {
   tagline: string;
   description: string;
   mockType: "browser" | "mobile" | "terminal";
+  image?: string;
   metrics: { label: string; value: string }[];
   engineeringFeats: string[];
   techStack: string[];
@@ -16,6 +17,7 @@ export interface Project {
   links: {
     github?: string;
     live?: string;
+    playstore?: string;
   };
 }
 
@@ -40,7 +42,7 @@ export const PORTFOLIO_DATA = {
     title: "AI-Supercharged Tech Lead & Full-Stack Systems Engineer",
     location: "Jakarta, Indonesia",
     status: "Open for Tech Lead & Senior/Staff Roles",
-    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to AI-powered platforms, React Native mobile apps, and Web3/IoT systems. Currently exploring the intersection of LLMs, robotics, and cloud architecture.",
+    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, AI-powered platforms, and Web3/IoT systems.",
     contacts: {
       email: "okihita@gmail.com",
       github: "https://github.com/okihita",
@@ -50,6 +52,47 @@ export const PORTFOLIO_DATA = {
   },
 
   projects: [
+    {
+      id: "zenius-mobile",
+      title: "Zenius React Native App (Latest Launch)",
+      category: "Mobile (React Native)",
+      tagline: "Solo-Created Modern EdTech Platform in React Native",
+      description:
+        "Single-handedly architected, engineered, and launched the brand new React Native mobile application for Zenius on Google Play Store from scratch (July 2026 release). Delivers video lessons, practice problem engines, and interactive tutoring to millions of students across Indonesia.",
+      mockType: "mobile",
+      image: "/images/zenius/screenshot1.webp",
+      metrics: [
+        { label: "Engineering Scope", value: "100% Solo" },
+        { label: "Core Framework", value: "React Native" },
+        { label: "Play Store Status", value: "Live Launch" },
+      ],
+      engineeringFeats: [
+        "Solo-built the entire next-generation React Native Android app from greenfield codebase to Google Play production release in 2026.",
+        "Engineered smooth video streaming playback, interactive quiz engines, and offline content bookmarking.",
+        "Optimized JavaScript bundle splitting and Hermes bytecode execution for sub-second cold starts on mid-to-entry-level Android devices.",
+      ],
+      techStack: [
+        "React Native",
+        "TypeScript",
+        "Hermes Engine",
+        "ExoPlayer",
+        "Zustand",
+        "REST APIs",
+        "Android Native Bridge",
+      ],
+      architectureDetails: {
+        problem:
+          "Rebuilding a complex legacy mobile experience into a clean, modern React Native architecture as a solo engineer within a tight launch deadline.",
+        solution:
+          "Established a modular TypeScript architecture with strictly typed API contracts, Hermes optimization, and zero-redundancy state management.",
+        keyTradeoff:
+          "Prioritized core video streaming and practice test performance over non-critical secondary UI animations for the initial v1 launch.",
+      },
+      links: {
+        playstore: "https://play.google.com/store/apps/details?id=net.zenius.mobile.android",
+        github: "https://github.com/okihita",
+      },
+    },
     {
       id: "cineradar",
       title: "CineRadar",
@@ -227,14 +270,14 @@ export const PORTFOLIO_DATA = {
       company: "Fullstack Development & AI Systems",
       location: "Jakarta, Indonesia",
       summary:
-        "Building AI-powered applications, web intelligence platforms, and hardware-to-cloud IoT prototypes.",
+        "Building AI-powered applications, React Native mobile apps, and web intelligence platforms.",
       highlights: [
+        "Solo-created and launched the brand new Zenius React Native mobile app (net.zenius.mobile.android) on Google Play Store (July 2026).",
         "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Placed Top 5 (out of ~100 teams) at Amartha x GDG Jakarta for AI WhatsApp Financial Coach with OCR ledger processing.",
         "Placed Top 15 (out of ~150 engineers) at RedAI Triathlon 2025 (Red Asia x AWS AI engineering competition).",
-        "Developing Web3 voice-command interface & home-robot control with multi-chain wallet integration (BTC, ETH, ESP32).",
       ],
-      techUsed: ["Next.js", "React Native", "Python", "LLM Agents", "AWS", "GCP", "ESP32", "Solidity"],
+      techUsed: ["React Native", "Next.js", "Python", "LLM Agents", "AWS", "GCP", "ESP32", "Solidity"],
     },
     {
       period: "AUG 2022 — DEC 2024",
@@ -305,9 +348,9 @@ export const PORTFOLIO_DATA = {
         "Bulletproof stability, backward compatibility, and strict performance budgets are essential when serving millions of active users.",
     },
     {
-      title: "Hardware-to-Cloud Integration",
+      title: "Solo Greenfield Execution",
       description:
-        "Full-stack means truly end-to-end: from ESP32 microcontrollers and mobile native bridges to serverless edge functions and distributed cloud APIs.",
+        "Proven ability to single-handedly architect and ship production mobile apps (like the latest Zenius React Native app) from zero to Play Store launch.",
     },
     {
       title: "Empathetic Technical Leadership",

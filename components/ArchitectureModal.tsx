@@ -2,7 +2,7 @@
 
 import { Project } from "@/data/portfolioData";
 import { GithubIcon } from "./SocialIcons";
-import { X, CheckCircle2, ArrowUpRight, Code2, Cpu } from "lucide-react";
+import { X, CheckCircle2, ArrowUpRight, Code2, Cpu, Smartphone } from "lucide-react";
 import { useEffect } from "react";
 
 interface ArchitectureModalProps {
@@ -120,6 +120,16 @@ export default function ArchitectureModal({
 
         {/* Modal Actions */}
         <div className="pt-4 border-t border-zinc-800 flex items-center justify-end gap-3">
+          {project.links.playstore && (
+            <a
+              href={project.links.playstore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+            >
+              <Smartphone className="w-3.5 h-3.5" /> Google Play Store
+            </a>
+          )}
           {project.links.github && (
             <a
               href={project.links.github}
