@@ -15,13 +15,18 @@ export default function Hero() {
 
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
-            Architecting Android super-apps, React Native platforms & AI workflows.
+            Architecting Android super-apps, React Native platforms, and AI workflows.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-            Hands-on Tech Lead with 10+ years shipping production software—from Android banking engines serving 25M+ active users to solo-building brand new React Native mobile apps and agentic LLM systems.
-          </p>
+          <div className="space-y-4">
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+              Hands-on Tech Lead with 10+ years shipping production software—from Android banking engines serving 25M+ active users to solo-building brand new React Native mobile apps, and agentic LLM systems.
+            </p>
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+              Dedicated to producing SOLID, maintainable, strictly linted, and observed clean code. Highly aligned with business value, and able to produce the highest results with minimum supervision and direction.
+            </p>
+          </div>
 
           {/* Core Technical Highlights Pills */}
           <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-zinc-700 dark:text-zinc-300">
@@ -29,7 +34,7 @@ export default function Hero() {
               <Cpu className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> React Native & Kotlin
             </span>
             <span className="px-2.5 py-1 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 shadow-2xs">
-              <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Next.js 16 App Router
+              <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Next.js
             </span>
             <span className="px-2.5 py-1 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 shadow-2xs">
               <Terminal className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" /> Agentic AI & LLMs

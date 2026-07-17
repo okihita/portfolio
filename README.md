@@ -21,17 +21,17 @@
 
 ## ⚡ Overview
 
-Hands-on **Tech Lead** with **10+ years** shipping production software—from tier-1 banking super-apps serving **25M+ active users** to solo-building brand new React Native mobile apps, offline-first desktop suites in Rust & Tauri 2.0, bilingual AI harm monitors, and full-stack real-time web engines.
+Hands-on **Tech Lead** with **10+ years** shipping production software—from tier-1 banking super-apps serving **25M+ active users** to solo-building brand new React Native mobile apps, offline-first desktop suites in Rust and Tauri 2.0, bilingual AI harm monitors, and full-stack real-time web engines.
 
-This repository contains the source code for Okihita's official engineering portfolio and interactive case study platform, built using Next.js 16 (App Router & Turbopack), React 19, Tailwind CSS v4, and Framer Motion.
+This repository contains the source code for Okihita's official engineering portfolio and interactive case study platform, built using Next.js (App Router and Turbopack), React 19, Tailwind CSS v4, and Framer Motion.
 
 ---
 
 ## 🚀 Featured Engineering Case Studies
 
-### 📱 1. Zenius React Native App (EdTech Mobile Platform)
+### 📱 1. Zenius EdTech Mobile App (EdTech Mobile Platform)
 * **Scope**: 100% Solo Greenfield Architecture to Store Production
-* **Stack**: React Native (iOS & Android), TypeScript, Hermes Engine, Zustand, ExoPlayer / AVPlayer
+* **Stack**: React Native (iOS and Android), TypeScript, Hermes Engine, Zustand, and ExoPlayer / AVPlayer
 * **Highlights**:
   * Solo-built the next-generation cross-platform React Native app from scratch for Google Play production release (July 2026; iOS build pending App Store publication).
   * Sub-second cold starts on entry-level mobile devices via Hermes bytecode optimization and bundle splitting.
@@ -42,7 +42,7 @@ This repository contains the source code for Okihita's official engineering port
 
 ### 💳 2. BNI wondr & Mandiri Livin' Digital Banking Super-Apps
 * **Scope**: Lead Mobile Engineer (Accenture) • 25M+ Active Users Scale
-* **Stack**: React Native, Kotlin, Android Host Card Emulation (HCE) NFC, Jetpack Compose, Hilt DI
+* **Stack**: Kotlin, Java, Android Host Card Emulation (HCE) NFC, Jetpack Compose, and Hilt DI
 * **Highlights**:
   * Led mobile engineering squads delivering core banking features for flagship Indonesian digital bank super-apps: [wondr by BNI](https://play.google.com/store/apps/details?id=id.bni.wondr&hl=id) and [Livin' by Mandiri](https://play.google.com/store/apps/details?id=id.bmri.livin&hl=id).
   * Engineered high-security Android Host Card Emulation (HCE) NFC tap-to-pay engines handling millions of daily retail transactions with 99.99% reliability.
@@ -75,7 +75,7 @@ This repository contains the source code for Okihita's official engineering port
 
 ### 🎬 5. CineRadar — Cinema Intelligence & Showtime Aggregator
 * **Scope**: 496 Theatres Across 83 Cities • 99.9% Data Availability
-* **Stack**: Next.js 16, TypeScript, React 19, Python, PostgreSQL, Redis
+* **Stack**: Next.js, TypeScript, React 19, Python, PostgreSQL, and Redis
 * **Highlights**:
   * Full-stack movie tracker and admin dashboard aggregating showtime schedules across 3 major Indonesian cinema chains.
   * Resilient headless web scraping workers with Redis edge caching and incremental static regeneration (ISR).
@@ -85,7 +85,7 @@ This repository contains the source code for Okihita's official engineering port
 
 ### 🤖 6. UMKM AI Financial Coach & BijakMengeluh
 * **Scope**: Award-Winning WhatsApp Agentic AI Assistant
-* **Stack**: Python, TypeScript, Multimodal LLMs (Gemini / OpenAI), Selenium, AWS Lambda, WhatsApp Business API
+* **Stack**: Python, TypeScript, Multimodal LLMs (Gemini / OpenAI), Selenium, AWS Lambda, and WhatsApp Business API
 * **Highlights**:
   * **Top 5 Standing** at Amartha x GDG Jakarta for 24/7 AI WhatsApp ledger receipt OCR financial coach.
   * **Top 15 Standing** at RedAI Triathlon 2025 (Red Asia x AWS AI competition).
@@ -98,11 +98,11 @@ This repository contains the source code for Okihita's official engineering port
 
 | Domain | Technologies & Tooling |
 | :--- | :--- |
-| **Core Languages** | Kotlin, TypeScript, Python, Rust, Go, Swift, C++, Solidity |
-| **Mobile & Desktop** | React Native (iOS & Android), Jetpack Compose, Android NFC/HCE, Tauri 2.0, Flutter |
-| **Frontend & Web** | Next.js 16 (App Router), Astro 7, React 19, Tailwind CSS v4, HTML5/CSS3 |
-| **AI & Agentic Systems** | Multimodal LLMs, Agentic Workflows, Spec-Driven Development, RAG & Vector Search, OpenAI / Gemini API |
-| **Cloud & Storage** | AWS (EC2, Lambda, S3), Cloudflare Pages & KV, Azure Functions, SQLite, PostgreSQL, Redis |
+| **Core Languages** | Kotlin, TypeScript, Python, Rust, Go, Swift, C++, and Solidity |
+| **Mobile & Desktop** | React Native (iOS and Android), Jetpack Compose, Android NFC/HCE, Tauri 2.0, and Flutter |
+| **Frontend & Web** | Next.js (App Router), Astro 7, React 19, Tailwind CSS v4, and HTML5/CSS3 |
+| **AI & Agentic Systems** | Multimodal LLMs, Agentic Workflows, Spec-Driven Development, RAG & Vector Search, and OpenAI / Gemini API |
+| **Cloud & Storage** | AWS (EC2, Lambda, and S3), Cloudflare Pages & KV, Azure Functions, SQLite, PostgreSQL, and Redis |
 
 ---
 
@@ -153,5 +153,5 @@ npm run start
 ---
 
 <div align="center">
-  <sub>Designed & engineered with precision by Okihita H. Sihaloho. Powered by Next.js 16 & Tailwind CSS v4.</sub>
+  <sub>Designed & engineered with precision by Okihita H. Sihaloho. Powered by Next.js & Tailwind CSS v4.</sub>
 </div>

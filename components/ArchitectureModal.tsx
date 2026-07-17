@@ -31,7 +31,10 @@ export default function ArchitectureModal({
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 dark:bg-black/80 backdrop-blur-sm animate-fadeIn">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 dark:bg-black/80 backdrop-blur-sm animate-fadeIn"
+    >
       <div
         className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-xl bg-white dark:bg-[#101014] border border-zinc-200 dark:border-zinc-800 p-6 shadow-2xl space-y-6 text-zinc-900 dark:text-zinc-300"
         onClick={(e) => e.stopPropagation()}

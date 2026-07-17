@@ -6,7 +6,7 @@ export interface ProjectLink {
 export interface Project {
   id: string;
   title: string;
-  category: "Web App" | "Mobile (React Native)" | "Systems & Cloud";
+  category: "Web App" | "Mobile (React Native)" | "Mobile (Android)" | "Systems & Cloud";
   tagline: string;
   description: string;
   mockType: "browser" | "mobile" | "terminal" | "carousel";
@@ -49,7 +49,7 @@ export const PORTFOLIO_DATA = {
     title: "AI-Supercharged Tech Lead & Full-Stack Systems Engineer",
     location: "Jakarta, Indonesia",
     status: "Open for Tech Lead & Senior/Staff Roles",
-    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, offline-first desktop apps (Rust/Tauri), AI-powered platforms, and Web3/IoT systems.",
+    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, offline-first desktop apps (Rust/Tauri), AI-powered platforms, and Web3/IoT systems. Delivers SOLID, maintainable, strictly linted, and observed clean code while remaining highly aligned with business values.",
     contacts: {
       email: "okihita@gmail.com",
       github: "https://github.com/okihita",
@@ -61,7 +61,7 @@ export const PORTFOLIO_DATA = {
   projects: [
     {
       id: "zenius-mobile",
-      title: "Zenius React Native App (Latest Launch)",
+      title: "Zenius EdTech Mobile App (Latest Launch)",
       category: "Mobile (React Native)",
       tagline: "Solo-Created Modern EdTech Platform in React Native (iOS Pending Publication)",
       description:
@@ -244,10 +244,10 @@ export const PORTFOLIO_DATA = {
     {
       id: "bank-super-app",
       title: "BNI wondr & Mandiri Livin' Mobile Super-Apps",
-      category: "Mobile (React Native)",
+      category: "Mobile (Android)",
       tagline: "Lead Mobile Engineer for Tier-1 Indonesian Digital Banking Platforms",
       description:
-        "Architected and led mobile engineering squads at Accenture for tier-1 national bank flagship super-apps—wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin). Engineered Android NFC tap-to-pay engines, modern Jetpack Compose UI modules, and cross-platform React Native features serving 25M+ active users.",
+        "Architected and led mobile engineering squads at Accenture for tier-1 national bank flagship super-apps—wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin). Engineered Android NFC tap-to-pay engines, modern Jetpack Compose UI modules, and robust native features serving 25M+ active users.",
       mockType: "carousel",
       images: [
         "/images/bni-wondr/shot1.webp",
@@ -266,17 +266,16 @@ export const PORTFOLIO_DATA = {
         { label: "NFC Uptime", value: "99.99% Reliability" },
       ],
       engineeringFeats: [
-        "Lead mobile engineer at Accenture delivering core modules for wondr by BNI and Livin' by Mandiri.",
+        "Lead mobile engineer at Accenture delivering core modules for wondr by BNI, and Livin' by Mandiri.",
         "Engineered high-security Android Host Card Emulation (HCE) NFC tap-to-pay payments for millions of daily retail transactions.",
-        "Migrated legacy banking architectures to Jetpack Compose, Kotlin Hilt DI, and React Native native modules with strict zero-downtime compliance.",
+        "Migrated legacy banking architectures to Jetpack Compose, Kotlin Hilt DI, and native Java/Kotlin codebase modules with strict zero-downtime compliance.",
       ],
       techStack: [
-        "React Native",
         "Kotlin",
+        "Java",
         "Android NFC / HCE",
         "Jetpack Compose",
         "Hilt",
-        "Java",
         "Dagger2",
         "Clean Architecture",
       ],
@@ -397,7 +396,7 @@ export const PORTFOLIO_DATA = {
       summary:
         "Building AI-powered applications, React Native mobile apps, Rust desktop apps, and web intelligence platforms.",
       highlights: [
-        "Solo-created and launched the brand new cross-platform Zenius React Native mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
+        "Solo-created and launched the brand new cross-platform Zenius EdTech mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
         "Developed MMAAII (mmaaii.engagemedia.org), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
         "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
@@ -416,11 +415,11 @@ export const PORTFOLIO_DATA = {
       highlights: [
         "Lead Mobile Engineer delivering core features for flagship digital banking super-apps: wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin), serving 25M+ active users.",
         "Mobile squad lead delivering 6 banking features including innovative Android HCE NFC tap-to-pay.",
-        "Led mobile development for new bank super-apps using Jetpack Compose, Hilt, React Native modules, and modern Jetpack architecture.",
+        "Led mobile development for new bank super-apps using Jetpack Compose, Hilt, and modern native Android architecture.",
         "Managed engineering team building corporate portal solution for 170,000+ FMCG employees using Azure Functions & Azure DB.",
         "Role breakdown: 60% hands-on coding, 20% product concepts, 10% R&D/innovation, 10% team mentorship.",
       ],
-      techUsed: ["Kotlin", "Android NFC", "Jetpack Compose", "Hilt", "React Native", "Azure Functions", "PostgreSQL"],
+      techUsed: ["Kotlin", "Android NFC", "Jetpack Compose", "Hilt", "Java", "Azure Functions", "PostgreSQL"],
     },
     {
       period: "OCT 2021 — MAY 2022",
