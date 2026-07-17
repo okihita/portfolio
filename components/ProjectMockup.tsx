@@ -260,10 +260,11 @@ export default function ProjectMockup({
     );
   }
 
-  // Web Browser Mockup
+  // Web Browser Mockup (Supports Slideable Screenshots if Multiple Provided)
   if (project.mockType === "browser") {
     return (
       <div className="rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-xl flex flex-col font-sans">
+        {/* Browser Window Header */}
         <div className="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-3.5 py-2.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 inline-block" />
@@ -280,8 +281,63 @@ export default function ProjectMockup({
         </div>
 
         {images && images.length > 0 ? (
-          <div className="relative w-full aspect-video">
-            <Image src={images[0]} alt={project.title} fill className="object-cover" />
+          <div
+            className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900 dark:bg-zinc-950 group"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIdx}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={images[currentIdx]}
+                  alt={`${project.title} Screenshot ${currentIdx + 1}`}
+                  fill
+                  className="object-cover object-top"
+                  priority={currentIdx === 0}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-xs transition-all shadow-md"
+                  aria-label="Previous Screenshot"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/90 backdrop-blur-xs transition-all shadow-md"
+                  aria-label="Next Screenshot"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+
+                <div className="absolute bottom-2 left-0 right-0 z-30 flex items-center justify-center gap-1.5">
+                  {images.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => setCurrentIdx(dotIdx)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        dotIdx === currentIdx
+                          ? "bg-emerald-400 w-5"
+                          : "bg-white/40 hover:bg-white/80 w-1.5"
+                      }`}
+                      aria-label={`Go to slide ${dotIdx + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         ) : (
           <div className="p-4 sm:p-5 bg-zinc-50 dark:bg-[#0d0d11] space-y-4 text-xs font-mono text-zinc-700 dark:text-zinc-300 min-h-[260px] flex flex-col justify-between">

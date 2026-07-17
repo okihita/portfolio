@@ -113,6 +113,12 @@ export const PORTFOLIO_DATA = {
       description:
         "Offline-first desktop application built for Indonesian village cooperatives (Koperasi Desa) using Rust, Tauri 2.0, React 19, and local SQLite. Gamifies compliance (UU No. 25/1992), double-entry accounting (SAK EP), and inventory management into daily quests—running 100% offline from a 10MB USB drive.",
       mockType: "browser",
+      images: [
+        "/images/pakde/demo-exploration.png",
+        "/images/pakde/sense-of-direction.png",
+        "/images/pakde/sense-of-progress.png",
+        "/images/pakde/social-competition.png",
+      ],
       metrics: [
         { label: "Tech Stack", value: "Tauri 2 + Rust" },
         { label: "Database", value: "Local SQLite" },
