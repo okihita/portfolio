@@ -29,7 +29,7 @@ This repository contains the source code for Okihita's official engineering port
 
 ## 🚀 Featured Engineering Case Studies
 
-### 📱 1. Zenius EdTech Mobile App (EdTech Mobile Platform)
+### 📱 1. Zenius (EdTech) Mobile App
 * **Scope**: 100% Solo Greenfield Architecture to Store Production
 * **Stack**: React Native (iOS and Android), TypeScript, Hermes Engine, Zustand, and ExoPlayer / AVPlayer
 * **Highlights**:
@@ -69,7 +69,7 @@ This repository contains the source code for Okihita's official engineering port
   * Open-source bilingual (EN & ID) platform built with EngageMedia documenting AI harm incidents in Indonesia using international risk taxonomies and regulatory article mappers (PASAL).
   * Automated Internet Archive (Wayback Machine SPN2) API integration for permanent source preservation against dead links.
   * Serverless Cloudflare Pages Functions with 60s KV caching protecting backend rate limits while achieving <200ms TTFB page load times.
-* **Live Platform & Repo**: [MMAAII Portal](https://mmaaii.engagemedia.org/) • [GitLab Repository](https://gitlab.com/emopentech/mmaaii)
+* **Live Platform & Repo**: [MMAAII Portal](https://mmaaii.engagemedia.org/en/) • [GitLab Repository](https://gitlab.com/emopentech/mmaaii)
 
 ---
 
@@ -83,14 +83,25 @@ This repository contains the source code for Okihita's official engineering port
 
 ---
 
-### 🤖 6. UMKM AI Financial Coach & BijakMengeluh
-* **Scope**: Award-Winning WhatsApp Agentic AI Assistant
-* **Stack**: Python, TypeScript, Multimodal LLMs (Gemini / OpenAI), Selenium, AWS Lambda, and WhatsApp Business API
+### 🤖 6. UMKM AI Financial Coach
+* **Scope**: Award-Winning 24/7 WhatsApp Agentic AI Assistant
+* **Stack**: Python, TypeScript, Multimodal LLMs (Gemini / OpenAI), AWS Lambda, and WhatsApp Business API
 * **Highlights**:
   * **Top 5 Standing** at Amartha x GDG Jakarta for 24/7 AI WhatsApp ledger receipt OCR financial coach.
   * **Top 15 Standing** at RedAI Triathlon 2025 (Red Asia x AWS AI competition).
-  * BijakMengeluh civic engagement platform with automated social scraping for government contact discovery.
+  * Agentic multimodal workflow processing unstructured physical ledger receipts over low-bandwidth channels.
 * **Live Demo & Repo**: [UMKM AI Coach](https://umkm-chatbot.vercel.app) • [GitHub Repository](https://github.com/okihita/umkm-chatbot)
+
+---
+
+### 🏛️ 7. BijakMengeluh
+* **Scope**: Civic Engagement Platform for AI-Assisted Complaint Drafting
+* **Stack**: Python, Selenium, TypeScript, and Multimodal LLMs (Gemini / OpenAI)
+* **Highlights**:
+  * Automated Selenium/Python social scraping to discover Indonesian government agency contacts.
+  * AI-assisted complaint drafting that structures citizen grievances into actionable, well-formatted reports.
+  * Resilient scraping pipelines tolerant of inconsistent government social media layouts.
+* **Repo**: [GitHub Repository](https://github.com/okihita/umkm-chatbot)
 
 ---
 

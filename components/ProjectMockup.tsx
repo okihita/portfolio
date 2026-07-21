@@ -281,7 +281,7 @@ export default function ProjectMockup({
           </div>
           <div className="flex-1 max-w-md bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 rounded-md px-3 py-1 flex items-center gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
             <Lock className="w-3 h-3 text-emerald-500" />
-            <span className="truncate">https://{project.id}.dev/app</span>
+            <span className="truncate">{project.links.live ?? `https://${project.id}.dev/app`}</span>
           </div>
           <div className="flex items-center gap-2 text-zinc-400 dark:text-zinc-500 text-xs">
             <Globe className="w-3.5 h-3.5" />

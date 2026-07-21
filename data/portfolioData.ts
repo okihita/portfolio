@@ -61,7 +61,7 @@ export const PORTFOLIO_DATA = {
   projects: [
     {
       id: "zenius-mobile",
-      title: "Zenius EdTech Mobile App (Latest Launch)",
+      title: "Zenius (EdTech) Mobile App",
       category: "Mobile (React Native)",
       tagline: "Solo-Created Modern EdTech Platform in React Native (iOS Pending Publication)",
       description:
@@ -197,7 +197,7 @@ export const PORTFOLIO_DATA = {
           "Used serverless Functions API caching (60s KV TTL) to protect Airtable rate limits while keeping static page load times under 200ms.",
       },
       links: {
-        live: "https://mmaaii.engagemedia.org/",
+        live: "https://mmaaii.engagemedia.org/en/",
         github: "https://gitlab.com/emopentech/mmaaii",
       },
     },
@@ -296,12 +296,12 @@ export const PORTFOLIO_DATA = {
       },
     },
     {
-      id: "ai-financial-coach",
-      title: "UMKM AI Financial Coach & BijakMengeluh",
+      id: "umkm-ai-financial-coach",
+      title: "UMKM AI Financial Coach",
       category: "Systems & Cloud",
-      tagline: "Agentic AI Workflows & WhatsApp Assistant for Micro-Entrepreneurs",
+      tagline: "24/7 Agentic WhatsApp Assistant for Micro-Entrepreneurs",
       description:
-        "Award-winning (Top 5 Amartha x GDG) 24/7 AI WhatsApp financial literacy coach with ledger image processing, risk modeling, and civic AI complaint drafting (BijakMengeluh).",
+        "Award-winning (Top 5 Amartha x GDG) 24/7 AI WhatsApp financial literacy coach with ledger image processing and risk modeling for Indonesian micro-entrepreneurs.",
       mockType: "terminal",
       metrics: [
         { label: "Amartha x GDG", value: "Top 5" },
@@ -309,8 +309,8 @@ export const PORTFOLIO_DATA = {
         { label: "Agent Response", value: "< 1.5s" },
       ],
       engineeringFeats: [
-        "Engineered agentic multimodal AI workflow processing unstructured physical ledger receipts via WhatsApp API.",
-        "Built BijakMengeluh civic engagement platform with automated Selenium/Python social scraping for Indonesian government agency contact discovery.",
+        "Engineered agentic multimodal AI workflow processing unstructured physical ledger receipts via WhatsApp Business API.",
+        "Integrated WhatsApp Webhooks with an Agentic LLM router, OCR vision model for physical receipts, and risk scoring microservices.",
         "Placed Top 15 in RedAI Triathlon 2025 (AWS AI engineering) solving live debugging and prototype challenges in 4 hours.",
       ],
       techStack: [
@@ -318,7 +318,6 @@ export const PORTFOLIO_DATA = {
         "TypeScript",
         "LLM Agents",
         "Gemini / OpenAI API",
-        "Selenium",
         "AWS Lambda",
         "WhatsApp Business API",
       ],
@@ -333,6 +332,43 @@ export const PORTFOLIO_DATA = {
       links: {
         github: "https://github.com/okihita/umkm-chatbot",
         live: "https://umkm-chatbot.vercel.app",
+      },
+    },
+    {
+      id: "bijakmengeluh",
+      title: "BijakMengeluh",
+      category: "Systems & Cloud",
+      tagline: "Civic Engagement Platform for AI-Assisted Complaint Drafting",
+      description:
+        "Civic-tech platform that discovers Indonesian government agency contacts via automated social scraping and drafts structured, AI-assisted public complaints for citizens.",
+      mockType: "browser",
+      metrics: [
+        { label: "Agency Contacts", value: "Auto-Scraped" },
+        { label: "Complaint Draft", value: "AI-Assisted" },
+        { label: "Scraping Stack", value: "Selenium" },
+      ],
+      engineeringFeats: [
+        "Built a civic engagement platform with automated Selenium/Python social scraping for Indonesian government agency contact discovery.",
+        "Engineered AI-assisted complaint drafting that structures citizen grievances into actionable, well-formatted reports.",
+        "Designed resilient scraping pipelines tolerant of inconsistent and frequently-changing government social media layouts.",
+      ],
+      techStack: [
+        "Python",
+        "Selenium",
+        "TypeScript",
+        "LLM Agents",
+        "Gemini / OpenAI API",
+      ],
+      architectureDetails: {
+        problem:
+          "Citizens struggle to locate the correct government agency contacts and articulate structured complaints, lowering civic participation.",
+        solution:
+          "Automated Selenium-based social scraping aggregates verified agency contacts, while an LLM drafts clear, actionable complaints from citizen input.",
+        keyTradeoff:
+          "Prioritized automated scraping breadth over manual curation to scale contact discovery, accepting periodic layout-drift maintenance.",
+      },
+      links: {
+        github: "https://github.com/okihita/umkm-chatbot",
       },
     },
   ] as Project[],
@@ -398,7 +434,7 @@ export const PORTFOLIO_DATA = {
       highlights: [
         "Solo-created and launched the brand new cross-platform Zenius EdTech mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
-        "Developed MMAAII (mmaaii.engagemedia.org), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
+        "Developed MMAAII (mmaaii.engagemedia.org/en/), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
         "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Placed Top 5 (out of ~100 teams) at Amartha x GDG Jakarta for AI WhatsApp Financial Coach with OCR ledger processing.",
         "Placed Top 15 (out of ~150 engineers) at RedAI Triathlon 2025 (Red Asia x AWS AI engineering competition).",
