@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Outer Shell Gradient -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Bezel Ring Gradient -->
+    <linearGradient id="bezelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+
+    <!-- LCD Screen Gradient -->
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="50%" stop-color="#022c22"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+
+    <!-- Core Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0"/>
+      <stop offset="50%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Antenna Clip / Loop Top Left -->
+  <path d="M 130 90 L 130 40 C 130 25 150 25 150 40 L 150 90 Z" fill="#475569" stroke="#0f172a" stroke-width="6"/>
+  <rect x="120" y="75" width="40" height="20" rx="4" fill="#334155"/>
+
+  <!-- Main Body - Classic Rounded Octagon Shape -->
+  <path d="M 160 70 L 352 70 L 442 160 L 442 352 L 352 442 L 160 442 L 70 352 L 70 160 Z" 
+        fill="url(#bodyGrad)" 
+        stroke="url(#bezelGrad)" 
+        stroke-width="14" 
+        stroke-linejoin="round"/>
+
+  <!-- Inner Body Ridge Contour -->
+  <path d="M 170 90 L 342 90 L 422 170 L 422 342 L 342 422 L 170 422 L 90 342 L 90 170 Z" 
+        fill="none" 
+        stroke="#1e293b" 
+        stroke-width="4"/>
+
+  <!-- Outer Bezel Ring for Screen -->
+  <circle cx="256" cy="240" r="115" fill="#0f172a" stroke="url(#bezelGrad)" stroke-width="8"/>
+
+  <!-- LCD Screen Box -->
+  <rect x="176" y="160" width="160" height="160" rx="16" fill="url(#screenGrad)" stroke="#10b981" stroke-width="4"/>
+
+  <!-- LCD Pixel Grid Effect Overlay -->
+  <pattern id="pixelGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+    <rect width="8" height="8" fill="none" stroke="#047857" stroke-width="0.5" opacity="0.3"/>
+  </pattern>
+  <rect x="176" y="160" width="160" height="160" rx="16" fill="url(#pixelGrid)"/>
+
+  <!-- Digital Crest / Glowing Core Emblem inside Screen -->
+  <g filter="url(#glow)">
+    <!-- Central Diamond / Emblem -->
+    <path d="M 256 195 L 285 240 L 256 285 L 227 240 Z" fill="url(#coreGrad)"/>
+    <circle cx="256" cy="240" r="10" fill="#ecfdf5"/>
+    
+    <!-- Pulse Corner Dots -->
+    <rect x="200" y="184" width="8" height="8" fill="#34d399"/>
+    <rect x="304" y="184" width="8" height="8" fill="#34d399"/>
+    <rect x="200" y="288" width="8" height="8" fill="#34d399"/>
+    <rect x="304" y="288" width="8" height="8" fill="#34d399"/>
+  </g>
+
+  <!-- Button Panel Below Screen -->
+  <!-- Left Button (A) -->
+  <circle cx="160" cy="385" r="22" fill="#0284c7" stroke="#38bdf8" stroke-width="3"/>
+  <circle cx="160" cy="385" r="16" fill="#0369a1"/>
+
+  <!-- Center Button (Directional/Select) -->
+  <circle cx="256" cy="390" r="26" fill="#334155" stroke="#64748b" stroke-width="4"/>
+  <circle cx="256" cy="390" r="18" fill="#1e293b"/>
+  <!-- Directional arrow accent -->
+  <path d="M 256 378 L 263 388 L 249 388 Z" fill="#38bdf8"/>
+  <path d="M 256 402 L 263 392 L 249 392 Z" fill="#38bdf8"/>
+
+  <!-- Right Button (B) -->
+  <circle cx="352" cy="385" r="22" fill="#0284c7" stroke="#38bdf8" stroke-width="3"/>
+  <circle cx="352" cy="385" r="16" fill="#0369a1"/>
+</svg>

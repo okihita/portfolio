@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   description: "Portfolio of Okihita H. Sihaloho, Tech Lead & Senior Software Engineer specializing in React Native, Next.js, AI/LLM agentic workflows, Android super-apps, and low-latency systems.",
   keywords: ["Okihita H. Sihaloho", "Tech Lead", "Software Engineer", "React Native", "Next.js", "Kotlin", "TypeScript", "AI Engineer", "Android Super-App"],
   authors: [{ name: "Okihita H. Sihaloho" }],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Okihita | Superstack Engineer",
     description: "Architecting resilient web platforms, React Native mobile apps, and agentic AI systems.",
