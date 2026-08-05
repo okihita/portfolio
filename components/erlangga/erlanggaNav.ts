@@ -9,10 +9,10 @@ export const ERLANGGA_NAV_ITEMS: HeaderNavItem[] = [
     },
   },
   {
-    href: "/erlangga/tech-specs",
+    href: "/erlangga/roadmap",
     label: {
-      id: "Tech Specs & Roadmap",
-      en: "Tech Specs & Roadmap",
+      id: "Roadmap",
+      en: "Roadmap",
     },
   },
   {

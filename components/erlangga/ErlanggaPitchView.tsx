@@ -681,7 +681,7 @@ export default function ErlanggaPitchView() {
               </div>
 
               <Link
-                href={`/erlangga/tech-specs?lang=${lang}`}
+                href={`/erlangga/roadmap?lang=${lang}`}
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline shrink-0"
               >
                 <span>{lang === "id" ? "Lihat Detail Peta Jalan 90-Hari →" : "View Deep-Dive 90-Day Roadmap →"}</span>
@@ -736,10 +736,10 @@ export default function ErlanggaPitchView() {
 
             <div className="pt-2 flex justify-center">
               <Link
-                href={`/erlangga/tech-specs?lang=${lang}`}
+                href={`/erlangga/roadmap?lang=${lang}`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
               >
-                <span>{lang === "id" ? "Buka Peta Jalan 90-Hari & Spesifikasi Teknis Lengkap" : "Open Full 90-Day Roadmap & Tech Specs"}</span>
+                <span>{lang === "id" ? "Buka Peta Jalan 90-Hari & Rencana Eksekusi Lengkap" : "Open Full 90-Day Roadmap & Execution Plan"}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -757,10 +757,10 @@ export default function ErlanggaPitchView() {
 
             <div className="pt-2 flex items-center justify-start">
               <Link
-                href={`/erlangga/tech-specs?lang=${lang}`}
+                href={`/erlangga/roadmap?lang=${lang}`}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer"
               >
-                <span>{lang === "id" ? "Jelajahi Spesifikasi Teknis TI" : "Explore IT Technical Specs"}</span>
+                <span>{lang === "id" ? "Jelajahi Peta Jalan Eksekusi TI" : "Explore IT Execution Roadmap"}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
