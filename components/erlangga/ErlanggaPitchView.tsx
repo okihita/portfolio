@@ -2,12 +2,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
+import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import {
   CheckCircle2,
   Award,
-  Sun,
-  Moon,
-  Languages,
   AlertTriangle,
   Flame,
   Zap,
@@ -21,7 +20,6 @@ import {
   ArrowRight
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
-import { ErlanggaHeaderNav } from "./ErlanggaHeaderNav";
 
 // --- TYPES ---
 type Lang = "id" | "en";
@@ -573,13 +571,8 @@ const ALIGNMENT_MATRIX_DATA = {
 
 export default function ErlanggaPitchView() {
   const [lang, setLang] = useState<Lang>("id");
-  const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    setIsDark(document.documentElement.classList.contains("dark"));
-
     // Check localStorage or URL query for language preference
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get("lang");
@@ -591,42 +584,12 @@ export default function ErlanggaPitchView() {
     } else if (savedLang === "en" || savedLang === "id") {
       setLang(savedLang as Lang);
     }
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleSystemChange = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem("theme")) {
-        if (e.matches) {
-          document.documentElement.classList.add("dark");
-          setIsDark(true);
-        } else {
-          document.documentElement.classList.remove("dark");
-          setIsDark(false);
-        }
-      }
-    };
-    mediaQuery.addEventListener("change", handleSystemChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleSystemChange);
-    };
   }, []);
 
   const toggleLang = () => {
     const nextLang: Lang = lang === "id" ? "en" : "id";
     setLang(nextLang);
     localStorage.setItem("erlangga_lang", nextLang);
-  };
-
-  const toggleTheme = () => {
-    const nextDark = !isDark;
-    setIsDark(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
   };
 
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -648,14 +611,7 @@ export default function ErlanggaPitchView() {
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300">
-      <ErlanggaHeaderNav
-        lang={lang}
-        activeRoute="/erlangga"
-        toggleLang={toggleLang}
-        toggleTheme={toggleTheme}
-        mounted={mounted}
-        isDark={isDark}
-      />
+      <Header navItems={ERLANGGA_NAV_ITEMS} lang={lang} onToggleLang={toggleLang} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">
         {/* --- HERO SECTION --- */}
