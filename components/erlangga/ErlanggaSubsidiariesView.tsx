@@ -338,6 +338,7 @@ const SUBSIDIARIES_DATA = {
 
 export default function ErlanggaSubsidiariesView() {
   const [lang, setLang] = useState<Lang>("id");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -350,6 +351,7 @@ export default function ErlanggaSubsidiariesView() {
     } else if (savedLang === "en" || savedLang === "id") {
       setLang(savedLang as Lang);
     }
+    setMounted(true);
   }, []);
 
   const toggleLang = () => {
@@ -362,7 +364,7 @@ export default function ErlanggaSubsidiariesView() {
   const subsidiaries = SUBSIDIARIES_DATA[lang];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300">
+    <div className={`min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300 transition-opacity duration-150 ${mounted ? "opacity-100" : "opacity-0"}`}>
       {/* GLOBAL HEADER WITH NAVIGATION & LANG TOGGLE */}
       <Header navItems={ERLANGGA_NAV_ITEMS} lang={lang} onToggleLang={toggleLang} />
 

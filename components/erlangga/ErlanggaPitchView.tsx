@@ -571,6 +571,7 @@ const ALIGNMENT_MATRIX_DATA = {
 
 export default function ErlanggaPitchView() {
   const [lang, setLang] = useState<Lang>("id");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Check localStorage or URL query for language preference
@@ -584,6 +585,7 @@ export default function ErlanggaPitchView() {
     } else if (savedLang === "en" || savedLang === "id") {
       setLang(savedLang as Lang);
     }
+    setMounted(true);
   }, []);
 
   const toggleLang = () => {
@@ -610,7 +612,7 @@ export default function ErlanggaPitchView() {
   const alignmentMatrix = ALIGNMENT_MATRIX_DATA[lang];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300">
+    <div className={`min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300 transition-opacity duration-150 ${mounted ? "opacity-100" : "opacity-0"}`}>
       <Header navItems={ERLANGGA_NAV_ITEMS} lang={lang} onToggleLang={toggleLang} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">
