@@ -16,6 +16,13 @@ export const ERLANGGA_NAV_ITEMS: HeaderNavItem[] = [
     },
   },
   {
+    href: "/erlangga/subsidiaries",
+    label: {
+      id: "Unit Bisnis",
+      en: "Business Units",
+    },
+  },
+  {
     href: "/erlangga/risk-simulations",
     label: {
       id: "Risk Simulations",
