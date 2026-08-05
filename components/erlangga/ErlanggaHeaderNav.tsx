@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Languages, Sun, Moon, Printer } from "lucide-react";
+import { Languages, Sun, Moon } from "lucide-react";
 
 export type Lang = "id" | "en";
 
@@ -49,7 +49,6 @@ interface ErlanggaHeaderNavProps {
   toggleTheme: () => void;
   mounted: boolean;
   isDark: boolean;
-  handlePrint: () => void;
 }
 
 export function ErlanggaHeaderNav({
@@ -59,9 +58,7 @@ export function ErlanggaHeaderNav({
   toggleTheme,
   mounted,
   isDark,
-  handlePrint,
 }: ErlanggaHeaderNavProps) {
-  const exportPdfText = lang === "id" ? "Cetak PDF" : "Export PDF";
 
   return (
     <header className="sticky top-0 z-40 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-md">
@@ -88,7 +85,7 @@ export function ErlanggaHeaderNav({
           })}
         </nav>
 
-        {/* Right Actions: Lang Switcher, Theme Toggle, PDF Export */}
+        {/* Right Actions: Lang Switcher, Theme Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Language Switcher */}
           <button
@@ -110,15 +107,6 @@ export function ErlanggaHeaderNav({
             ) : (
               <Moon className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
             )}
-          </button>
-
-          {/* PDF Export */}
-          <button
-            onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-          >
-            <Printer className="w-4 h-4" />
-            <span className="hidden sm:inline">{exportPdfText}</span>
           </button>
         </div>
       </div>

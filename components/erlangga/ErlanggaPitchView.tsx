@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   CheckCircle2,
   Award,
-  Printer,
   Sun,
   Moon,
   Languages,
@@ -31,7 +30,6 @@ type Lang = "id" | "en";
 
 const TRANSLATIONS = {
   id: {
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — Rencana Strategis Kandidat IT Manager",
     heroTitle: "Arsitektur Ketahanan Operasional & Akselerasi Digital",
     heroHook: "“Jika saya dipercaya memimpin divisi TI PT. Penerbit Erlangga, misi utama saya adalah memastikan infrastruktur penerbitan, distribusi 40+ cabang, dan platform digital beroperasi dengan uptime 99.9%, sembari mentransformasi TI menjadi penggerak pertumbuhan bisnis yang proaktif.”",
@@ -75,7 +73,6 @@ const TRANSLATIONS = {
     footerBranch: "Branch: erlangga"
   },
   en: {
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — IT Manager Candidate Strategy",
     heroTitle: "Architecting Operational Resilience & Digital Growth",
     heroHook: "“If trusted to lead PT. Penerbit Erlangga's IT division, my mission is clear: to ensure our publishing, 40+ branch logistics, and digital platforms operate with 99.9% uptime, while transforming IT into a proactive business enabler.”",
@@ -641,12 +638,6 @@ export default function ErlanggaPitchView() {
     }
   };
 
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
-    }
-  };
-
   const t = TRANSLATIONS[lang];
   const storyChapters = EXECUTIVE_STORY_DATA[lang];
   const businessUnits = ERLANGGA_BUSINESS_UNITS_DATA[lang];
@@ -664,7 +655,6 @@ export default function ErlanggaPitchView() {
         toggleTheme={toggleTheme}
         mounted={mounted}
         isDark={isDark}
-        handlePrint={handlePrint}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">

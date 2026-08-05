@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   CheckCircle2,
-  Printer,
   Sun,
   Moon,
   Languages,
@@ -28,7 +27,6 @@ type Lang = "id" | "en";
 
 const TRANSLATIONS = {
   id: {
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — Simulasi Penanganan Risiko TI",
     heroTitle: "Simulasi & Manajemen Risiko Operasional Berisiko Tinggi",
     heroDesc: "Kumpulan skenario studi kasus nyata penanganan krisis infrastruktur, lonjakan trafik musiman, ketahanan jaringan cabang, dan pemulihan bencana Erlangga Group.",
@@ -45,7 +43,6 @@ const TRANSLATIONS = {
     footerBranch: "Branch: erlangga"
   },
   en: {
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — IT Operational Risk Simulations",
     heroTitle: "High-Stakes Operational Risk Management Simulations",
     heroDesc: "Comprehensive real-world case studies detailing crisis response, seasonal traffic spikes, branch WAN resilience, and disaster recovery for Erlangga Group.",
@@ -261,12 +258,6 @@ export default function ErlanggaRiskSimulationsView() {
     }
   };
 
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
-    }
-  };
-
   const t = TRANSLATIONS[lang];
   const allSimulations = ALL_RISK_SIMULATIONS_DATA[lang];
 
@@ -279,7 +270,6 @@ export default function ErlanggaRiskSimulationsView() {
         toggleTheme={toggleTheme}
         mounted={mounted}
         isDark={isDark}
-        handlePrint={handlePrint}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">

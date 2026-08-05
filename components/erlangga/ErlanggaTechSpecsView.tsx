@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Cpu,
   Mail,
-  Printer,
   Server,
   Sun,
   Moon,
@@ -31,7 +30,6 @@ type Lang = "id" | "en";
 const TRANSLATIONS = {
   id: {
     backToStory: "Narasi Eksekutif",
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — Spesifikasi Teknis Kandidat IT Manager",
     heroTitle: "Arsitektur Integrasi Enterprise & Infrastruktur Cloud",
     heroDesc: "Audit teknis mendalam atas integrasi Microsoft Dynamics ERP, Qontak CRM, Darwinbox HRMS, infrastruktur WAN 40+ cabang, dan jaringan SecOps Erlangga Group.",
@@ -57,7 +55,6 @@ const TRANSLATIONS = {
   },
   en: {
     backToStory: "Executive Story",
-    exportPdf: "PDF",
     targetBadge: "PT. Penerbit Erlangga — IT Manager Candidate Tech Specs",
     heroTitle: "Enterprise Integration Architecture & Cloud Infrastructure",
     heroDesc: "In-depth technical audit covering Microsoft Dynamics ERP, Qontak CRM, Darwinbox HRMS integration, 40+ branch WAN network, and SecOps posture.",
@@ -479,12 +476,6 @@ export default function ErlanggaTechSpecsView() {
     }
   };
 
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
-    }
-  };
-
   const t = TRANSLATIONS[lang];
   const detailedRoadmap = DETAILED_ROADMAP_DATA[lang];
   const ecosystemPulls = ECOSYSTEM_PULLS_DATA[lang];
@@ -500,7 +491,6 @@ export default function ErlanggaTechSpecsView() {
         toggleTheme={toggleTheme}
         mounted={mounted}
         isDark={isDark}
-        handlePrint={handlePrint}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">
