@@ -43,7 +43,7 @@ export default function ArchitectureModal({
         <div className="flex items-start justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+              <span className="px-2 py-0.5 rounded text-xs font-mono bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                 {project.category}
               </span>
               <span className="text-xs text-zinc-500 font-mono">Architecture Deep-Dive</span>

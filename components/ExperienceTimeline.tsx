@@ -56,7 +56,7 @@ export default function ExperienceTimeline() {
 
                 {/* Key Accomplishments */}
                 <div className="space-y-2">
-                  <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">
+                  <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
                     Key Deliverables & Metrics
                   </div>
                   <ul className="space-y-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
@@ -74,7 +74,7 @@ export default function ExperienceTimeline() {
                   {item.techUsed.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400"
+                      className="px-2 py-0.5 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400"
                     >
                       {tech}
                     </span>

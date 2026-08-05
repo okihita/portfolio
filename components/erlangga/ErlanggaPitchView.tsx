@@ -698,7 +698,7 @@ export default function ErlanggaPitchView() {
               <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-[11px] text-zinc-400 ml-2">Erlangga Group — Executive Command Center (PowerBI Live Preview)</span>
+              <span className="text-xs text-zinc-400 ml-2">Erlangga Group — Executive Command Center (PowerBI Live Preview)</span>
             </div>
             <div className="relative h-[320px] sm:h-[440px] w-full bg-zinc-900">
               <img
@@ -921,7 +921,7 @@ export default function ErlanggaPitchView() {
                         className="w-full h-full object-cover object-center"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-                      <span className="absolute bottom-3 left-3 text-[10px] font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
+                      <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
                         {item.tag}
                       </span>
                     </div>
@@ -934,11 +934,11 @@ export default function ErlanggaPitchView() {
                         <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 leading-snug">{item.title}</h3>
                       </div>
 
-                      <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                         {item.context}
                       </p>
 
-                      <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/70 dark:border-zinc-700/60 text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                      <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/70 dark:border-zinc-700/60 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                         {item.action}
                       </div>
                     </div>
@@ -1051,7 +1051,7 @@ export default function ErlanggaPitchView() {
                       <td className="py-4 px-5 font-medium text-zinc-900 dark:text-zinc-100 max-w-xs">{row.requirement}</td>
                       <td className="py-4 px-5 text-zinc-600 dark:text-zinc-300 max-w-md">{row.candidateMatch}</td>
                       <td className="py-4 px-5">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
                           <CheckCircle2 className="w-3 h-3" />
                           {row.status}
                         </span>

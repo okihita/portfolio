@@ -527,7 +527,7 @@ export default function ErlanggaTechSpecsView() {
               <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-[11px] text-zinc-400 ml-2">Erlangga Systems Architecture — Hybrid Cloud Topology & GCP/AWS Nodes</span>
+              <span className="text-xs text-zinc-400 ml-2">Erlangga Systems Architecture — Hybrid Cloud Topology & GCP/AWS Nodes</span>
             </div>
             <div className="relative h-[280px] sm:h-[380px] w-full bg-zinc-900">
               <img
@@ -659,7 +659,7 @@ export default function ErlanggaTechSpecsView() {
 
                     <ul className="space-y-2 pt-3 border-t border-zinc-100 dark:border-zinc-800">
                       {item.priorities.map((priority, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+                        <li key={idx} className="flex items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{priority}</span>
                         </li>
@@ -672,7 +672,7 @@ export default function ErlanggaTechSpecsView() {
                   {item.techStack.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-0.5 rounded text-[10px] bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/60"
+                      className="px-2 py-0.5 rounded text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/60"
                     >
                       {tech}
                     </span>
@@ -768,7 +768,7 @@ export default function ErlanggaTechSpecsView() {
                       <td className="py-4 px-5 font-medium text-zinc-900 dark:text-zinc-100 max-w-xs">{row.requirement}</td>
                       <td className="py-4 px-5 text-zinc-600 dark:text-zinc-300 max-w-md">{row.candidateMatch}</td>
                       <td className="py-4 px-5">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
                           <CheckCircle2 className="w-3 h-3" />
                           {row.status}
                         </span>

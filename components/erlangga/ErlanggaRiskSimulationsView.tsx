@@ -329,7 +329,7 @@ export default function ErlanggaRiskSimulationsView() {
                         className="w-full h-full object-cover object-center"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                      <span className="absolute bottom-3 left-4 text-[10px] font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
+                      <span className="absolute bottom-3 left-4 text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
                         {item.tag}
                       </span>
                     </div>
@@ -343,25 +343,25 @@ export default function ErlanggaRiskSimulationsView() {
                       </div>
 
                       <div className="space-y-2">
-                        <span className="text-[11px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400 block">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-red-600 dark:text-red-400 block">
                           {lang === "id" ? "Konteks Masalah & Kebutuhan Bisnis:" : "Business Problem Context:"}
                         </span>
-                        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                           {item.context}
                         </p>
                       </div>
 
                       <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/70 dark:border-zinc-700/60 space-y-1">
-                        <span className="text-[11px] font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
                           {lang === "id" ? "Tindakan Respon Manajerial TI:" : "IT Managerial Response Action:"}
                         </span>
-                        <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                           {item.action}
                         </p>
                       </div>
 
-                      <div className="p-3.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-xs text-zinc-800 dark:text-zinc-200 space-y-1">
-                        <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block">
+                      <div className="p-3.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm text-zinc-800 dark:text-zinc-200 space-y-1">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block">
                           {lang === "id" ? "Protokol Pencegahan Jangka Panjang:" : "Long-Term Prevention Protocol:"}
                         </span>
                         <p>{item.prevention}</p>
