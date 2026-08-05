@@ -93,11 +93,11 @@ const TRANSLATIONS = {
 // --- MERMAID CHART STRINGS ---
 
 const ECOSYSTEM_MERMAID = `graph TD
-    HQ["🏢 Erlangga Group HQ (Ciracas Data Center)"] --> PE["📚 PT Penerbit Erlangga<br/>(Core Publishing & 8 Imprints)"]
-    HQ --> GAP["🖨️ PT Gelora Aksara Pratama<br/>(GAP Print Manufacturing)"]
-    HQ --> EBH["📦 Eureka Book House & Logistics<br/>(Retail, SIPLah B2B & 3PL)"]
-    HQ --> ED["📱 Erlangga Digital & EdTech<br/>(Cloud Platforms & SaaS)"]
-    HQ --> EI["🎓 Erlass Institute<br/>(Teacher Training & Certification)"]
+    HQ["Erlangga Group HQ (Ciracas Data Center)"] --> PE["PT Penerbit Erlangga<br/>(Core Publishing & 8 Imprints)"]
+    HQ --> GAP["PT Gelora Aksara Pratama<br/>(GAP Print Manufacturing)"]
+    HQ --> EBH["Eureka Book House & Logistics<br/>(Retail, SIPLah B2B & 3PL)"]
+    HQ --> ED["Erlangga Digital & EdTech<br/>(Cloud Platforms & SaaS)"]
+    HQ --> EI["Erlass Institute<br/>(Teacher Training & Certification)"]
 
     PE -- Editorial Master Metadata --> GAP
     GAP -- Printed Book Stock --> EBH
@@ -136,7 +136,7 @@ const PIPELINE_MERMAID = `graph TD
     CRM --> GW
     HRMS --> GW
 
-    GW --> DASH["📊 PowerBI Executive Dashboard<br/>(Single Source of Truth for Board of Directors)"]`;
+    GW --> DASH["PowerBI Executive Dashboard<br/>(Single Source of Truth for Board of Directors)"]`;
 
 // --- SUBSIDIARY DETAILS DATA ---
 const SUBSIDIARIES_DATA = {
