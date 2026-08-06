@@ -36,7 +36,7 @@ const TRANSLATIONS = {
     targetBadge: "PT. Penerbit Erlangga — Arsitektur Ekosistem & Unit Bisnis",
     heroTitle: "Pemahaman Bisnis Erlangga & Strategi Profitabilitas TI",
     heroHook: "“Memahami ekosistem bisnis Erlangga secara menyeluruh—dari IP penerbitan, manufaktur percetakan GAP, distribusi logistik 40+ cabang, hingga platform cloud EdTech dan pelatihan Erlass—adalah kunci untuk mentransformasi divisi TI menjadi penggerak margin operasi yang terukur.”",
-    authorMeta: "Okihita H. Sihaloho, S.T. (ITB) · Calon IT Manager · PT. Penerbit Erlangga (Jakarta Timur)",
+    authorMeta: "Okihita H. Sihaloho, S.T. (ITB) · Calon IT Manager",
 
     // Section Tags & Titles
     archTag: "Peta Arsitektur Ekosistem",
@@ -64,7 +64,7 @@ const TRANSLATIONS = {
     targetBadge: "PT. Penerbit Erlangga — Business Ecosystem & Subsidiary Architecture",
     heroTitle: "Erlangga Business Alignment & IT Profitability Strategy",
     heroHook: "“Comprehensively understanding Erlangga's business ecosystem—from publishing IP, GAP print manufacturing, 40+ branch logistics distribution, to cloud EdTech platforms and Erlass teacher training—is essential to transforming IT into a measurable operating margin driver.”",
-    authorMeta: "Okihita H. Sihaloho, B.Eng. (ITB) · IT Manager Candidate · PT. Penerbit Erlangga (East Jakarta)",
+    authorMeta: "Okihita H. Sihaloho, B.Eng. (ITB) · IT Manager Candidate",
 
     // Section Tags & Titles
     archTag: "Ecosystem Architecture",

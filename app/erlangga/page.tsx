@@ -3,12 +3,12 @@ import ErlanggaPitchView from "@/components/erlangga/ErlanggaPitchView";
 
 export const metadata: Metadata = {
   title: "PT. Penerbit Erlangga — IT Strategic Proposal | Okihita H. Sihaloho",
-  description: "A pre-interview technical ecosystem audit, systems integration proposal, and 90-day IT leadership roadmap prepared for PT. Penerbit Erlangga by Okihita H. Sihaloho, B.Eng. (ITB).",
+  description: "A pre-interview technical ecosystem audit, systems integration proposal, and 3-month IT leadership roadmap prepared for PT. Penerbit Erlangga by Okihita H. Sihaloho, B.Eng. (ITB).",
   keywords: [
     "PT Penerbit Erlangga",
     "IT Manager Proposal",
     "Okihita H. Sihaloho",
-    "IT Strategy 90 Day Plan",
+    "IT Strategy 3 Month Plan",
     "DevOps SecOps Budgeting",
     "Microsoft Dynamics ERP",
     "Bandung Institute of Technology"
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Okihita H. Sihaloho" }],
   openGraph: {
     title: "PT. Penerbit Erlangga — IT Strategic Proposal | Okihita H. Sihaloho",
-    description: "External digital audit and 30-60-90 day IT leadership plan for PT. Penerbit Erlangga.",
+    description: "External digital audit and 3-month IT leadership plan for PT. Penerbit Erlangga.",
     type: "website",
   },
 };

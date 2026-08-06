@@ -14,14 +14,14 @@ type Lang = "id" | "en";
 const TRANSLATIONS = {
   id: {
     targetBadge: "PT. Penerbit Erlangga — Rencana Eksekusi Kandidat IT Manager",
-    heroTitle: "Peta Jalan Eksekusi 90 Hari: TI sebagai Mesin Pertumbuhan",
+    heroTitle: "Peta Jalan Eksekusi 3 Bulan: TI sebagai Mesin Pertumbuhan",
     heroDesc: "Rencana aksi 30-60-90 hari yang konkret: audit fondasi data & ERP, stabilisasi platform EdTech dan jaringan 40+ cabang, hingga transformasi AI yang mengubah TI dari pusat biaya menjadi pendorong profitabilitas.",
 
-    bannerCaption: "Peta Jalan Eksekusi 90 Hari — Rencana Aksi IT Manager",
+    bannerCaption: "Peta Jalan Eksekusi 3 Bulan — Rencana Aksi IT Manager",
     bannerLabel: "Fase Eksekusi",
     bannerSubtitle: "Fase 01 Audit Fondasi · Fase 02 Stabilisasi · Fase 03 Transformasi AI",
 
-    ctaTitle: "Diskusi Rencana Eksekusi 90 Hari",
+    ctaTitle: "Diskusi Rencana Eksekusi 3 Bulan",
     ctaDesc: "Saya siap mempresentasikan detail inisiatif per fase, kebutuhan sumber daya, dan metrik keberhasilan dari rencana eksekusi ini.",
 
     btnEmail: "Kirim Email (okihita@gmail.com)",
@@ -31,14 +31,14 @@ const TRANSLATIONS = {
   },
   en: {
     targetBadge: "PT. Penerbit Erlangga — IT Manager Candidate Execution Plan",
-    heroTitle: "90-Day Execution Roadmap: IT as a Growth Engine",
+    heroTitle: "3-Month Execution Roadmap: IT as a Growth Engine",
     heroDesc: "A concrete 30-60-90 day action plan: data & ERP foundation audit, EdTech platform and 40+ branch network stabilization, and AI-led transformation turning IT from a cost center into a profitability driver.",
 
-    bannerCaption: "90-Day Execution Roadmap — IT Manager Action Plan",
+    bannerCaption: "3-Month Execution Roadmap — IT Manager Action Plan",
     bannerLabel: "Execution Phases",
     bannerSubtitle: "Phase 01 Foundation Audit · Phase 02 Stabilization · Phase 03 AI Transformation",
 
-    ctaTitle: "Let's Discuss the 90-Day Execution Plan",
+    ctaTitle: "Let's Discuss the 3-Month Execution Plan",
     ctaDesc: "I'm ready to walk through per-phase initiatives, resource requirements, and success metrics for this execution plan.",
 
     btnEmail: "Email (okihita@gmail.com)",
@@ -57,7 +57,7 @@ const ROADMAP_DATA = {
       month: "30 Hari Pertama",
       title: "Audit Fondasi TI, Keamanan & Efisiensi Lisensi ERP",
       narrative: "Konsolidasi data 40+ cabang, pembersihan skema basis data ERP Microsoft Dynamics, dan audit efisiensi biaya infrastruktur cloud GCP/AWS.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month1_risograph.jpg",
       actions: [
         "Audit skema basis data Dynamics ERP & pembersihan rekonsiliasi POS cabang.",
         "Implementasi PowerBI Executive Dashboard Live MVP untuk Single Source of Truth.",
@@ -79,7 +79,7 @@ const ROADMAP_DATA = {
       month: "60 Hari",
       title: "Stabilisasi Platform EdTech, Integrasi CRM & SD-WAN",
       narrative: "Mengakselerasi kecepatan perputaran stok gudang cabang melalui integrasi WMS real-time dan memastikan platform ujian online CBT mampu menangani puncak trafik tanpa crash.",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month2_risograph.jpg",
       actions: [
         "Auto-scaling server CBT Erlangga Online siap menangani 100.000+ siswa bersamaan.",
         "Integrasi Qontak CRM & Dynamics ERP untuk visibilitas tim sales sekolah.",
@@ -100,7 +100,7 @@ const ROADMAP_DATA = {
       month: "90 Hari",
       title: "Prediksi Stok AI, Otomatisasi D2C & Modernisasi Arsitektur",
       narrative: "Transformasi total divisi TI menjadi enabler pertumbuhan bisnis melalui Machine Learning demand forecasting dan rekonsiliasi otomatis multi-channel e-commerce.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month3_risograph.jpg",
       actions: [
         "Model ML Demand Forecasting untuk memprediksi volume cetak ulang presisi (POD).",
         "Otomatisasi rekonsiliasi penjualan marketplace (Tokopedia, Shopee, TikTok Shop).",
@@ -123,7 +123,7 @@ const ROADMAP_DATA = {
       month: "First 30 Days",
       title: "IT Foundation Audit, Security & ERP License Optimization",
       narrative: "Data consolidation across 40+ regional hubs, Microsoft Dynamics ERP schema cleanup, and GCP/AWS cloud infrastructure cost optimization.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month1_risograph.jpg",
       actions: [
         "Dynamics ERP database schema audit & branch POS reconciliation cleanup.",
         "Live PowerBI Executive Dashboard MVP deployment for Single Source of Truth.",
@@ -145,7 +145,7 @@ const ROADMAP_DATA = {
       month: "60 Days",
       title: "EdTech Platform Scaling, CRM Integration & SD-WAN",
       narrative: "Accelerating branch warehouse inventory velocity via real-time WMS routing and ensuring online CBT exam platforms seamlessly handle peak loads without crashes.",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month2_risograph.jpg",
       actions: [
         "Auto-scaling CBT servers ready to handle 100,000+ concurrent students.",
         "Qontak CRM & Dynamics ERP integration for school sales rep visibility.",
@@ -166,7 +166,7 @@ const ROADMAP_DATA = {
       month: "90 Days",
       title: "AI Demand Forecasting, D2C Automation & Architecture Modernization",
       narrative: "Full transformation of IT into a core business growth enabler through Machine Learning demand forecasting and automated multi-channel e-commerce reconciliation.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/month3_risograph.jpg",
       actions: [
         "ML Demand Forecasting model to accurately predict print-on-demand (POD) runs.",
         "Automated marketplace sales reconciliation (Tokopedia, Shopee, TikTok Shop).",
@@ -218,7 +218,7 @@ export default function ErlanggaRoadmapView() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-28">
         {/* --- HERO SECTION --- */}
-        <section className="space-y-8 border-b border-zinc-200/80 dark:border-zinc-800/80 pb-20">
+        <section className="space-y-8 pb-10">
           <div className="space-y-6 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
@@ -242,19 +242,12 @@ export default function ErlanggaRoadmapView() {
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
               <span className="text-xs text-zinc-400 ml-2">{t.bannerCaption}</span>
             </div>
-            <div className="relative h-[280px] sm:h-[380px] w-full bg-zinc-900">
+            <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-                alt="Cloud Infrastructure & Servers"
-                className="w-full h-full object-cover object-center opacity-90"
+                src="/images/erlangga/roadmap_hero_risograph.jpg"
+                alt="Erlangga 3-Month IT Execution Roadmap Blueprint"
+                className="w-full h-full object-contain object-center transition-opacity"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-blue-400 block font-semibold">{t.bannerLabel}</span>
-                  <span className="text-base font-bold">{t.bannerSubtitle}</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -263,7 +256,7 @@ export default function ErlanggaRoadmapView() {
         <section className="space-y-10">
           <div className="space-y-2">
             <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
-              {lang === "id" ? "Peta Jalan Taktis 90-Hari (Deep-Dive)" : "90-Day Tactical Execution Plan"}
+              {lang === "id" ? "Peta Jalan Taktis 3-Bulan (Deep-Dive)" : "3-Month Tactical Execution Plan"}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {lang === "id" ? "Fase Eksekusi Taktis & Rencana Aksi Kandidat IT Manager" : "Tactical Execution Phases & IT Manager Action Plan"}

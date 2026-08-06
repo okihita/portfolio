@@ -31,12 +31,12 @@ const TRANSLATIONS = {
     targetBadge: "PT. Penerbit Erlangga — Rencana Strategis Kandidat IT Manager",
     heroTitle: "Arsitektur Ketahanan Operasional & Akselerasi Digital",
     heroHook: "“Jika saya dipercaya memimpin divisi TI PT. Penerbit Erlangga, misi utama saya adalah memastikan infrastruktur penerbitan, distribusi 40+ cabang, dan platform digital beroperasi dengan uptime 99.9%, sembari mentransformasi TI menjadi penggerak pertumbuhan bisnis yang proaktif.”",
-    authorMeta: "Okihita H. Sihaloho, S.T. (ITB) · Calon IT Manager · PT. Penerbit Erlangga (Jakarta Timur)",
+    authorMeta: "Okihita H. Sihaloho, S.T. (ITB) · Calon IT Manager",
     
     linkTechSpecs: "Spesifikasi Teknis",
 
     // Section Titles
-    storyTag: "Peta Jalan 90 Hari",
+    storyTag: "Peta Jalan 3 Bulan",
     storyTitle: "Rencana Kepemimpinan TI Eksekutif",
     
     unitsTag: "Akselerator Pendapatan Bisnis",
@@ -74,12 +74,12 @@ const TRANSLATIONS = {
     targetBadge: "PT. Penerbit Erlangga — IT Manager Candidate Strategy",
     heroTitle: "Architecting Operational Resilience & Digital Growth",
     heroHook: "“If trusted to lead PT. Penerbit Erlangga's IT division, my mission is clear: to ensure our publishing, 40+ branch logistics, and digital platforms operate with 99.9% uptime, while transforming IT into a proactive business enabler.”",
-    authorMeta: "Okihita H. Sihaloho, B.Eng. (ITB) · IT Manager Candidate · PT. Penerbit Erlangga (East Jakarta)",
+    authorMeta: "Okihita H. Sihaloho, B.Eng. (ITB) · IT Manager Candidate",
 
     linkTechSpecs: "Technical Specs",
 
     // Section Titles
-    storyTag: "90-Day Plan",
+    storyTag: "3-Month Plan",
     storyTitle: "Executive IT Leadership Roadmap",
 
     unitsTag: "Business Revenue Enabler",
@@ -122,7 +122,7 @@ const EXECUTIVE_STORY_DATA = {
     {
       chapter: 1,
       month: "Bulan 1 (Hari 1–30)",
-      title: "Audit Data, Penemuan Infrastruktur & Alignment Bisnis",
+      title: "Audit Data, Pemetaan Infra & Alignment Bisnis",
       narrative: "Di bulan pertama, saya berfokus mewawancarai kepala cabang regional dan mengaudit integritas skema data di Microsoft Dynamics ERP, Qontak CRM, dan Darwinbox HRMS untuk memastikan keselarasan penuh.",
       whyRationale: "Mengapa: Membangun dasbor otomatis di atas data yang belum diaudit menciptakan laporan menyesatkan yang merusak kepercayaan Direksi. Kualitas data harus diverifikasi terlebih dahulu.",
       actions: [
@@ -136,7 +136,7 @@ const EXECUTIVE_STORY_DATA = {
         "Audit Skema Basis Data Dynamics ERP 100%",
         "Visibilitas Jaringan 40+ Cabang & Cetak Biru DRP"
       ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month1_risograph.jpg"
     },
     {
       chapter: 2,
@@ -155,7 +155,7 @@ const EXECUTIVE_STORY_DATA = {
         "Pipa Data ETL Otomatis Gudang-Ke-Warehouse",
         "Proyeksi Anggaran TI 1-Tahun (DevOps & SecOps)"
       ],
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month2_risograph.jpg"
     },
     {
       chapter: 3,
@@ -174,14 +174,14 @@ const EXECUTIVE_STORY_DATA = {
         "Standarisasi Protokol Jaringan & SecOps Indonesia",
         "Pilot Otomatisasi AI/AutoML Internal"
       ],
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month3_risograph.jpg"
     }
   ],
   en: [
     {
       chapter: 1,
       month: "Month 1 (Days 1–30)",
-      title: "Data Audit, Infrastructure Discovery & Business Alignment",
+      title: "Data Audit, Infra Mapping & Business Alignment",
       narrative: "In my first month, I focus on interviewing regional branch leads and auditing data schema integrity across Microsoft Dynamics ERP, Qontak CRM, and Darwinbox HRMS.",
       whyRationale: "Why: Building automated dashboards on top of unaudited data creates misleading reports that destroy executive trust. Data quality must be verified first.",
       actions: [
@@ -195,7 +195,7 @@ const EXECUTIVE_STORY_DATA = {
         "100% Dynamics ERP Database Schema Audit",
         "40+ Branch Network Visibility & DRP Blueprint"
       ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month1_risograph.jpg"
     },
     {
       chapter: 2,
@@ -214,7 +214,7 @@ const EXECUTIVE_STORY_DATA = {
         "Automated Warehouse-to-Data Warehouse ETL Pipelines",
         "1-Year DevOps & SecOps IT Budget Projections"
       ],
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month2_risograph.jpg"
     },
     {
       chapter: 3,
@@ -233,7 +233,7 @@ const EXECUTIVE_STORY_DATA = {
         "Standardized Nationwide SecOps & Network Protocols",
         "Internal AI/AutoML Automation Pilot"
       ],
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
+      image: "/images/erlangga/month3_risograph.jpg"
     }
   ]
 };
@@ -648,23 +648,12 @@ export default function ErlanggaPitchView() {
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
               <span className="text-xs text-zinc-400 ml-2">Erlangga Group — Executive Command Center (PowerBI Live Preview)</span>
             </div>
-            <div className="relative h-[320px] sm:h-[440px] w-full bg-zinc-900">
+            <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
-                alt="Erlangga Executive Dashboard Analytics"
-                className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity"
+                src="/images/erlangga/hero_risograph.jpg"
+                alt="Erlangga Group Digital Transformation Blueprint"
+                className="w-full h-full object-contain object-center transition-opacity"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4 text-white">
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-blue-400 block font-semibold">Single Source of Truth</span>
-                  <span className="text-base font-bold">Consolidated Executive Scorecard & Branch SLA Monitoring</span>
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-xs">
-                  <BarChart2 className="w-4 h-4 text-emerald-400" />
-                  <span>Real-Time Dynamics ERP Sync</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -681,13 +670,6 @@ export default function ErlanggaPitchView() {
                   {t.storyTitle}
                 </h2>
               </div>
-
-              <Link
-                href={`/erlangga/roadmap?lang=${lang}`}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline shrink-0"
-              >
-                <span>{lang === "id" ? "Lihat Detail Peta Jalan 90-Hari →" : "View Deep-Dive 90-Day Roadmap →"}</span>
-              </Link>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
@@ -697,13 +679,12 @@ export default function ErlanggaPitchView() {
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col justify-between"
                 >
                   <div>
-                    <div className="relative h-52 w-full bg-zinc-900 overflow-hidden">
+                    <div className="relative aspect-square w-full bg-[#f8f6f0] dark:bg-zinc-900 overflow-hidden">
                       <img
                         src={ch.image}
                         alt={ch.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
                     </div>
 
                     <div className="p-6 sm:p-7 space-y-5">
@@ -721,7 +702,7 @@ export default function ErlanggaPitchView() {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-4 space-y-2 border-t border-zinc-100 dark:border-zinc-800/80">
+                  <div className="p-6 pt-4 space-y-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-700 dark:text-emerald-400 font-bold">
                       <Award className="w-4 h-4 shrink-0 text-emerald-600" />
                       <span>{lang === "id" ? "Capaian Utama:" : "Key Milestones:"}</span>
@@ -738,10 +719,10 @@ export default function ErlanggaPitchView() {
 
             <div className="pt-2 flex justify-center">
               <Link
-                href={`/erlangga/roadmap?lang=${lang}`}
+                href="/erlangga/roadmap"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
               >
-                <span>{lang === "id" ? "Buka Peta Jalan 90-Hari & Rencana Eksekusi Lengkap" : "Open Full 90-Day Roadmap & Execution Plan"}</span>
+                <span>{lang === "id" ? "Buka Peta Jalan 3-Bulan & Rencana Eksekusi Lengkap" : "Open Full 3-Month Roadmap & Execution Plan"}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -756,16 +737,6 @@ export default function ErlanggaPitchView() {
                 ? "Divisi TI di Penerbit Erlangga tidak sekadar menjaga server beroperasi. TI adalah katalis utama yang memangkas biaya pemborosan cetak hingga 35%, mengotomatiskan perputaran stok di 40+ cabang regional, dan membuka arus pendapatan berulang (Recurring Revenue) dari platform EdTech B2B SaaS."
                 : "IT at Penerbit Erlangga goes far beyond maintaining server uptime. It is the core catalyst cutting overprinting inventory waste by 35%, accelerating stock velocity across 40+ regional hubs, and unlocking B2B SaaS recurring digital revenue."}
             </p>
-
-            <div className="pt-2 flex items-center justify-start">
-              <Link
-                href={`/erlangga/roadmap?lang=${lang}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer"
-              >
-                <span>{lang === "id" ? "Jelajahi Peta Jalan Eksekusi TI" : "Explore IT Execution Roadmap"}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -810,7 +781,7 @@ export default function ErlanggaPitchView() {
                 className="w-[88vw] max-w-[540px] sm:w-[540px] shrink-0 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative h-64 sm:h-72 w-full bg-zinc-900 overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full bg-zinc-900 overflow-hidden">
                     <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
                     <span className="absolute bottom-4 left-5 text-xs font-bold px-3 py-1 rounded-md bg-blue-950/90 text-blue-300 border border-blue-700/60 backdrop-blur-xs">
@@ -862,7 +833,7 @@ export default function ErlanggaPitchView() {
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden space-y-0 flex flex-col justify-between shadow-xs"
                 >
                   <div className="space-y-4">
-                    <div className="relative h-44 w-full bg-zinc-900 overflow-hidden">
+                    <div className="relative aspect-[16/9] w-full bg-zinc-900 overflow-hidden">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -892,7 +863,7 @@ export default function ErlanggaPitchView() {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                  <div className="p-6 pt-4 flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
                     <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
                     <span>{item.result}</span>
                   </div>
@@ -902,12 +873,13 @@ export default function ErlanggaPitchView() {
           </div>
 
           {/* See All Risk Simulations Button */}
-          <div className="pt-2 text-center">
+          <div className="pt-2 flex justify-center">
             <Link
               href="/erlangga/risk-simulations"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-blue-200 dark:border-blue-900/80 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold text-xs sm:text-sm hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
             >
-              <span>{lang === "id" ? "Lihat Semua Simulasi Risiko (6) →" : "See All Risk Simulations (6) →"}</span>
+              <span>{lang === "id" ? "Lihat Semua Simulasi Risiko (6)" : "See All Risk Simulations (6)"}</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </section>
