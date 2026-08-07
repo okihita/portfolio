@@ -196,7 +196,7 @@ const SUBSIDIARIES_DATA = {
         "Digital Asset Management (DAM) berbasis Cloud di GCP yang mempercepat editorial time-to-market sebesar 40%."
       ],
       kpiImpact: "-15% Biaya Cetak Berlebih · +25% Konversi Lead Digital",
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "gap-print",
@@ -215,7 +215,7 @@ const SUBSIDIARIES_DATA = {
         "API Web-to-Print Print-on-Demand (POD) untuk cetak edisi terbatas/niche tanpa persediaan gudang (Margin 40%+)."
       ],
       kpiImpact: "+15% Kapasitas Mesin (OEE) · -12% Kertas Terbuang",
-      image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     },
     {
       id: "eureka",
@@ -234,7 +234,7 @@ const SUBSIDIARIES_DATA = {
         "Algoritma Batching Rute Armada Logistik yang memangkas biaya bahan bakar last-mile sebesar 18%."
       ],
       kpiImpact: "99.9% Uptime Gudang Cabang · -18% Biaya Pengiriman Last-Mile",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_ebh_risograph.jpg"
     },
     {
       id: "digital",
@@ -253,7 +253,7 @@ const SUBSIDIARIES_DATA = {
         "Edge CDN Video Streaming yang mempercepat loading video belajar < 0.8 detik di daerah minim sinyal."
       ],
       kpiImpact: "-45% Biaya Cloud Off-Peak · 100% Uptime Ujian CBT",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_logistics_risograph.jpg"
     },
     {
       id: "erlass",
@@ -272,7 +272,7 @@ const SUBSIDIARIES_DATA = {
         "Integrasi Data Peserta ke Qontak CRM untuk meneruskan warm leads ke tim sales buku Penerbit Erlangga (+20% win rate)."
       ],
       kpiImpact: "10x Kapasitas Peserta · -90% Biaya Cetak Sertifikat",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_erlass_risograph.jpg"
     }
   ],
   en: [
@@ -293,7 +293,7 @@ const SUBSIDIARIES_DATA = {
         "Cloud-Native Digital Asset Management (DAM) on GCP reducing editorial time-to-market by 40%."
       ],
       kpiImpact: "-15% Overprint Costs · +25% Digital Lead Conversion",
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "gap-print",
@@ -312,7 +312,7 @@ const SUBSIDIARIES_DATA = {
         "Web-to-Print Print-on-Demand (POD) API for zero-inventory niche titles (40%+ gross margins)."
       ],
       kpiImpact: "+15% Machine Throughput (OEE) · -12% Paper Setup Scrap",
-      image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     },
     {
       id: "eureka",
@@ -331,7 +331,7 @@ const SUBSIDIARIES_DATA = {
         "Algorithmic Fleet Route Batching cutting last-mile delivery costs by 18%."
       ],
       kpiImpact: "99.9% Branch Warehouse Uptime · -18% Last-Mile Freight Cost",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_ebh_risograph.jpg"
     },
     {
       id: "digital",
@@ -350,7 +350,7 @@ const SUBSIDIARIES_DATA = {
         "Localized Edge CDN Video Streaming achieving sub-0.8s media loading across regional schools."
       ],
       kpiImpact: "-45% Off-Peak Cloud Spend · 100% CBT Exam Uptime",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_logistics_risograph.jpg"
     },
     {
       id: "erlass",
@@ -369,7 +369,7 @@ const SUBSIDIARIES_DATA = {
         "Qontak CRM Attendee Data Sync auto-routing warm sales leads to Erlangga textbook representatives (+20% win rate)."
       ],
       kpiImpact: "10x Participant Capacity · -90% Certificate Printing Cost",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_erlass_risograph.jpg"
     }
   ]
 };
@@ -499,18 +499,17 @@ export default function ErlanggaSubsidiariesView() {
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row lg:min-h-[420px] items-stretch"
                 >
                   {/* LEFT IMAGE / BADGE */}
-                  <div className="relative h-64 lg:h-auto lg:w-80 bg-zinc-900 shrink-0 overflow-hidden">
+                  <div className="relative h-72 lg:h-auto lg:w-80 bg-slate-950 shrink-0 overflow-hidden">
                     <img
                       src={sub.image}
                       alt={sub.name}
                       className="w-full h-full object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-zinc-950/90 via-zinc-950/40 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-600 text-white shadow-sm inline-block mb-1">
+                    <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-slate-950/85 dark:bg-zinc-950/90 border border-slate-800/80 backdrop-blur-md">
+                      <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs inline-block mb-1">
                         {sub.badge}
                       </span>
-                      <p className="text-xs text-zinc-300 font-mono">
+                      <p className="text-[11px] text-zinc-300 font-mono">
                         {sub.est} · {sub.hq}
                       </p>
                     </div>
