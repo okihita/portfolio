@@ -496,10 +496,10 @@ export default function ErlanggaSubsidiariesView() {
               return (
                 <div
                   key={sub.id}
-                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row"
+                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row lg:min-h-[420px] items-stretch"
                 >
                   {/* LEFT IMAGE / BADGE */}
-                  <div className="relative h-64 lg:h-auto lg:w-72 bg-zinc-900 shrink-0 overflow-hidden">
+                  <div className="relative h-64 lg:h-auto lg:w-80 bg-zinc-900 shrink-0 overflow-hidden">
                     <img
                       src={sub.image}
                       alt={sub.name}
@@ -517,7 +517,7 @@ export default function ErlanggaSubsidiariesView() {
                   </div>
 
                   {/* RIGHT DETAILS CONTENT */}
-                  <div className="p-6 sm:p-8 flex-1 space-y-6">
+                  <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50">
@@ -539,18 +539,20 @@ export default function ErlanggaSubsidiariesView() {
                       </div>
                     </div>
 
-                    {/* 3-COLUMN CONTENT GRID */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* 3-COLUMN CONTENT GRID (Equal Baseline Heights) */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 items-stretch">
                       {/* MODEL & PRODUCTS */}
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                          <Building2 className="w-3.5 h-3.5 text-blue-500" />
-                          {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                          {sub.businessModel}
-                        </p>
-                        <div className="flex flex-wrap gap-1 pt-1">
+                      <div className="space-y-2 flex flex-col justify-between">
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                            <Building2 className="w-3.5 h-3.5 text-blue-500" />
+                            {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
+                          </h4>
+                          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            {sub.businessModel}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-1 pt-2">
                           {sub.imprints.map((imp, idx) => (
                             <span
                               key={idx}
@@ -563,35 +565,39 @@ export default function ErlanggaSubsidiariesView() {
                       </div>
 
                       {/* COST DRIVERS */}
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                          <Layers className="w-3.5 h-3.5 text-amber-500" />
-                          {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
-                        </h4>
-                        <ul className="space-y-1.5">
-                          {sub.costDrivers.map((cd, idx) => (
-                            <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                              <span>{cd}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="space-y-2 flex flex-col justify-between">
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                            <Layers className="w-3.5 h-3.5 text-amber-500" />
+                            {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {sub.costDrivers.map((cd, idx) => (
+                              <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
+                                <span>{cd}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
 
                       {/* IT PROFIT ENABLEMENT */}
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                          <Cpu className="w-3.5 h-3.5 text-emerald-500" />
-                          {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
-                        </h4>
-                        <ul className="space-y-1.5">
-                          {sub.itEnablers.map((it, idx) => (
-                            <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                              <span>{it}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="space-y-2 flex flex-col justify-between">
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                            <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                            {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {sub.itEnablers.map((it, idx) => (
+                              <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                                <span>{it}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
