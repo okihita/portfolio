@@ -381,26 +381,26 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
           transition={{ duration: 0.28 }}
           className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl"
         >
-          {/* Card Header Banner with Solid Soy-Navy Editorial Styling */}
-          <div className="p-6 sm:p-8 bg-[#0c1322] text-white space-y-3 relative overflow-hidden border-b border-zinc-800">
+          {/* Card Header Banner with Dual Light / Dark Editorial Styling */}
+          <div className="p-6 sm:p-8 bg-slate-100/80 dark:bg-[#0c1322] text-zinc-900 dark:text-white space-y-3 relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
             {/* Subtle background grain grid accent */}
-            <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] dark:bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
 
             <div className="flex items-center justify-between gap-4 relative z-10">
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/40 tracking-wider uppercase">
+              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 tracking-wider uppercase">
                 {activeEvent.eraBadge[lang]}
               </span>
-              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-amber-400 font-mono drop-shadow-sm">
+              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-amber-600 dark:text-amber-400 font-mono">
                 {activeEvent.year}
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight text-zinc-50 relative z-10">
+            <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight text-zinc-900 dark:text-zinc-50 relative z-10">
               {activeEvent.title[lang]}
             </h3>
 
-            <p className="text-xs sm:text-sm font-semibold text-zinc-300 flex items-center gap-1.5 relative z-10">
-              <Building2 className="w-4 h-4 shrink-0 text-amber-400" />
+            <p className="text-xs sm:text-sm font-semibold text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5 relative z-10">
+              <Building2 className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" />
               <span>{activeEvent.entity[lang]}</span>
             </p>
           </div>
