@@ -8,7 +8,9 @@ import {
   NodeTypes,
   Edge,
   Position,
-  BackgroundVariant
+  BackgroundVariant,
+  useNodesState,
+  useEdgesState
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import ErlanggaPipelineNodeComponent, { ErlanggaPipelineNodeObjectType } from "./ErlanggaPipelineNode";
@@ -44,7 +46,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
     return () => observer.disconnect();
   }, []);
 
-  const nodes: ErlanggaPipelineNodeObjectType[] = useMemo(() => {
+  const initialNodes: ErlanggaPipelineNodeObjectType[] = useMemo(() => {
     return [
       // --- LAYER 1: SUBSIDIARY OPERATING DATA SOURCES (y: 40) ---
       {
@@ -250,7 +252,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
   }, [lang]);
 
   // Edges with Dynamic Light / Dark Mode Color Palette
-  const edges: Edge[] = useMemo(() => {
+  const initialEdges: Edge[] = useMemo(() => {
     const bgFill = isDark ? "#0f172a" : "#ffffff";
     const textFill = isDark ? "#93c5fd" : "#1e40af";
     const amberTextFill = isDark ? "#fcd34d" : "#92400e";
@@ -379,9 +381,21 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
     ];
   }, [lang, isDark]);
 
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Sync state when initialNodes or initialEdges change (lang / theme)
+  useEffect(() => {
+    setNodes(initialNodes);
+  }, [initialNodes, setNodes]);
+
+  useEffect(() => {
+    setEdges(initialEdges);
+  }, [initialEdges, setEdges]);
+
   return (
     <div
-      className={`w-full h-[620px] sm:h-[720px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 transition-colors duration-300 overflow-hidden shadow-2xl relative ${
+      className={`w-full h-[750px] sm:h-[860px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 transition-colors duration-300 overflow-hidden shadow-2xl relative ${
         isDark ? "bg-slate-950" : "bg-[#f8f6f1]"
       }`}
     >
@@ -397,6 +411,10 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        nodesDraggable={true}
+        panOnDrag={true}
         fitView
         fitViewOptions={{ padding: 0.18 }}
         minZoom={0.5}
