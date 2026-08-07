@@ -436,12 +436,9 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
       <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
           <div>
-            <div className="flex items-center gap-2 flex-wrap mb-2">
+            <div className="mb-2">
               <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs">
                 {sub.badge}
-              </span>
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-                • {sub.est} · {sub.hq}
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50">
