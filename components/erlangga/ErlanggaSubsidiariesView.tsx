@@ -498,27 +498,27 @@ export default function ErlanggaSubsidiariesView() {
                   key={sub.id}
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row lg:min-h-[420px] items-stretch"
                 >
-                  {/* LEFT IMAGE / BADGE */}
+                  {/* LEFT IMAGE (100% Clean Risograph Artwork) */}
                   <div className="relative h-72 lg:h-auto lg:w-80 bg-slate-950 shrink-0 overflow-hidden">
                     <img
                       src={sub.image}
                       alt={sub.name}
                       className="w-full h-full object-cover object-center"
                     />
-                    <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-slate-950/85 dark:bg-zinc-950/90 border border-slate-800/80 backdrop-blur-md">
-                      <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs inline-block mb-1">
-                        {sub.badge}
-                      </span>
-                      <p className="text-[11px] text-zinc-300 font-mono">
-                        {sub.est} · {sub.hq}
-                      </p>
-                    </div>
                   </div>
 
                   {/* RIGHT DETAILS CONTENT */}
                   <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
                       <div>
+                        <div className="flex items-center gap-2 flex-wrap mb-2">
+                          <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs">
+                            {sub.badge}
+                          </span>
+                          <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
+                            • {sub.est} · {sub.hq}
+                          </span>
+                        </div>
                         <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50">
                           {sub.name}
                         </h3>
