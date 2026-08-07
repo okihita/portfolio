@@ -48,11 +48,11 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
 
   const initialNodes: ErlanggaPipelineNodeObjectType[] = useMemo(() => {
     return [
-      // --- LAYER 1: SUBSIDIARY OPERATING DATA SOURCES (y: 40) ---
+      // --- LAYER 1: SUBSIDIARY OPERATING DATA SOURCES (y: 50) ---
       {
         id: "GAP_MES",
         type: "pipelineNode",
-        position: { x: 30, y: 40 },
+        position: { x: 30, y: 50 },
         data: {
           layer: 1,
           iconType: "printer",
@@ -72,7 +72,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {
         id: "WMS_NODE",
         type: "pipelineNode",
-        position: { x: 340, y: 40 },
+        position: { x: 340, y: 50 },
         data: {
           layer: 1,
           iconType: "truck",
@@ -92,7 +92,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {
         id: "ED_CLOUD",
         type: "pipelineNode",
-        position: { x: 650, y: 40 },
+        position: { x: 650, y: 50 },
         data: {
           layer: 1,
           iconType: "cloud",
@@ -112,7 +112,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {
         id: "ERL_LMS",
         type: "pipelineNode",
-        position: { x: 960, y: 40 },
+        position: { x: 960, y: 50 },
         data: {
           layer: 1,
           iconType: "grad",
@@ -130,11 +130,11 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
         }
       },
 
-      // --- LAYER 2: CENTRAL ENTERPRISE CORE SYSTEMS (y: 260) ---
+      // --- LAYER 2: CENTRAL ENTERPRISE CORE SYSTEMS (y: 320) ---
       {
         id: "ERP",
         type: "pipelineNode",
-        position: { x: 180, y: 260 },
+        position: { x: 180, y: 320 },
         data: {
           layer: 2,
           iconType: "db",
@@ -158,7 +158,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {
         id: "CRM",
         type: "pipelineNode",
-        position: { x: 500, y: 260 },
+        position: { x: 500, y: 320 },
         data: {
           layer: 2,
           iconType: "crm",
@@ -182,7 +182,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {
         id: "HRMS",
         type: "pipelineNode",
-        position: { x: 820, y: 260 },
+        position: { x: 820, y: 320 },
         data: {
           layer: 2,
           iconType: "hrms",
@@ -200,11 +200,11 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
         }
       },
 
-      // --- LAYER 3: UNIFIED MIDDLEWARE & API GATEWAY (y: 460) ---
+      // --- LAYER 3: UNIFIED MIDDLEWARE & API GATEWAY (y: 590) ---
       {
         id: "GW",
         type: "pipelineNode",
-        position: { x: 500, y: 460 },
+        position: { x: 500, y: 590 },
         data: {
           layer: 3,
           iconType: "gateway",
@@ -227,11 +227,11 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
         }
       },
 
-      // --- LAYER 4: EXECUTIVE BI SCORECARD (y: 620) ---
+      // --- LAYER 4: EXECUTIVE BI SCORECARD (y: 840) ---
       {
         id: "DASH",
         type: "pipelineNode",
-        position: { x: 500, y: 620 },
+        position: { x: 500, y: 840 },
         data: {
           layer: 4,
           iconType: "powerbi",
@@ -395,7 +395,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
 
   return (
     <div
-      className={`w-full h-[750px] sm:h-[860px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 transition-colors duration-300 overflow-hidden shadow-2xl relative ${
+      className={`w-full h-[900px] sm:h-[1100px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 transition-colors duration-300 overflow-hidden shadow-2xl relative ${
         isDark ? "bg-slate-950" : "bg-[#f8f6f1]"
       }`}
     >
