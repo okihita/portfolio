@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
@@ -15,7 +15,9 @@ import {
   Award,
   Zap,
   Building2,
-  CheckCircle2
+  CheckCircle2,
+  Play,
+  Pause
 } from "lucide-react";
 
 interface ErlanggaHistoricalTimelineProps {
@@ -33,6 +35,8 @@ interface TimelineEvent {
   itImpact: { id: string; en: string };
   color: string;
 }
+
+const STEP_DURATION_MS = 5500; // 5.5 seconds per era step
 
 const TIMELINE_EVENTS: TimelineEvent[] = [
   {
@@ -201,33 +205,98 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
 
 export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalTimelineProps) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [autoplay, setAutoplay] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [segmentProgress, setSegmentProgress] = useState<number>(0); // 0 to 100%
 
   const activeEvent = TIMELINE_EVENTS[activeIndex];
-  const IconComp = activeEvent.icon;
+  const totalSteps = TIMELINE_EVENTS.length;
 
+  // Next and Prev Handlers
   const nextStep = () => {
-    setActiveIndex((prev) => (prev + 1) % TIMELINE_EVENTS.length);
+    setSegmentProgress(0);
+    setActiveIndex((prev) => (prev + 1) % totalSteps);
   };
 
   const prevStep = () => {
-    setActiveIndex((prev) => (prev - 1 + TIMELINE_EVENTS.length) % TIMELINE_EVENTS.length);
+    setSegmentProgress(0);
+    setActiveIndex((prev) => (prev - 1 + totalSteps) % totalSteps);
   };
 
+  const selectStep = (index: number) => {
+    setSegmentProgress(0);
+    setActiveIndex(index);
+  };
+
+  // Autoplay Timer Loop
+  useEffect(() => {
+    if (!isPlaying || isHovered) return;
+
+    const intervalMs = 50; // Update every 50ms for smooth 60fps fill
+    const stepIncrement = (intervalMs / STEP_DURATION_MS) * 100;
+
+    const timer = setInterval(() => {
+      setSegmentProgress((prev) => {
+        if (prev + stepIncrement >= 100) {
+          nextStep();
+          return 0;
+        }
+        return prev + stepIncrement;
+      });
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [isPlaying, isHovered, activeIndex]);
+
+  // Calculate total visual progress percentage along the laser line
+  const baseProgressPercent = (activeIndex / (totalSteps - 1)) * 100;
+  const activeSegmentPercent = (1 / (totalSteps - 1)) * (segmentProgress / 100) * 100;
+  const totalLaserWidthPercent = Math.min(
+    100,
+    baseProgressPercent + (activeIndex < totalSteps - 1 ? activeSegmentPercent : 0)
+  );
+
   return (
-    <div className="space-y-8">
+    <div
+      className="space-y-8"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* --- ERA SELECTOR NAVIGATOR STEPPER RAIL --- */}
       <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/90 p-4 sm:p-6 shadow-sm space-y-4">
         <div className="flex items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <Clock className="w-4 h-4 text-amber-500" />
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
               {lang === "id" ? "Garis Waktu Transformasi 74 Tahun" : "74-Year Heritage Timeline"}
             </span>
+            {isHovered && isPlaying && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 hidden sm:inline-block">
+                {lang === "id" ? "Diberhentikan (Hover)" : "Paused on Hover"}
+              </span>
+            )}
           </div>
 
-          {/* Controls (< / > buttons) */}
+          {/* Controls (< / Play / Pause / > buttons) */}
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsPlaying((prev) => !prev)}
+              className="px-2.5 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              title={isPlaying ? "Pause Autoplay" : "Start Autoplay"}
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span className="hidden sm:inline">Pause</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span className="hidden sm:inline">Play</span>
+                </>
+              )}
+            </button>
+
             <button
               onClick={prevStep}
               className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer"
@@ -235,9 +304,11 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
+
             <span className="text-xs font-mono text-zinc-400 font-bold px-1">
-              {activeIndex + 1} / {TIMELINE_EVENTS.length}
+              {activeIndex + 1} / {totalSteps}
             </span>
+
             <button
               onClick={nextStep}
               className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer"
@@ -248,16 +319,16 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
           </div>
         </div>
 
-        {/* STEPPER RAIL WITH GLOWING PROGRESS LINE */}
+        {/* STEPPER RAIL WITH LIQUID LASER PROGRESS LINE */}
         <div className="relative pt-2 pb-1 overflow-x-auto scrollbar-none">
           {/* Laser Progress Line Background */}
-          <div className="absolute top-[28px] left-6 right-6 h-0.5 bg-zinc-200 dark:bg-zinc-800 z-0" />
+          <div className="absolute top-[28px] left-6 right-6 h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
           
-          {/* Active Animated Laser Line */}
+          {/* Active Liquid Laser Line */}
           <div
-            className="absolute top-[28px] left-6 h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 z-0 transition-all duration-500"
+            className="absolute top-[28px] left-6 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
             style={{
-              width: `${(activeIndex / (TIMELINE_EVENTS.length - 1)) * 92}%`
+              width: `calc(${totalLaserWidthPercent}% - ${totalLaserWidthPercent > 0 ? "1.5rem" : "0px"})`
             }}
           />
 
@@ -269,14 +340,14 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
               return (
                 <button
                   key={ev.year}
-                  onClick={() => setActiveIndex(idx)}
+                  onClick={() => selectStep(idx)}
                   className="flex flex-col items-center gap-2 group cursor-pointer focus:outline-none"
                 >
                   {/* Node Circle */}
                   <div
                     className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs transition-all duration-300 ${
                       isActive
-                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-110 border-2 border-white dark:border-zinc-900 ring-4 ring-blue-500/20"
+                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110 border-2 border-white dark:border-zinc-900 ring-4 ring-blue-500/25"
                         : isPast
                         ? "bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800"
                         : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700"
@@ -302,14 +373,14 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
         </div>
       </div>
 
-      {/* --- ACTIVE ERA GLASSMORPHISM CARD --- */}
+      {/* --- ACTIVE ERA GLASSMORPHISM CARD (AUTOMATICALLY SLIDES WITH LASER FILL) --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeEvent.year}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.25 }}
+          exit={{ opacity: 0, y: -14 }}
+          transition={{ duration: 0.28 }}
           className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl"
         >
           {/* Card Header Banner with Dynamic Gradient Accent */}
@@ -318,7 +389,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md border border-white/30 tracking-wider uppercase">
                 {activeEvent.eraBadge[lang]}
               </span>
-              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight opacity-90">
+              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight opacity-90 font-mono">
                 {activeEvent.year}
               </span>
             </div>
