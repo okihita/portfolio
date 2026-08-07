@@ -233,7 +233,7 @@ const ROADMAP_DATA = {
 };
 
 export default function ErlanggaRoadmapView() {
-  const [lang, setLang] = useState<Lang>("id");
+  const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGroup, setSelectedGroup] = useState<FrameworkGroupKey>("all");

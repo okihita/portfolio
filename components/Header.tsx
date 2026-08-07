@@ -162,8 +162,11 @@ export default function Header({ navItems, lang, onToggleLang }: HeaderProps) {
               }
               title={lang === "id" ? "Switch to English" : "Ganti ke Bahasa Indonesia"}
             >
-              <Languages className="w-4 h-4" />
-              <span>{lang === "id" ? "ID | EN" : "EN | ID"}</span>
+              <span className="text-sm leading-none">{lang === "en" ? "🇬🇧" : "🇮🇩"}</span>
+              <span>{lang === "en" ? "EN" : "ID"}</span>
+              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-normal">
+                ({lang === "en" ? "🇮🇩 ID" : "🇬🇧 EN"})
+              </span>
             </button>
           )}
 

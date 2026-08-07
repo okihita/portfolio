@@ -570,7 +570,7 @@ const ALIGNMENT_MATRIX_DATA = {
 };
 
 export default function ErlanggaPitchView() {
-  const [lang, setLang] = useState<Lang>("id");
+  const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -199,7 +199,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
 };
 
 export default function ErlanggaRiskSimulationsView() {
-  const [lang, setLang] = useState<Lang>("id");
+  const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
