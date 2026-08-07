@@ -7,6 +7,7 @@ import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import MermaidChart from "./MermaidChart";
 import ErlanggaEcosystemFlow from "./ErlanggaEcosystemFlow";
 import ErlanggaHistoricalTimeline from "./ErlanggaHistoricalTimeline";
+import ErlanggaDataPipelineFlow from "./ErlanggaDataPipelineFlow";
 import {
   BookOpen,
   Printer,
@@ -374,7 +375,23 @@ const SUBSIDIARIES_DATA = {
   ]
 };
 
-function SubsidiaryCardItem({ sub, lang }: { sub: any; lang: "id" | "en" }) {
+interface SubsidiaryItem {
+  id: string;
+  name: string;
+  tagline: string;
+  est: string;
+  hq: string;
+  icon: React.ComponentType<{ className?: string }>;
+  badge: string;
+  businessModel: string;
+  imprints: string[];
+  costDrivers: string[];
+  itEnablers: string[];
+  kpiImpact: string;
+  image: string;
+}
+
+function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "en" }) {
   const [sampledBg, setSampledBg] = useState<string>("#f6f4ee");
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
@@ -395,7 +412,7 @@ function SubsidiaryCardItem({ sub, lang }: { sub: any; lang: "id" | "en" }) {
       if (r > 0 || g > 0 || b > 0) {
         setSampledBg(`rgb(${r}, ${g}, ${b})`);
       }
-    } catch (err) {
+    } catch {
       // Fallback to default paper cream
     }
   };
@@ -518,19 +535,23 @@ function SubsidiaryCardItem({ sub, lang }: { sub: any; lang: "id" | "en" }) {
 }
 
 export default function ErlanggaSubsidiariesView() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const queryLang = params.get("lang");
+      if (queryLang === "en" || queryLang === "id") {
+        return queryLang;
+      }
+      const saved = localStorage.getItem("erlangga_lang");
+      if (saved === "en" || saved === "id") {
+        return saved as Lang;
+      }
+    }
+    return "en";
+  });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const queryLang = params.get("lang");
-
-    if (queryLang === "en" || queryLang === "id") {
-      setLang(queryLang as Lang);
-      localStorage.setItem("erlangga_lang", queryLang);
-    } else {
-      setLang("en");
-    }
     setMounted(true);
   }, []);
 
@@ -640,7 +661,7 @@ export default function ErlanggaSubsidiariesView() {
           </div>
         </section>
 
-        {/* SECTION 4: ENTERPRISE DATA PIPELINE MERMAID CHART */}
+        {/* SECTION 4: ENTERPRISE DATA PIPELINE REACT FLOW CANVAS */}
         <section className="space-y-8">
           <div className="space-y-2">
             <span className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
@@ -651,9 +672,7 @@ export default function ErlanggaSubsidiariesView() {
             </h2>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-6 sm:p-8 shadow-xs overflow-hidden">
-            <MermaidChart chart={PIPELINE_MERMAID[lang]} />
-          </div>
+          <ErlanggaDataPipelineFlow lang={lang} />
         </section>
 
         {/* CTA FOOTER SECTION */}
