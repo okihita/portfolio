@@ -320,19 +320,19 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
         </div>
 
         {/* STEPPER RAIL WITH LIQUID LASER PROGRESS LINE */}
-        <div className="relative pt-2 pb-1 px-5 overflow-x-auto scrollbar-none">
-          {/* Background Track Line: Starts at center of first node (36px) and ends at center of last node (36px) */}
-          <div className="absolute top-[28px] left-[36px] right-[36px] h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
+        <div className="relative pt-2 pb-1 px-6 overflow-x-auto scrollbar-none">
+          {/* Background Track Line: Starts at center of first node (52px) and ends at center of last node (52px) */}
+          <div className="absolute top-[28px] left-[52px] right-[52px] h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
           
           {/* Active Liquid Laser Line */}
           <div
-            className="absolute top-[28px] left-[36px] h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
+            className="absolute top-[28px] left-[52px] h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
             style={{
-              width: `calc((100% - 72px) * ${totalLaserWidthPercent / 100})`
+              width: `calc((100% - 104px) * ${totalLaserWidthPercent / 100})`
             }}
           />
 
-          <div className="flex items-center justify-between min-w-[650px] relative z-10">
+          <div className="flex items-center justify-between min-w-[680px] relative z-10">
             {TIMELINE_EVENTS.map((ev, idx) => {
               const isActive = idx === activeIndex;
               const isPast = idx < activeIndex;
@@ -343,14 +343,14 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                   onClick={() => selectStep(idx)}
                   className="flex flex-col items-center gap-2 group cursor-pointer focus:outline-none"
                 >
-                  {/* Node Circle */}
+                  {/* Wider Year Node Box */}
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs transition-all duration-300 ${
+                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 ${
                       isActive
-                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110 border-2 border-white dark:border-zinc-900 ring-4 ring-blue-500/25"
+                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-105 border-2 border-white dark:border-zinc-900 ring-4 ring-blue-500/25"
                         : isPast
                         ? "bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800"
-                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700"
+                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 border border-transparent"
                     }`}
                   >
                     <span>{ev.year}</span>
