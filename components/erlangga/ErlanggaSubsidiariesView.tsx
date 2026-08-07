@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import MermaidChart from "./MermaidChart";
 import ErlanggaEcosystemFlow from "./ErlanggaEcosystemFlow";
+import ErlanggaHistoricalTimeline from "./ErlanggaHistoricalTimeline";
 import {
   BookOpen,
   Printer,
@@ -464,7 +465,7 @@ export default function ErlanggaSubsidiariesView() {
           <ErlanggaEcosystemFlow lang={lang} />
         </section>
 
-        {/* SECTION 2: 74-YEAR HISTORICAL TIMELINE MERMAID FLOW */}
+        {/* SECTION 2: 74-YEAR HISTORICAL TIMELINE (AWWWARDS STEPPER RAIL) */}
         <section className="space-y-8">
           <div className="space-y-2">
             <span className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
@@ -475,9 +476,7 @@ export default function ErlanggaSubsidiariesView() {
             </h2>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-6 sm:p-8 shadow-xs overflow-hidden">
-            <MermaidChart chart={TIMELINE_MERMAID[lang]} />
-          </div>
+          <ErlanggaHistoricalTimeline lang={lang} />
         </section>
 
         {/* SECTION 3: 5 CORE SUBSIDIARY PILLARS & PROFIT ENABLEMENT */}
