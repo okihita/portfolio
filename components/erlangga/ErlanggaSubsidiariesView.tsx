@@ -392,6 +392,23 @@ export default function ErlanggaSubsidiariesView() {
               </div>
             </div>
           </div>
+
+          {/* Master 16:9 Subsidiaries Banner */}
+          <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl">
+            <div className="h-9 bg-zinc-100 dark:bg-zinc-950/80 border-b border-zinc-200 dark:border-zinc-800 px-4 flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
+              <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
+              <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
+              <span className="text-xs text-zinc-400 ml-2">Erlangga Group — Integrated Ecosystem & Subsidiary Architecture</span>
+            </div>
+            <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
+              <img
+                src="/images/erlangga/subsidiaries_hero_risograph.jpg"
+                alt="Erlangga Group Integrated Ecosystem & Subsidiary Architecture Blueprint"
+                className="w-full h-full object-contain object-center transition-opacity"
+              />
+            </div>
+          </div>
         </section>
 
         {/* SECTION 1: MERMAID ECOSYSTEM ARCHITECTURE */}
