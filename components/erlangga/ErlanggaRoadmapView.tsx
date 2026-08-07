@@ -4,18 +4,11 @@ import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import { 
-  CheckCircle2, 
   Award, 
   Mail, 
-  CheckCircle, 
-  Clock, 
   Layers, 
-  ShieldCheck, 
   Search, 
-  Filter, 
-  Sparkles,
-  ChevronDown,
-  ChevronUp
+  Sparkles
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
 import { 
@@ -26,7 +19,6 @@ import {
 
 // --- TYPES ---
 type Lang = "id" | "en";
-type StatusFilter = "all" | "completed" | "in_progress" | "planned";
 
 // --- TRANSLATIONS DICTIONARY ---
 
@@ -40,13 +32,9 @@ const TRANSLATIONS = {
     
     checklistHeaderBadge: "Checklist Audit & Eksekusi Standar Emas",
     checklistTitle: "Checklist Audit & Inisiatif Eksekusi Terperinci (108 Point Framework)",
-    checklistDesc: "Kumpulan inisiatif teknis komprehensif yang telah diverifikasi berdasarkan framework IT global (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
+    checklistDesc: "Kumpulan inisiatif teknis komprehensif yang diusulkan berdasarkan framework IT global (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
 
-    searchPlaceholder: "Cari item audit, skema ERP, DRP, SD-WAN, SLA, atau framework...",
-    filterAll: "Semua (108 Item)",
-    filterCompleted: "Selesai / Terverifikasi",
-    filterInProgress: "Dalam Pembuatan / Live",
-    filterPlanned: "Rencana Penguatan",
+    searchPlaceholder: "Cari inisiatif audit, skema ERP, DRP, SD-WAN, SLA, atau framework...",
 
     kpiLabel: "KPI Target:",
     
@@ -67,13 +55,9 @@ const TRANSLATIONS = {
 
     checklistHeaderBadge: "Gold-Standard Audit & Execution Checklist",
     checklistTitle: "Detailed Audit & Execution Checklist (108-Point Enterprise Framework)",
-    checklistDesc: "Comprehensive technical initiatives verified against global enterprise IT standards (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
+    checklistDesc: "Comprehensive technical initiatives proposed against global enterprise IT standards (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
 
-    searchPlaceholder: "Search audit items, ERP schemas, DRP, SD-WAN, SLAs, or frameworks...",
-    filterAll: "All (108 Items)",
-    filterCompleted: "Completed / Verified",
-    filterInProgress: "In Progress / Live",
-    filterPlanned: "Planned Expansion",
+    searchPlaceholder: "Search audit initiatives, ERP schemas, DRP, SD-WAN, SLAs, or frameworks...",
 
     kpiLabel: "Target KPI:",
 
@@ -228,8 +212,6 @@ export default function ErlanggaRoadmapView() {
   const [lang, setLang] = useState<Lang>("id");
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
-  const [expandedMonth, setExpandedMonth] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -241,33 +223,6 @@ export default function ErlanggaRoadmapView() {
 
   const t = TRANSLATIONS[lang];
   const detailedRoadmap = ROADMAP_DATA[lang];
-
-  // Helper to get status badge styling
-  const renderStatusBadge = (status: ChecklistItem["status"]) => {
-    switch (status) {
-      case "completed":
-        return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800/80 shrink-0">
-            <CheckCircle className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-            <span>{lang === "id" ? "Terverifikasi" : "Verified"}</span>
-          </span>
-        );
-      case "in_progress":
-        return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-300/60 dark:border-blue-800/80 shrink-0">
-            <Sparkles className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-            <span>{lang === "id" ? "Proses Live" : "In Progress"}</span>
-          </span>
-        );
-      case "planned":
-        return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300/60 dark:border-amber-800/80 shrink-0">
-            <Clock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-            <span>{lang === "id" ? "Direncanakan" : "Planned"}</span>
-          </span>
-        );
-    }
-  };
 
   return (
     <div className={`min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300 transition-opacity duration-150 ${mounted ? "opacity-100" : "opacity-0"}`}>
@@ -320,48 +275,17 @@ export default function ErlanggaRoadmapView() {
             </h2>
           </div>
 
-          {/* FILTER & SEARCH TOOLBAR FOR CHECKLIST */}
-          <div className="p-4 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm space-y-4">
-            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-              {/* Search Box */}
-              <div className="relative flex-1">
-                <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder={t.searchPlaceholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                />
-              </div>
-
-              {/* Status Filter Tabs */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
-                <button
-                  onClick={() => setStatusFilter("all")}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${statusFilter === "all" ? "bg-blue-600 text-white shadow-xs" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}
-                >
-                  {t.filterAll}
-                </button>
-                <button
-                  onClick={() => setStatusFilter("completed")}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${statusFilter === "completed" ? "bg-emerald-600 text-white shadow-xs" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}
-                >
-                  {t.filterCompleted}
-                </button>
-                <button
-                  onClick={() => setStatusFilter("in_progress")}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${statusFilter === "in_progress" ? "bg-blue-600 text-white shadow-xs" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}
-                >
-                  {t.filterInProgress}
-                </button>
-                <button
-                  onClick={() => setStatusFilter("planned")}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${statusFilter === "planned" ? "bg-amber-600 text-white shadow-xs" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}
-                >
-                  {t.filterPlanned}
-                </button>
-              </div>
+          {/* SEARCH TOOLBAR FOR CHECKLIST */}
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm">
+            <div className="relative w-full">
+              <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder={t.searchPlaceholder}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              />
             </div>
           </div>
 
@@ -395,7 +319,7 @@ export default function ErlanggaRoadmapView() {
                             {lang === "id" ? `Bulan ${parseInt(ch.phase, 10)}` : `Month ${parseInt(ch.phase, 10)}`}
                           </span>
                           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                            {checklistMonthData?.totalItems || 36} {lang === "id" ? "Item Terverifikasi" : "Verified Items"}
+                            {checklistMonthData?.totalItems || 36} {lang === "id" ? "Inisiatif Terperinci" : "Detailed Initiatives"}
                           </span>
                         </div>
 
@@ -451,17 +375,14 @@ export default function ErlanggaRoadmapView() {
                       {/* 3-Column Grid */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
                         {checklistMonthData.columns.map((col) => {
-                          // Filter items by search & status
+                          // Filter items by search query
                           const filteredItems = col.items.filter((item) => {
-                            const matchSearch =
+                            return (
                               searchQuery === "" ||
                               item.title[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
                               item.description[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              item.framework.toLowerCase().includes(searchQuery.toLowerCase());
-
-                            const matchStatus = statusFilter === "all" || item.status === statusFilter;
-
-                            return matchSearch && matchStatus;
+                              item.framework.toLowerCase().includes(searchQuery.toLowerCase())
+                            );
                           });
 
                           return (
@@ -486,17 +407,14 @@ export default function ErlanggaRoadmapView() {
                               <div className="space-y-4 divide-y divide-zinc-100 dark:divide-zinc-800/60">
                                 {filteredItems.length === 0 ? (
                                   <p className="text-xs text-zinc-400 italic py-4">
-                                    {lang === "id" ? "Tidak ada item yang cocok dengan filter." : "No items match current filter."}
+                                    {lang === "id" ? "Tidak ada inisiatif yang cocok." : "No initiatives match search."}
                                   </p>
                                 ) : (
                                   filteredItems.map((item) => (
                                     <div key={item.id} className="pt-3.5 first:pt-0 space-y-2">
-                                      <div className="flex items-start justify-between gap-2">
-                                        <h6 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug flex-1">
-                                          {item.title[lang]}
-                                        </h6>
-                                        {renderStatusBadge(item.status)}
-                                      </div>
+                                      <h6 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
+                                        {item.title[lang]}
+                                      </h6>
 
                                       <p className="text-[11px] text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
                                         {item.description[lang]}
