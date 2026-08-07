@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import MermaidChart from "./MermaidChart";
+import ErlanggaEcosystemFlow from "./ErlanggaEcosystemFlow";
 import {
   BookOpen,
   Printer,
@@ -411,7 +412,7 @@ export default function ErlanggaSubsidiariesView() {
           </div>
         </section>
 
-        {/* SECTION 1: MERMAID ECOSYSTEM ARCHITECTURE */}
+        {/* SECTION 1: INTERACTIVE XYFLOW ECOSYSTEM ARCHITECTURE */}
         <section className="space-y-8">
           <div className="space-y-2">
             <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
@@ -422,9 +423,7 @@ export default function ErlanggaSubsidiariesView() {
             </h2>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-6 sm:p-8 shadow-xs overflow-hidden">
-            <MermaidChart chart={ECOSYSTEM_MERMAID} />
-          </div>
+          <ErlanggaEcosystemFlow lang={lang} />
         </section>
 
         {/* SECTION 2: 74-YEAR HISTORICAL TIMELINE MERMAID FLOW */}
