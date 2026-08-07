@@ -368,8 +368,9 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                           rx="12"
                           fill="none"
                           stroke="#60a5fa"
-                          strokeWidth="2.5"
-                          strokeDasharray="40 160"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeDasharray="14 186"
                           initial={{ strokeDashoffset: 200 }}
                           animate={{ strokeDashoffset: 0 }}
                           transition={{
@@ -377,7 +378,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                             ease: "linear",
                             repeat: Infinity
                           }}
-                          style={{ filter: "drop-shadow(0 0 6px #3b82f6)" }}
+                          style={{ filter: "drop-shadow(0 0 8px #60a5fa)" }}
                         />
                       </svg>
                     )}
