@@ -498,12 +498,12 @@ export default function ErlanggaSubsidiariesView() {
                   key={sub.id}
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row items-stretch"
                 >
-                  {/* LEFT IMAGE (Locked to Strict 3:4 Aspect Ratio) */}
-                  <div className="relative w-full lg:w-[300px] aspect-[3/4] bg-slate-950 shrink-0 overflow-hidden flex items-center justify-center">
+                  {/* LEFT IMAGE CONTAINER (Zero Text Cropping with object-contain) */}
+                  <div className="relative w-full lg:w-[320px] aspect-[3/4] bg-slate-950 shrink-0 overflow-hidden flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-zinc-200/80 dark:border-zinc-800">
                     <img
                       src={sub.image}
                       alt={sub.name}
-                      className="w-full h-full object-cover object-center border-b lg:border-b-0 lg:border-r border-zinc-200/80 dark:border-zinc-800"
+                      className="w-full h-full object-contain object-center rounded-lg"
                     />
                   </div>
 
