@@ -320,19 +320,19 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
         </div>
 
         {/* STEPPER RAIL WITH LIQUID LASER PROGRESS LINE */}
-        <div className="relative pt-2 pb-1 overflow-x-auto scrollbar-none">
-          {/* Laser Progress Line Background */}
-          <div className="absolute top-[28px] left-6 right-6 h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
+        <div className="relative pt-2 pb-1 px-5 overflow-x-auto scrollbar-none">
+          {/* Background Track Line: Starts at center of first node (36px) and ends at center of last node (36px) */}
+          <div className="absolute top-[28px] left-[36px] right-[36px] h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
           
           {/* Active Liquid Laser Line */}
           <div
-            className="absolute top-[28px] left-6 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
+            className="absolute top-[28px] left-[36px] h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
             style={{
-              width: `calc(${totalLaserWidthPercent}% - ${totalLaserWidthPercent > 0 ? "1.5rem" : "0px"})`
+              width: `calc((100% - 72px) * ${totalLaserWidthPercent / 100})`
             }}
           />
 
-          <div className="flex items-center justify-between min-w-[650px] relative z-10 px-2">
+          <div className="flex items-center justify-between min-w-[650px] relative z-10">
             {TIMELINE_EVENTS.map((ev, idx) => {
               const isActive = idx === activeIndex;
               const isPast = idx < activeIndex;
