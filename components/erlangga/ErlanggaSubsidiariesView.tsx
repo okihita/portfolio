@@ -42,6 +42,7 @@ const TRANSLATIONS = {
     // Section Tags & Titles
     archTag: "Peta Arsitektur Ekosistem",
     archTitle: "Sinergi 5 Pilar Unit Bisnis Erlangga Group",
+    archSubtitle: "Model arsitektur sistem hipotesis yang disintesis dari riset operasional publik, alur kerja rantai pasok penerbitan, dan tolok ukur TI enterprise.",
 
     timelineTag: "Jejak Rekam 74 Tahun",
     timelineTitle: "Garis Waktu Transformasi & Milestone Sejarah (1952 – 2026+)",
@@ -70,6 +71,7 @@ const TRANSLATIONS = {
     // Section Tags & Titles
     archTag: "Ecosystem Architecture",
     archTitle: "Synergy of Erlangga Group's 5 Business Pillars",
+    archSubtitle: "A candidate strategic system topology model synthesized from public operational research, publishing supply chain workflows, and enterprise IT benchmarks.",
 
     timelineTag: "74-Year Heritage",
     timelineTitle: "Historical Transformation Timeline (1952 – 2026+)",
@@ -447,13 +449,16 @@ export default function ErlanggaSubsidiariesView() {
 
         {/* SECTION 1: INTERACTIVE XYFLOW ECOSYSTEM ARCHITECTURE */}
         <section className="space-y-8">
-          <div className="space-y-2">
+          <div className="space-y-2 max-w-3xl">
             <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
               {t.archTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t.archTitle}
             </h2>
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+              {t.archSubtitle}
+            </p>
           </div>
 
           <ErlanggaEcosystemFlow lang={lang} />
