@@ -349,7 +349,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                 >
                   {/* Year Node Box (Constant border-2 for ZERO Layout Shift) */}
                   <div
-                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 border-2 ${
+                    className={`relative px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 border-2 ${
                       isActive
                         ? "bg-blue-600 text-white border-blue-600 dark:border-blue-500 shadow-lg shadow-blue-500/40 ring-4 ring-blue-500/30"
                         : isPast
@@ -357,6 +357,30 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                         : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 border-zinc-200/80 dark:border-zinc-700/60 group-hover:border-blue-300 dark:group-hover:border-blue-700"
                     }`}
                   >
+                    {/* Active Laser Beam Perimeter Light Particle */}
+                    {isActive && isPlaying && !isHovered && (
+                      <svg className="absolute -inset-[2px] w-[calc(100%+4px)] h-[calc(100%+4px)] pointer-events-none z-20 overflow-visible">
+                        <motion.rect
+                          x="1"
+                          y="1"
+                          width="calc(100% - 2px)"
+                          height="calc(100% - 2px)"
+                          rx="12"
+                          fill="none"
+                          stroke="#60a5fa"
+                          strokeWidth="2.5"
+                          strokeDasharray="40 160"
+                          initial={{ strokeDashoffset: 200 }}
+                          animate={{ strokeDashoffset: 0 }}
+                          transition={{
+                            duration: STEP_DURATION_MS / 1000,
+                            ease: "linear",
+                            repeat: Infinity
+                          }}
+                          style={{ filter: "drop-shadow(0 0 6px #3b82f6)" }}
+                        />
+                      </svg>
+                    )}
                     <span>{ev.year}</span>
                   </div>
 
