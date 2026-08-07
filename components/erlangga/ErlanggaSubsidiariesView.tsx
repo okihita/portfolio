@@ -107,14 +107,47 @@ const ECOSYSTEM_MERMAID = `graph TD
     EBH -- B2B & Retail Sales Data --> HQ
     ED -- Cloud User Analytics --> HQ`;
 
-const TIMELINE_MERMAID = `graph LR
+const TIMELINE_MERMAID = {
+  id: `graph LR
+    Y1952["<b>1952</b><br/>PT Penerbit Erlangga<br/>Pendirian oleh M. Hutauruk"] --> Y1987["<b>1987</b><br/>GAP Print<br/>Pabrik Percetakan Massal"]
+    Y1987 --> Y2006["<b>2006</b><br/>Eureka Book House<br/>Toko Buku Retail"]
+    Y2006 --> Y2007["<b>2007</b><br/>Eureka Logistics<br/>Rantai Pasok 3PL"]
+    Y2007 --> Y2010["<b>2010</b><br/>Erlass Institute<br/>Pelatihan Guru"]
+    Y2010 --> Y2026["<b>2026+</b><br/>Erlangga Digital & AI<br/>Era EdTech Cloud"]`,
+  en: `graph LR
     Y1952["<b>1952</b><br/>PT Penerbit Erlangga<br/>Founding by M. Hutauruk"] --> Y1987["<b>1987</b><br/>GAP Print<br/>Mass Offset Plant"]
     Y1987 --> Y2006["<b>2006</b><br/>Eureka Book House<br/>Retail Bookstores"]
     Y2006 --> Y2007["<b>2007</b><br/>Eureka Logistics<br/>3PL Supply Chain"]
     Y2007 --> Y2010["<b>2010</b><br/>Erlass Institute<br/>Teacher Training"]
-    Y2010 --> Y2026["<b>2026+</b><br/>Erlangga Digital & AI<br/>Cloud EdTech Era"]`;
+    Y2010 --> Y2026["<b>2026+</b><br/>Erlangga Digital & AI<br/>Cloud EdTech Era"]`
+};
 
-const PIPELINE_MERMAID = `graph TD
+const PIPELINE_MERMAID = {
+  id: `graph TD
+    subgraph DataSources ["Sumber Data Unit Bisnis"]
+        GAP_MES["GAP Print MES & IoT"]
+        WMS_NODE["Eureka 40+ Gudang Cabang"]
+        ED_CLOUD["Erlangga Digital Cloud Analytics"]
+        ERL_LMS["Erlass LMS Workshop Leads"]
+    end
+
+    subgraph CoreEnterprise ["Inti Enterprise Terpusat"]
+        ERP["Microsoft Dynamics ERP<br/>(Buku Besar & Master Stok)"]
+        CRM["Qontak CRM<br/>(Pipa Penjualan Sekolah)"]
+        HRMS["Darwinbox HRMS<br/>(Payroll & Staf Terpadu)"]
+    end
+
+    GAP_MES --> ERP
+    WMS_NODE <--> ERP
+    ED_CLOUD --> CRM
+    ERL_LMS --> CRM
+
+    ERP --> GW["Unified API Gateway & Middleware"]
+    CRM --> GW
+    HRMS --> GW
+
+    GW --> DASH["PowerBI Executive Dashboard<br/>(Single Source of Truth Direksi)"]`,
+  en: `graph TD
     subgraph DataSources ["Subsidiary Operating Nodes"]
         GAP_MES["GAP Print MES & IoT"]
         WMS_NODE["Eureka 40+ Branch WMS Nodes"]
@@ -137,7 +170,8 @@ const PIPELINE_MERMAID = `graph TD
     CRM --> GW
     HRMS --> GW
 
-    GW --> DASH["PowerBI Executive Dashboard<br/>(Single Source of Truth for Board of Directors)"]`;
+    GW --> DASH["PowerBI Executive Dashboard<br/>(Single Source of Truth for Board of Directors)"]`
+};
 
 // --- SUBSIDIARY DETAILS DATA ---
 const SUBSIDIARIES_DATA = {
@@ -344,13 +378,12 @@ export default function ErlanggaSubsidiariesView() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get("lang");
-    const savedLang = localStorage.getItem("erlangga_lang");
 
     if (queryLang === "en" || queryLang === "id") {
       setLang(queryLang as Lang);
       localStorage.setItem("erlangga_lang", queryLang);
-    } else if (savedLang === "en" || savedLang === "id") {
-      setLang(savedLang as Lang);
+    } else {
+      setLang("en");
     }
     setMounted(true);
   }, []);
@@ -438,7 +471,7 @@ export default function ErlanggaSubsidiariesView() {
           </div>
 
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-6 sm:p-8 shadow-xs overflow-hidden">
-            <MermaidChart chart={TIMELINE_MERMAID} />
+            <MermaidChart chart={TIMELINE_MERMAID[lang]} />
           </div>
         </section>
 
@@ -545,7 +578,7 @@ export default function ErlanggaSubsidiariesView() {
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                           <Cpu className="w-3.5 h-3.5 text-emerald-500" />
-                          Pemampu Profit Berbasis TI
+                          {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
                         </h4>
                         <ul className="space-y-1.5">
                           {sub.itEnablers.map((it, idx) => (
@@ -576,7 +609,7 @@ export default function ErlanggaSubsidiariesView() {
           </div>
 
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-6 sm:p-8 shadow-xs overflow-hidden">
-            <MermaidChart chart={PIPELINE_MERMAID} />
+            <MermaidChart chart={PIPELINE_MERMAID[lang]} />
           </div>
         </section>
 

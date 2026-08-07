@@ -574,16 +574,14 @@ export default function ErlanggaPitchView() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check localStorage or URL query for language preference
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get("lang");
-    const savedLang = localStorage.getItem("erlangga_lang");
 
     if (queryLang === "en" || queryLang === "id") {
       setLang(queryLang as Lang);
       localStorage.setItem("erlangga_lang", queryLang);
-    } else if (savedLang === "en" || savedLang === "id") {
-      setLang(savedLang as Lang);
+    } else {
+      setLang("en");
     }
     setMounted(true);
   }, []);
