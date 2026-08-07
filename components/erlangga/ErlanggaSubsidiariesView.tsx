@@ -374,6 +374,144 @@ const SUBSIDIARIES_DATA = {
   ]
 };
 
+function SubsidiaryCardItem({ sub, lang }: { sub: any; lang: "id" | "en" }) {
+  const [sampledBg, setSampledBg] = useState<string>("#f6f4ee");
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    try {
+      const img = e.currentTarget;
+      const canvas = document.createElement("canvas");
+      canvas.width = 10;
+      canvas.height = 10;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      ctx.drawImage(img, 0, 0, 10, 10);
+      const pixel = ctx.getImageData(2, 2, 1, 1).data;
+      const r = pixel[0];
+      const g = pixel[1];
+      const b = pixel[2];
+
+      if (r > 0 || g > 0 || b > 0) {
+        setSampledBg(`rgb(${r}, ${g}, ${b})`);
+      }
+    } catch (err) {
+      // Fallback to default paper cream
+    }
+  };
+
+  return (
+    <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row items-stretch">
+      {/* LEFT IMAGE CONTAINER (Dynamic Risograph Paper Sampler) */}
+      <div
+        className="relative w-full lg:w-[320px] aspect-[3/4] shrink-0 overflow-hidden flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-zinc-200/80 dark:border-zinc-800 transition-colors duration-300"
+        style={{ backgroundColor: sampledBg }}
+      >
+        <img
+          src={sub.image}
+          alt={sub.name}
+          onLoad={handleImageLoad}
+          className="w-full h-full object-contain object-center rounded-lg"
+        />
+      </div>
+
+      {/* RIGHT DETAILS CONTENT */}
+      <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
+          <div>
+            <div className="flex items-center gap-2 flex-wrap mb-2">
+              <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs">
+                {sub.badge}
+              </span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
+                • {sub.est} · {sub.hq}
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              {sub.name}
+            </h3>
+            <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-0.5">
+              {sub.tagline}
+            </p>
+          </div>
+
+          {/* KPI HIGHLIGHT */}
+          <div className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0">
+            <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
+              {lang === "id" ? "Target Impact ROI TI" : "Target IT ROI Impact"}
+            </p>
+            <p className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 mt-0.5">
+              {sub.kpiImpact}
+            </p>
+          </div>
+        </div>
+
+        {/* 3-COLUMN CONTENT GRID (Equal Baseline Heights) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 items-stretch">
+          {/* MODEL & PRODUCTS */}
+          <div className="space-y-2 flex flex-col justify-between">
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-blue-500" />
+                {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
+              </h4>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                {sub.businessModel}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-1 pt-2">
+              {sub.imprints.map((imp: string, idx: number) => (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 rounded text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60"
+                >
+                  {imp}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* COST DRIVERS */}
+          <div className="space-y-2 flex flex-col justify-between">
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-amber-500" />
+                {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
+              </h4>
+              <ul className="space-y-1.5">
+                {sub.costDrivers.map((cd: string, idx: number) => (
+                  <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
+                    <span>{cd}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* IT PROFIT ENABLEMENT */}
+          <div className="space-y-2 flex flex-col justify-between">
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
+              </h4>
+              <ul className="space-y-1.5">
+                {sub.itEnablers.map((it: string, idx: number) => (
+                  <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ErlanggaSubsidiariesView() {
   const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
@@ -491,118 +629,9 @@ export default function ErlanggaSubsidiariesView() {
           </div>
 
           <div className="grid grid-cols-1 gap-8">
-            {subsidiaries.map((sub) => {
-              const IconComp = sub.icon;
-              return (
-                <div
-                  key={sub.id}
-                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs flex flex-col lg:flex-row items-stretch"
-                >
-                  {/* LEFT IMAGE CONTAINER (Seamless Risograph Soy-Paper Background) */}
-                  <div className="relative w-full lg:w-[320px] aspect-[3/4] bg-[#f6f4ee] dark:bg-[#111827] shrink-0 overflow-hidden flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-zinc-200/80 dark:border-zinc-800">
-                    <img
-                      src={sub.image}
-                      alt={sub.name}
-                      className="w-full h-full object-contain object-center rounded-lg"
-                    />
-                  </div>
-
-                  {/* RIGHT DETAILS CONTENT */}
-                  <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap mb-2">
-                          <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs">
-                            {sub.badge}
-                          </span>
-                          <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-                            • {sub.est} · {sub.hq}
-                          </span>
-                        </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-                          {sub.name}
-                        </h3>
-                        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-0.5">
-                          {sub.tagline}
-                        </p>
-                      </div>
-
-                      {/* KPI HIGHLIGHT */}
-                      <div className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0">
-                        <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
-                          {lang === "id" ? "Target Impact ROI TI" : "Target IT ROI Impact"}
-                        </p>
-                        <p className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 mt-0.5">
-                          {sub.kpiImpact}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* 3-COLUMN CONTENT GRID (Equal Baseline Heights) */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 items-stretch">
-                      {/* MODEL & PRODUCTS */}
-                      <div className="space-y-2 flex flex-col justify-between">
-                        <div className="space-y-2">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                            <Building2 className="w-3.5 h-3.5 text-blue-500" />
-                            {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
-                          </h4>
-                          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                            {sub.businessModel}
-                          </p>
-                        </div>
-                        <div className="flex flex-wrap gap-1 pt-2">
-                          {sub.imprints.map((imp, idx) => (
-                            <span
-                              key={idx}
-                              className="px-2 py-0.5 rounded text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60"
-                            >
-                              {imp}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* COST DRIVERS */}
-                      <div className="space-y-2 flex flex-col justify-between">
-                        <div className="space-y-2">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                            <Layers className="w-3.5 h-3.5 text-amber-500" />
-                            {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
-                          </h4>
-                          <ul className="space-y-1.5">
-                            {sub.costDrivers.map((cd, idx) => (
-                              <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                                <span>{cd}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      {/* IT PROFIT ENABLEMENT */}
-                      <div className="space-y-2 flex flex-col justify-between">
-                        <div className="space-y-2">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                            <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                            {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
-                          </h4>
-                          <ul className="space-y-1.5">
-                            {sub.itEnablers.map((it, idx) => (
-                              <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-                                <span>{it}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {subsidiaries.map((sub) => (
+              <SubsidiaryCardItem key={sub.id} sub={sub} lang={lang} />
+            ))}
           </div>
         </section>
 
