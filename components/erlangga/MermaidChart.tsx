@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 interface MermaidChartProps {
-  chart: string;
+  chart: string | { id?: string; en?: string };
   className?: string;
 }
 
@@ -12,12 +12,16 @@ export default function MermaidChart({ chart, className = "" }: MermaidChartProp
   const [svgContent, setSvgContent] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
+  const chartString = typeof chart === "string" ? chart : (chart?.en || chart?.id || "");
+
   useEffect(() => {
     let isMounted = true;
     const chartId = `mermaid-${Math.random().toString(36).substring(2, 9)}`;
 
     async function renderChart() {
       try {
+        if (!chartString) return;
+
         const mermaidModule = await import("mermaid");
         const mermaid = mermaidModule.default;
 
@@ -38,7 +42,7 @@ export default function MermaidChart({ chart, className = "" }: MermaidChartProp
           }
         });
 
-        const { svg } = await mermaid.render(chartId, chart);
+        const { svg } = await mermaid.render(chartId, chartString);
         if (isMounted) {
           setSvgContent(svg);
           setError(null);
@@ -51,14 +55,14 @@ export default function MermaidChart({ chart, className = "" }: MermaidChartProp
       }
     }
 
-    if (chart) {
+    if (chartString) {
       renderChart();
     }
 
     return () => {
       isMounted = false;
     };
-  }, [chart]);
+  }, [chartString]);
 
   if (error) {
     return (
