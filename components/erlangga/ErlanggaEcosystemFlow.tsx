@@ -5,7 +5,6 @@ import {
   ReactFlow,
   Background,
   Controls,
-  MiniMap,
   Position,
   useNodesState,
   useEdgesState,
@@ -376,11 +375,6 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
       >
         <Background variant={BackgroundVariant.Dots} gap={24} size={1.5} color="#475569" className="opacity-60" />
         <Controls className="!bg-white dark:!bg-zinc-900 !border-zinc-200 dark:!border-zinc-800 !rounded-xl !shadow-lg !text-zinc-800 dark:!text-zinc-200 [&_button]:!border-zinc-200 dark:[&_button]:!border-zinc-800 [&_button:hover]:!bg-zinc-100 dark:[&_button:hover]:!bg-zinc-800" />
-        <MiniMap
-          nodeColor={(node) => (node.data?.isHq ? "#3b82f6" : "#64748b")}
-          maskColor="rgba(15, 23, 42, 0.75)"
-          className="!bg-slate-900/90 dark:!bg-zinc-950/90 !border-zinc-700/80 dark:!border-zinc-800 !rounded-xl !overflow-hidden !shadow-md"
-        />
       </ReactFlow>
     </div>
   );
