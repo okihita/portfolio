@@ -8,7 +8,11 @@ import {
   Mail, 
   Layers, 
   Search, 
-  Sparkles
+  Filter,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
+  CheckCircle2
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
 import { 
@@ -19,6 +23,18 @@ import {
 
 // --- TYPES ---
 type Lang = "id" | "en";
+type FrameworkGroupKey = "all" | "togaf" | "dmbok" | "secops" | "kimball_powerbi" | "itil" | "mlops_finops";
+
+// --- FRAMEWORK GROUPS DEFINITION ---
+const FRAMEWORK_GROUPS: { key: FrameworkGroupKey; label: { id: string; en: string } }[] = [
+  { key: "all", label: { id: "Semua Standard", en: "All Standards" } },
+  { key: "togaf", label: { id: "TOGAF ADM (Arsitektur)", en: "TOGAF ADM (Architecture)" } },
+  { key: "dmbok", label: { id: "DAMA-DMBOK (Tata Kelola Data)", en: "DAMA-DMBOK (Data Governance)" } },
+  { key: "secops", label: { id: "NIST / ISO 27001 (SecOps & WAN)", en: "NIST / ISO 27001 (SecOps & WAN)" } },
+  { key: "kimball_powerbi", label: { id: "Kimball & PowerBI (BI & Pipeline)", en: "Kimball & PowerBI (BI & ETL)" } },
+  { key: "itil", label: { id: "ITIL v4 (Layanan ITSM & Cabang)", en: "ITIL v4 (ITSM & Branch SLA)" } },
+  { key: "mlops_finops", label: { id: "MLOps & FinOps (AI & Cloud)", en: "MLOps & FinOps (AI & Cloud)" } }
+];
 
 // --- TRANSLATIONS DICTIONARY ---
 
@@ -35,6 +51,10 @@ const TRANSLATIONS = {
     checklistDesc: "Kumpulan inisiatif teknis komprehensif yang diusulkan berdasarkan framework IT global (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
 
     searchPlaceholder: "Cari inisiatif audit, skema ERP, DRP, SD-WAN, SLA, atau framework...",
+    filterGroupLabel: "Filter Menurut Kelompok Standard:",
+    
+    expandChecklist: "Tampilkan Checklist Terperinci",
+    collapseChecklist: "Sembunyikan Checklist Terperinci",
 
     kpiLabel: "KPI Target:",
     
@@ -58,6 +78,10 @@ const TRANSLATIONS = {
     checklistDesc: "Comprehensive technical initiatives proposed against global enterprise IT standards (TOGAF ADM, DAMA-DMBOK 2.0, NIST CSF 2.0, Kimball DW, ITIL v4, ISO 27001, MLOps, FinOps).",
 
     searchPlaceholder: "Search audit initiatives, ERP schemas, DRP, SD-WAN, SLAs, or frameworks...",
+    filterGroupLabel: "Filter by Standard Group:",
+
+    expandChecklist: "Expand Detailed Checklist",
+    collapseChecklist: "Collapse Detailed Checklist",
 
     kpiLabel: "Target KPI:",
 
@@ -212,6 +236,14 @@ export default function ErlanggaRoadmapView() {
   const [lang, setLang] = useState<Lang>("id");
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState<FrameworkGroupKey>("all");
+  
+  // State for collapsible months (Default: all expanded)
+  const [expandedMonths, setExpandedMonths] = useState<Record<number, boolean>>({
+    1: true,
+    2: true,
+    3: true
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -221,8 +253,40 @@ export default function ErlanggaRoadmapView() {
     setLang((prev) => (prev === "id" ? "en" : "id"));
   };
 
+  const toggleMonthExpand = (monthNum: number) => {
+    setExpandedMonths((prev) => ({
+      ...prev,
+      [monthNum]: !prev[monthNum]
+    }));
+  };
+
   const t = TRANSLATIONS[lang];
   const detailedRoadmap = ROADMAP_DATA[lang];
+
+  // Helper function to check if an item matches selected framework group
+  const isItemInFrameworkGroup = (item: ChecklistItem, groupKey: FrameworkGroupKey): boolean => {
+    if (groupKey === "all") return true;
+
+    const fw = item.framework.toUpperCase();
+    const title = item.title.en.toUpperCase() + " " + item.title.id.toUpperCase();
+
+    switch (groupKey) {
+      case "togaf":
+        return fw.includes("TOGAF") || title.includes("TOGAF");
+      case "dmbok":
+        return fw.includes("DAMA-DMBOK") || fw.includes("DMBOK") || fw.includes("D365") || title.includes("DYNAMICS");
+      case "secops":
+        return fw.includes("NIST") || fw.includes("ISO 27001") || fw.includes("SECOPS") || fw.includes("UU PDP") || title.includes("SD-WAN") || title.includes("EDR") || title.includes("ZTNA");
+      case "kimball_powerbi":
+        return fw.includes("KIMBALL") || fw.includes("POWERBI") || fw.includes("STREAMING") || fw.includes("DBT") || title.includes("POWERBI") || title.includes("ETL") || title.includes("CDC");
+      case "itil":
+        return fw.includes("ITIL") || title.includes("ITSM") || title.includes("SLA") || title.includes("HELP DESK");
+      case "mlops_finops":
+        return fw.includes("MLOPS") || fw.includes("FINOPS") || fw.includes("TBM") || fw.includes("TERRAFORM") || title.includes("AUTOML") || title.includes("GENAI");
+      default:
+        return true;
+    }
+  };
 
   return (
     <div className={`min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300 transition-opacity duration-150 ${mounted ? "opacity-100" : "opacity-0"}`}>
@@ -275,8 +339,9 @@ export default function ErlanggaRoadmapView() {
             </h2>
           </div>
 
-          {/* SEARCH TOOLBAR FOR CHECKLIST */}
-          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm">
+          {/* SEARCH & FRAMEWORK GROUP FILTER TOOLBAR */}
+          <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm space-y-5">
+            {/* Search Input */}
             <div className="relative w-full">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
@@ -287,13 +352,42 @@ export default function ErlanggaRoadmapView() {
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               />
             </div>
+
+            {/* Framework Group Filter Pills */}
+            <div className="space-y-2 pt-1">
+              <div className="flex items-center gap-2">
+                <Filter className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  {t.filterGroupLabel}
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {FRAMEWORK_GROUPS.map((grp) => {
+                  const isActive = selectedGroup === grp.key;
+                  return (
+                    <button
+                      key={grp.key}
+                      onClick={() => setSelectedGroup(grp.key)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                        isActive
+                          ? "bg-blue-600 text-white shadow-xs"
+                          : "bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                      }`}
+                    >
+                      {grp.label[lang]}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
-          {/* MONTHLY CARDS WITH 3-COLUMN COMPREHENSIVE CHECKLIST */}
+          {/* MONTHLY CARDS WITH COLLAPSIBLE 3-COLUMN COMPREHENSIVE CHECKLIST */}
           <div className="space-y-16">
             {detailedRoadmap.map((ch, idx) => {
               const monthNum = idx + 1;
               const checklistMonthData = COMPREHENSIVE_ROADMAP_CHECKLIST.find((m) => m.month === monthNum);
+              const isExpanded = expandedMonths[monthNum] !== false; // Default true
 
               return (
                 <div
@@ -354,35 +448,52 @@ export default function ErlanggaRoadmapView() {
                     </div>
                   </div>
 
-                  {/* --- COMPREHENSIVE 3-COLUMN CHECKLIST SECTION --- */}
+                  {/* --- COLLAPSIBLE BAR FOR CHECKLIST --- */}
                   {checklistMonthData && (
-                    <div className="p-6 sm:p-10 space-y-8 bg-zinc-50/50 dark:bg-zinc-950/30">
-                      {/* Section Title */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                              {t.checklistHeaderBadge} — {lang === "id" ? `Bulan ${monthNum}` : `Month ${monthNum}`}
-                            </span>
-                          </div>
-                          <h4 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                            {lang === "id" ? `Daftar Periksa Audit & Inisiatif Eksekusi Terperinci (Bulan ${monthNum})` : `Detailed Audit & Execution Checklist (Month ${monthNum})`}
-                          </h4>
-                        </div>
+                    <div className="bg-zinc-100/70 dark:bg-zinc-950/60 border-b border-zinc-200/80 dark:border-zinc-800/80 px-6 sm:px-10 py-3.5 flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                          {lang === "id" ? `Checklist Audit & Inisiatif Eksekusi Terperinci (Bulan ${monthNum})` : `Detailed Audit & Execution Checklist (Month ${monthNum})`}
+                        </span>
+                        <span className="text-[11px] text-zinc-500 font-medium hidden sm:inline">
+                          ({checklistMonthData.totalItems} items)
+                        </span>
                       </div>
 
+                      <button
+                        onClick={() => toggleMonthExpand(monthNum)}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-semibold text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-xs cursor-pointer transition-all"
+                      >
+                        <span>
+                          {isExpanded ? t.collapseChecklist : t.expandChecklist}
+                        </span>
+                        {isExpanded ? (
+                          <ChevronUp className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        )}
+                      </button>
+                    </div>
+                  )}
+
+                  {/* --- COMPREHENSIVE 3-COLUMN CHECKLIST SECTION (COLLAPSIBLE BODY) --- */}
+                  {checklistMonthData && isExpanded && (
+                    <div className="p-6 sm:p-10 space-y-8 bg-zinc-50/50 dark:bg-zinc-950/30 transition-all">
                       {/* 3-Column Grid */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
                         {checklistMonthData.columns.map((col) => {
-                          // Filter items by search query
+                          // Filter items by search query & framework group
                           const filteredItems = col.items.filter((item) => {
-                            return (
+                            const matchesSearch =
                               searchQuery === "" ||
                               item.title[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
                               item.description[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              item.framework.toLowerCase().includes(searchQuery.toLowerCase())
-                            );
+                              item.framework.toLowerCase().includes(searchQuery.toLowerCase());
+
+                            const matchesGroup = isItemInFrameworkGroup(item, selectedGroup);
+
+                            return matchesSearch && matchesGroup;
                           });
 
                           return (
@@ -407,7 +518,7 @@ export default function ErlanggaRoadmapView() {
                               <div className="space-y-4 divide-y divide-zinc-100 dark:divide-zinc-800/60">
                                 {filteredItems.length === 0 ? (
                                   <p className="text-xs text-zinc-400 italic py-4">
-                                    {lang === "id" ? "Tidak ada inisiatif yang cocok." : "No initiatives match search."}
+                                    {lang === "id" ? "Tidak ada inisiatif yang cocok dengan filter." : "No initiatives match selected filter."}
                                   </p>
                                 ) : (
                                   filteredItems.map((item) => (
