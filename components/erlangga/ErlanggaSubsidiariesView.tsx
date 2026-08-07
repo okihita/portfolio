@@ -527,7 +527,7 @@ export default function ErlanggaSubsidiariesView() {
                       {/* KPI HIGHLIGHT */}
                       <div className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0">
                         <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
-                          Target Impact ROI TI
+                          {lang === "id" ? "Target Impact ROI TI" : "Target IT ROI Impact"}
                         </p>
                         <p className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 mt-0.5">
                           {sub.kpiImpact}
@@ -541,7 +541,7 @@ export default function ErlanggaSubsidiariesView() {
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                           <Building2 className="w-3.5 h-3.5 text-blue-500" />
-                          Model Bisnis & Imprint
+                          {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
                         </h4>
                         <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
                           {sub.businessModel}
@@ -562,7 +562,7 @@ export default function ErlanggaSubsidiariesView() {
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                           <Layers className="w-3.5 h-3.5 text-amber-500" />
-                          Struktur Biaya Utama
+                          {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
                         </h4>
                         <ul className="space-y-1.5">
                           {sub.costDrivers.map((cd, idx) => (
