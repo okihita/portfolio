@@ -453,10 +453,10 @@ export default function ErlanggaRoadmapView() {
                     <div className="bg-zinc-100/70 dark:bg-zinc-950/60 border-b border-zinc-200/80 dark:border-zinc-800/80 px-6 sm:px-10 py-3.5 flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
                         <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                        <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                        <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                           {lang === "id" ? `Checklist Audit & Inisiatif Eksekusi Terperinci (Bulan ${monthNum})` : `Detailed Audit & Execution Checklist (Month ${monthNum})`}
                         </span>
-                        <span className="text-[11px] text-zinc-500 font-medium hidden sm:inline">
+                        <span className="text-xs text-zinc-500 font-medium hidden sm:inline">
                           ({checklistMonthData.totalItems} items)
                         </span>
                       </div>
@@ -503,13 +503,13 @@ export default function ErlanggaRoadmapView() {
                             >
                               {/* Column Header */}
                               <div className="space-y-2 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/60 inline-block">
+                                <span className="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/60 inline-block">
                                   {col.framework}
                                 </span>
-                                <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
+                                <h5 className="text-base font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                                   {col.title[lang]}
                                 </h5>
-                                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 block font-medium">
+                                <span className="text-xs text-zinc-500 dark:text-zinc-400 block font-medium">
                                   {filteredItems.length} {lang === "id" ? "Inisiatif Terdaftar" : "Initiatives Listed"}
                                 </span>
                               </div>
@@ -522,21 +522,21 @@ export default function ErlanggaRoadmapView() {
                                   </p>
                                 ) : (
                                   filteredItems.map((item) => (
-                                    <div key={item.id} className="pt-3.5 first:pt-0 space-y-2">
-                                      <h6 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
+                                    <div key={item.id} className="pt-4 first:pt-0 space-y-2.5">
+                                      <h6 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                                         {item.title[lang]}
                                       </h6>
 
-                                      <p className="text-[11px] text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
+                                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
                                         {item.description[lang]}
                                       </p>
 
                                       {/* Target KPI Callout Pill */}
                                       <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                                        <span className="text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                        <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500">
                                           {item.framework}
                                         </span>
-                                        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
+                                        <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
                                           {item.kpi[lang]}
                                         </span>
                                       </div>
