@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
@@ -38,6 +38,7 @@ interface TimelineEvent {
 
 const STEP_DURATION_MS = 5500; // 5.5 seconds per era step
 
+// Strictly 3-Color Risograph Palette: Deep Soy Charcoal Navy, Electric Cobalt Blue, Warm Terracotta Ochre
 const TIMELINE_EVENTS: TimelineEvent[] = [
   {
     year: "1952",
@@ -64,7 +65,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "Master Katalog Produk & Hak Cipta IP Buku",
       en: "Master Product Catalog & Publishing IP Rights"
     },
-    color: "from-blue-500 to-indigo-600"
+    color: "from-blue-600 via-blue-700 to-slate-900" // Electric Cobalt
   },
   {
     year: "1987",
@@ -91,7 +92,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "Integrasi Sistem Telemetri MES & IoT Mesin Cetak",
       en: "IoT Press Telemetry & MES Integration"
     },
-    color: "from-amber-500 to-orange-600"
+    color: "from-amber-600 via-orange-600 to-slate-900" // Terracotta Ochre
   },
   {
     year: "2006",
@@ -118,7 +119,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "Pipa Otomatisasi Pengadaan BOS SIPLah",
       en: "Automated SIPLah BOS Procurement Pipeline"
     },
-    color: "from-emerald-500 to-teal-600"
+    color: "from-blue-600 via-indigo-700 to-slate-900" // Electric Cobalt
   },
   {
     year: "2007",
@@ -145,7 +146,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "99.9% Uptime WMS Gudang Cabang & Batching Rute",
       en: "99.9% Branch WMS Uptime & Algorithmic Route Batching"
     },
-    color: "from-cyan-500 to-blue-600"
+    color: "from-amber-600 via-amber-700 to-slate-900" // Terracotta Ochre
   },
   {
     year: "2010",
@@ -172,7 +173,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "Portal LMS Hybrid & Verifikasi QR Sertifikat Digital",
       en: "Hybrid LMS Portal & QR Digital Credential Hash"
     },
-    color: "from-purple-500 to-pink-600"
+    color: "from-blue-600 via-blue-800 to-slate-900" // Electric Cobalt
   },
   {
     year: "2026+",
@@ -199,7 +200,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       id: "-45% Biaya Cloud Idle · 100% Uptime Ujian CBT",
       en: "-45% Cloud Idle Cost · 100% CBT Exam Uptime"
     },
-    color: "from-blue-600 via-indigo-600 to-purple-600"
+    color: "from-blue-600 via-indigo-600 to-amber-600" // Master Risograph Fusion
   }
 ];
 
@@ -207,12 +208,11 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [segmentProgress, setSegmentProgress] = useState<number>(0); // 0 to 100%
+  const [segmentProgress, setSegmentProgress] = useState<number>(0);
 
   const activeEvent = TIMELINE_EVENTS[activeIndex];
   const totalSteps = TIMELINE_EVENTS.length;
 
-  // Next and Prev Handlers
   const nextStep = () => {
     setSegmentProgress(0);
     setActiveIndex((prev) => (prev + 1) % totalSteps);
@@ -228,11 +228,10 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
     setActiveIndex(index);
   };
 
-  // Autoplay Timer Loop
   useEffect(() => {
     if (!isPlaying || isHovered) return;
 
-    const intervalMs = 50; // Update every 50ms for smooth 60fps fill
+    const intervalMs = 50;
     const stepIncrement = (intervalMs / STEP_DURATION_MS) * 100;
 
     const timer = setInterval(() => {
@@ -248,7 +247,6 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
     return () => clearInterval(timer);
   }, [isPlaying, isHovered, activeIndex]);
 
-  // Calculate total visual progress percentage along the laser line
   const baseProgressPercent = (activeIndex / (totalSteps - 1)) * 100;
   const activeSegmentPercent = (1 / (totalSteps - 1)) * (segmentProgress / 100) * 100;
   const totalLaserWidthPercent = Math.min(
@@ -319,14 +317,14 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
           </div>
         </div>
 
-        {/* STEPPER RAIL WITH LIQUID LASER PROGRESS LINE */}
+        {/* STEPPER RAIL WITH RISOGRAPH COBALT-TO-TERRACOTTA LASER LINE */}
         <div className="relative pt-2 pb-1 px-6 overflow-x-auto scrollbar-none">
-          {/* Background Track Line: Starts at center of first node (52px) and ends at center of last node (52px) */}
+          {/* Background Track Line */}
           <div className="absolute top-[28px] left-[52px] right-[52px] h-1 bg-zinc-200 dark:bg-zinc-800/80 rounded-full z-0" />
           
-          {/* Active Liquid Laser Line */}
+          {/* Active Liquid Laser Line (Cobalt Blue to Terracotta Ochre Gradient) */}
           <div
-            className="absolute top-[28px] left-[52px] h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/50"
+            className="absolute top-[28px] left-[52px] h-1 bg-gradient-to-r from-blue-600 via-blue-500 to-amber-500 rounded-full z-0 transition-all duration-75 shadow-sm shadow-blue-500/40"
             style={{
               width: `calc((100% - 104px) * ${totalLaserWidthPercent / 100})`
             }}
@@ -343,7 +341,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                   onClick={() => selectStep(idx)}
                   className="flex flex-col items-center gap-2 group cursor-pointer focus:outline-none"
                 >
-                  {/* Wider Year Node Box */}
+                  {/* Year Node Box */}
                   <div
                     className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 ${
                       isActive
@@ -373,7 +371,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
         </div>
       </div>
 
-      {/* --- ACTIVE ERA GLASSMORPHISM CARD (AUTOMATICALLY SLIDES WITH LASER FILL) --- */}
+      {/* --- ACTIVE ERA RISOGRAPH GLASSMORPHISM CARD --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeEvent.year}
@@ -383,7 +381,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
           transition={{ duration: 0.28 }}
           className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl"
         >
-          {/* Card Header Banner with Dynamic Gradient Accent */}
+          {/* Card Header Banner with Risograph Gradient Accent */}
           <div className={`p-6 sm:p-8 bg-gradient-to-r ${activeEvent.color} text-white space-y-3`}>
             <div className="flex items-center justify-between gap-4">
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md border border-white/30 tracking-wider uppercase">
@@ -399,7 +397,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
             </h3>
 
             <p className="text-xs sm:text-sm font-semibold opacity-90 flex items-center gap-1.5">
-              <Building2 className="w-4 h-4 shrink-0" />
+              <Building2 className="w-4 h-4 shrink-0 text-amber-300" />
               <span>{activeEvent.entity[lang]}</span>
             </p>
           </div>
@@ -424,17 +422,17 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                     key={hIdx}
                     className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800 text-xs text-zinc-800 dark:text-zinc-200 font-medium flex items-start gap-2"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                     <span>{hl[lang]}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* IT Impact Callout */}
-            <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/60 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-800 dark:text-blue-300">
-                <Zap className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+            {/* IT Impact Callout Pill (Terracotta & Cobalt Accent) */}
+            <div className="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/60 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-900 dark:text-amber-300">
+                <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
                 <span>{lang === "id" ? "Dampak Transformasi TI:" : "IT Transformation Impact:"}</span>
               </div>
               <span className="px-3 py-1 rounded-lg text-xs font-extrabold bg-blue-600 text-white shadow-xs">

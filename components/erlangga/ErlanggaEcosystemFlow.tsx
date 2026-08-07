@@ -286,9 +286,9 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         targetHandle: "ed-left-in",
         animated: true,
         label: lang === "id" ? "Aset Konten Digital" : "Digital Asset Stream",
-        style: { stroke: "#06b6d4", strokeWidth: 2.5, strokeDasharray: "4 4" },
-        labelStyle: { fill: "#67e8f9", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#06b6d4", strokeWidth: 1.5, rx: 6, ry: 6 },
+        style: { stroke: "#3b82f6", strokeWidth: 2.5, strokeDasharray: "4 4" },
+        labelStyle: { fill: "#93c5fd", fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
@@ -301,9 +301,9 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         targetHandle: "ei-top-in",
         animated: true,
         label: lang === "id" ? "Jaringan Sekolah & Lead CRM" : "School Leads & LMS Integration",
-        style: { stroke: "#10b981", strokeWidth: 2.5 },
-        labelStyle: { fill: "#6ee7b7", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#10b981", strokeWidth: 1.5, rx: 6, ry: 6 },
+        style: { stroke: "#f59e0b", strokeWidth: 2.5 },
+        labelStyle: { fill: "#fcd34d", fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
@@ -316,9 +316,9 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         targetHandle: "hq-bottom-in",
         animated: true,
         label: lang === "id" ? "Data Penjualan SIPLah & POS" : "SIPLah B2B & POS Sales Data",
-        style: { stroke: "#6366f1", strokeWidth: 2.5 },
-        labelStyle: { fill: "#a5b4fc", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#6366f1", strokeWidth: 1.5, rx: 6, ry: 6 },
+        style: { stroke: "#3b82f6", strokeWidth: 2.5 },
+        labelStyle: { fill: "#93c5fd", fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
@@ -331,9 +331,9 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         targetHandle: "hq-right-in",
         animated: true,
         label: lang === "id" ? "Telemetri Cloud & Analitik User" : "Cloud SaaS Telemetry Stream",
-        style: { stroke: "#8b5cf6", strokeWidth: 2.5, strokeDasharray: "4 4" },
-        labelStyle: { fill: "#c4b5fd", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#8b5cf6", strokeWidth: 1.5, rx: 6, ry: 6 },
+        style: { stroke: "#f59e0b", strokeWidth: 2.5, strokeDasharray: "4 4" },
+        labelStyle: { fill: "#fcd34d", fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       }
     ];

@@ -482,7 +482,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 3: 5 CORE SUBSIDIARY PILLARS & PROFIT ENABLEMENT */}
         <section className="space-y-10">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 uppercase tracking-wider font-bold">
+            <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
               {t.subsidiaryTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -604,7 +604,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 4: ENTERPRISE DATA PIPELINE MERMAID CHART */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 uppercase tracking-wider font-bold">
+            <span className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
               {t.synergyTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
