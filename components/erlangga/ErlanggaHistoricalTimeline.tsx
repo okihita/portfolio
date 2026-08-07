@@ -341,14 +341,14 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                   onClick={() => selectStep(idx)}
                   className="flex flex-col items-center gap-2 group cursor-pointer focus:outline-none"
                 >
-                  {/* Year Node Box */}
+                  {/* Year Node Box (Constant border-2 for ZERO Layout Shift) */}
                   <div
-                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 ${
+                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 border-2 ${
                       isActive
-                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-105 border-2 border-white dark:border-zinc-900 ring-4 ring-blue-500/25"
+                        ? "bg-blue-600 text-white border-blue-600 dark:border-blue-500 shadow-lg shadow-blue-500/40 ring-4 ring-blue-500/30"
                         : isPast
-                        ? "bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800"
-                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 border border-transparent"
+                        ? "bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 border-zinc-200/80 dark:border-zinc-700/60 group-hover:border-blue-300 dark:group-hover:border-blue-700"
                     }`}
                   >
                     <span>{ev.year}</span>
