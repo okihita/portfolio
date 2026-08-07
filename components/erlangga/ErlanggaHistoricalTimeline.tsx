@@ -237,15 +237,21 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
     const timer = setInterval(() => {
       setSegmentProgress((prev) => {
         if (prev + stepIncrement >= 100) {
-          nextStep();
-          return 0;
+          return 100;
         }
         return prev + stepIncrement;
       });
     }, intervalMs);
 
     return () => clearInterval(timer);
-  }, [isPlaying, isHovered, activeIndex]);
+  }, [isPlaying, isHovered]);
+
+  useEffect(() => {
+    if (segmentProgress >= 100) {
+      setSegmentProgress(0);
+      setActiveIndex((prev) => (prev + 1) % totalSteps);
+    }
+  }, [segmentProgress, totalSteps]);
 
   const baseProgressPercent = (activeIndex / (totalSteps - 1)) * 100;
   const activeSegmentPercent = (1 / (totalSteps - 1)) * (segmentProgress / 100) * 100;
