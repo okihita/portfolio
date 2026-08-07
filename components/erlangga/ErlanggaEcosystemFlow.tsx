@@ -1,253 +1,238 @@
 "use client";
 
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import {
   ReactFlow,
   Background,
   Controls,
-  Position,
-  useNodesState,
-  useEdgesState,
+  NodeTypes,
   Edge,
+  Position,
   BackgroundVariant
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { ErlanggaGroupNode, ErlanggaNodeType } from "./ErlanggaGroupNode";
+import ErlanggaGroupNodeComponent, { ErlanggaGroupNodeObjectType } from "./ErlanggaGroupNode";
 
 interface ErlanggaEcosystemFlowProps {
   lang: "id" | "en";
 }
 
-// Register custom node types map
-const nodeTypes = {
-  erlanggaGroup: ErlanggaGroupNode
+const nodeTypes: NodeTypes = {
+  erlanggaNode: ErlanggaGroupNodeComponent
 };
 
 export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowProps) {
-  const [mounted, setMounted] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
+  // Dynamic Theme Mode Observer (Light vs Dark)
   useEffect(() => {
-    setMounted(true);
+    const checkDark = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+
+    checkDark();
+
+    const observer = new MutationObserver(() => {
+      checkDark();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  // --- DEFINE NODES DATA & HANDLES ---
-  const initialNodes: ErlanggaNodeType[] = useMemo(() => {
+  const nodes: ErlanggaGroupNodeObjectType[] = useMemo(() => {
     return [
-      // 1. CENTRAL HQ DATACENTER NODE
+      // 1. HQ - Center Core Node
       {
         id: "HQ",
-        type: "erlanggaGroup",
-        position: { x: 450, y: 250 },
+        type: "erlanggaNode",
+        position: { x: 450, y: 260 },
         data: {
+          isHQ: true,
+          iconType: "hq",
+          badge: { id: "Kantor Pusat HQ", en: "Group Headquarters HQ" },
+          entity: "Erlangga Group HQ (Ciracas)",
           label: {
-            id: "Ciracas Datacenter HQ",
-            en: "Ciracas Datacenter HQ"
+            id: "Pusat Komando TI & Data Center Enterprise",
+            en: "IT Command Center & Enterprise Data Center"
           },
-          subtitle: {
-            id: "Erlangga Group Central Data Warehouse",
-            en: "Erlangga Group Central Data Warehouse"
+          tagline: {
+            id: "Konsolidasi single source of truth seluruh unit bisnis",
+            en: "Consolidates single source of truth across all 5 business pillars"
           },
-          badge: {
-            id: "Pusat Data Enterprise",
-            en: "Enterprise Data Hub"
-          },
-          kpi: {
-            id: "Single Source of Truth",
-            en: "Single Source of Truth"
-          },
-          iconName: "Building2",
-          isHq: true,
-          lang,
-          handles: [
-            { type: "target", position: Position.Top, id: "hq-top-in" },
-            { type: "target", position: Position.Bottom, id: "hq-bottom-in" },
-            { type: "target", position: Position.Left, id: "hq-left-in" },
-            { type: "target", position: Position.Right, id: "hq-right-in" }
-          ]
+          kpiImpact: "Single Source of Truth BI",
+          badgeColor: "blue",
+          handles: {
+            targets: [
+              { id: "hq-top-in", position: Position.Top, style: { background: "#3b82f6" } },
+              { id: "hq-bottom-in", position: Position.Bottom, style: { background: "#3b82f6" } },
+              { id: "hq-left-in", position: Position.Left, style: { background: "#3b82f6" } },
+              { id: "hq-right-in", position: Position.Right, style: { background: "#3b82f6" } }
+            ]
+          }
         }
       },
 
-      // 2. CORE PUBLISHING NODE (PE)
+      // 2. PE - PT Penerbit Erlangga (Top Center)
       {
         id: "PE",
-        type: "erlanggaGroup",
-        position: { x: 50, y: 50 },
+        type: "erlanggaNode",
+        position: { x: 450, y: 30 },
         data: {
+          iconType: "publishing",
+          badge: { id: "Induk Penerbitan", en: "Parent Publishing Entity" },
+          entity: "PT Penerbit Erlangga",
           label: {
-            id: "PT Penerbit Erlangga",
-            en: "PT Penerbit Erlangga"
+            id: "Penerbitan Buku Pelajaran & 8 Imprint",
+            en: "K-12 Textbook Publishing & 8 Imprints"
           },
-          subtitle: {
-            id: "Penerbitan Utama & 8 Imprint",
-            en: "Core Publishing & 8 Imprints"
+          tagline: {
+            id: "Fondasi hak cipta IP pendidikan terbesar di Indonesia",
+            en: "Educational IP & master publishing copyright vault"
           },
-          badge: {
-            id: "IP & Hak Cipta Buku",
-            en: "Publishing IP & Rights"
-          },
-          kpi: {
-            id: "100% Audit Skema Basis Data",
-            en: "100% DB Schema Audit"
-          },
-          iconName: "BookOpen",
-          isHq: false,
-          lang,
-          handles: [
-            { type: "source", position: Position.Bottom, id: "pe-bottom-out" },
-            { type: "source", position: Position.Right, id: "pe-right-out" }
-          ]
+          kpiImpact: "-15% Biaya Cetak Berlebih",
+          badgeColor: "blue",
+          handles: {
+            sources: [
+              { id: "pe-bottom-out", position: Position.Bottom, style: { left: "30%", background: "#f59e0b" } },
+              { id: "pe-right-out", position: Position.Right, style: { background: "#3b82f6" } }
+            ]
+          }
         }
       },
 
-      // 3. PRINT MANUFACTURING FACTORY NODE (GAP)
+      // 3. GAP - PT Gelora Aksara Pratama (Bottom Left)
       {
         id: "GAP",
-        type: "erlanggaGroup",
-        position: { x: 50, y: 440 },
+        type: "erlanggaNode",
+        position: { x: 50, y: 480 },
         data: {
+          iconType: "gap",
+          badge: { id: "Manufaktur Cetak", en: "Industrial Manufacturing" },
+          entity: "PT Gelora Aksara Pratama (GAP)",
           label: {
-            id: "PT Gelora Aksara Pratama",
-            en: "PT Gelora Aksara Pratama"
+            id: "Pabrik Percetakan Offset Industrial",
+            en: "Mass Industrial Offset Press Plant"
           },
-          subtitle: {
-            id: "Pabrik Percetakan Offset Industri",
-            en: "Industrial Print Manufacturing"
+          tagline: {
+            id: "Jaminan kapasitas cetak jutaan buku pelajaran per tahun",
+            en: "High-speed captive press & B2B commercial packaging"
           },
-          badge: {
-            id: "Manufaktur & Cetak",
-            en: "Print Manufacturing"
-          },
-          kpi: {
-            id: "+15% OEE Mesin · -12% Kertas",
-            en: "+15% Machine OEE · -12% Paper Waste"
-          },
-          iconName: "Printer",
-          isHq: false,
-          lang,
-          handles: [
-            { type: "target", position: Position.Top, id: "gap-top-in" },
-            { type: "source", position: Position.Right, id: "gap-right-out" }
-          ]
+          kpiImpact: "+15% OEE Mesin Cetak",
+          badgeColor: "amber",
+          handles: {
+            targets: [
+              { id: "gap-top-in", position: Position.Top, style: { background: "#f59e0b" } }
+            ],
+            sources: [
+              { id: "gap-right-out", position: Position.Right, style: { background: "#f59e0b" } }
+            ]
+          }
         }
       },
 
-      // 4. LOGISTICS & RETAIL NODE (EBH)
+      // 4. EBH - Eureka Book House & Logistics (Bottom Right)
       {
         id: "EBH",
-        type: "erlanggaGroup",
-        position: { x: 450, y: 500 },
+        type: "erlanggaNode",
+        position: { x: 850, y: 480 },
         data: {
+          iconType: "ebh",
+          badge: { id: "Rantai Pasok 3PL", en: "Supply Chain & 3PL" },
+          entity: "Eureka Book House & Logistics",
           label: {
-            id: "Eureka Book House & Logistics",
-            en: "Eureka Book House & Logistics"
+            id: "Retail, SIPLah BOS & Logistik 40+ Cabang",
+            en: "Retail, SIPLah B2B & 40+ Branch 3PL"
           },
-          subtitle: {
-            id: "Pengadaan SIPLah & Logistik 40+ Cabang",
-            en: "SIPLah Procurement & 40+ Branch Logistics"
+          tagline: {
+            id: "Pengadaan sekolah BOS & fulfillment logistik nasional",
+            en: "Nationwide school procurement & warehouse fulfillment"
           },
-          badge: {
-            id: "Rantai Pasok & Retail",
-            en: "Supply Chain & Retail"
-          },
-          kpi: {
-            id: "99.9% Uptime · -18% Last-Mile",
-            en: "99.9% Uptime · -18% Last-Mile"
-          },
-          iconName: "Truck",
-          isHq: false,
-          lang,
-          handles: [
-            { type: "target", position: Position.Left, id: "ebh-left-in" },
-            { type: "source", position: Position.Top, id: "ebh-top-out" }
-          ]
+          kpiImpact: "99.9% Uptime Gudang Cabang",
+          badgeColor: "amber",
+          handles: {
+            targets: [
+              { id: "ebh-left-in", position: Position.Left, style: { background: "#f59e0b" } }
+            ],
+            sources: [
+              { id: "ebh-top-out", position: Position.Top, style: { background: "#3b82f6" } }
+            ]
+          }
         }
       },
 
-      // 5. EDTECH & CLOUD SAAS NODE (ED)
+      // 5. ED - Erlangga Digital (Top Right)
       {
         id: "ED",
-        type: "erlanggaGroup",
-        position: { x: 850, y: 50 },
+        type: "erlanggaNode",
+        position: { x: 850, y: 30 },
         data: {
+          iconType: "digital",
+          badge: { id: "Cloud & EdTech SaaS", en: "Cloud & EdTech SaaS" },
+          entity: "Erlangga Digital & EdTech Unit",
           label: {
-            id: "Erlangga Digital & EdTech",
-            en: "Erlangga Digital & EdTech"
+            id: "Platform SaaS, E-Library & CBT Exam Engine",
+            en: "Cloud SaaS, E-Library & CBT Exam Infrastructure"
           },
-          subtitle: {
-            id: "Platform SaaS, E-Library & CBT Ujian",
-            en: "Cloud SaaS, E-Library & CBT Exam Engine"
+          tagline: {
+            id: "Aplikasi pembelajaran & engine ujian skala 100k+ siswa",
+            en: "Cloud e-learning & 100k+ concurrency exam engine"
           },
-          badge: {
-            id: "Cloud & EdTech SaaS",
-            en: "Cloud & EdTech SaaS"
-          },
-          kpi: {
-            id: "-45% Biaya Cloud Idle",
-            en: "-45% Cloud Idle Cost"
-          },
-          iconName: "Smartphone",
-          isHq: false,
-          lang,
-          handles: [
-            { type: "target", position: Position.Left, id: "ed-left-in", style: { top: "35%" } },
-            { type: "source", position: Position.Left, id: "ed-left-out", style: { top: "75%" } },
-            { type: "source", position: Position.Bottom, id: "ed-bottom-out" }
-          ]
+          kpiImpact: "-45% Biaya Cloud Idle",
+          badgeColor: "blue",
+          handles: {
+            targets: [
+              { id: "ed-left-in", position: Position.Left, style: { top: "35%", background: "#3b82f6" } }
+            ],
+            sources: [
+              { id: "ed-left-out", position: Position.Left, style: { top: "75%", background: "#3b82f6" } },
+              { id: "ed-bottom-out", position: Position.Bottom, style: { background: "#f59e0b" } }
+            ]
+          }
         }
       },
 
-      // 6. ERLASS INSTITUTE TEACHER TRAINING NODE (EI)
+      // 6. EI - Erlass Institute (Top Left)
       {
         id: "EI",
-        type: "erlanggaGroup",
-        position: { x: 850, y: 440 },
+        type: "erlanggaNode",
+        position: { x: 50, y: 30 },
         data: {
+          iconType: "erlass",
+          badge: { id: "Pengembangan Profesi", en: "Professional Development" },
+          entity: "Erlass Institute (PT Erlass)",
           label: {
-            id: "Erlass Institute (PT Erlass)",
-            en: "Erlass Institute (PT Erlass)"
+            id: "Pelatihan Guru & Konsultasi Kurikulum",
+            en: "Teacher Professional Certification Hub"
           },
-          subtitle: {
-            id: "Pelatihan Guru & Sertifikasi Kompetensi",
-            en: "Teacher Training & Certification"
+          tagline: {
+            id: "Sertifikasi pendidik & workshop Kurikulum Merdeka",
+            en: "Certified teacher training & school accreditation workshops"
           },
-          badge: {
-            id: "Pengembangan Profesi",
-            en: "Professional Development"
-          },
-          kpi: {
-            id: "10x Kapasitas · -90% Biaya Cetak",
-            en: "10x Capacity · -90% Print Cost"
-          },
-          iconName: "GraduationCap",
-          isHq: false,
-          lang,
-          handles: [
-            { type: "target", position: Position.Top, id: "ei-top-in" }
-          ]
+          kpiImpact: "10x Kapasitas Peserta LMS",
+          badgeColor: "purple",
+          handles: {
+            targets: [
+              { id: "ei-top-in", position: Position.Bottom, style: { background: "#f59e0b" } }
+            ]
+          }
         }
       }
     ];
   }, [lang]);
 
-  // Sync node data language when lang prop changes
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // Edges with Dynamic Light / Dark Mode Color Palette
+  const edges: Edge[] = useMemo(() => {
+    const bgFill = isDark ? "#0f172a" : "#ffffff";
+    const textFill = isDark ? "#93c5fd" : "#1e40af";
+    const amberTextFill = isDark ? "#fcd34d" : "#92400e";
 
-  useEffect(() => {
-    setNodes((prevNodes) =>
-      prevNodes.map((node) => ({
-        ...node,
-        data: {
-          ...node.data,
-          lang
-        }
-      }))
-    );
-  }, [lang, setNodes]);
-
-  // --- DEFINE EDGES WITH ANIMATIONS ---
-  const initialEdges: Edge[] = useMemo(() => {
     return [
-      // 1. PE ➔ GAP (Editorial Master Metadata)
+      // 1. PE ➔ GAP (Metadata Master Penerbitan)
       {
         id: "edge-pe-gap",
         source: "PE",
@@ -257,12 +242,12 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Metadata Master Penerbitan" : "Editorial Master Metadata",
         style: { stroke: "#3b82f6", strokeWidth: 2.5, strokeDasharray: "5 5" },
-        labelStyle: { fill: "#93c5fd", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: textFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
-      // 2. GAP ➔ EBH (Printed Book Inventory Stock)
+      // 2. GAP ➔ EBH (Stok Cetak Buku Fisik)
       {
         id: "edge-gap-ebh",
         source: "GAP",
@@ -272,12 +257,12 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Stok Cetak Buku Fisik" : "Printed Book Stock",
         style: { stroke: "#f59e0b", strokeWidth: 2.5 },
-        labelStyle: { fill: "#fcd34d", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: amberTextFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
-      // 3. PE ➔ ED (Digital Content Assets Stream)
+      // 3. PE ➔ ED (Aset Konten Digital)
       {
         id: "edge-pe-ed",
         source: "PE",
@@ -287,12 +272,12 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Aset Konten Digital" : "Digital Asset Stream",
         style: { stroke: "#3b82f6", strokeWidth: 2.5, strokeDasharray: "4 4" },
-        labelStyle: { fill: "#93c5fd", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: textFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
-      // 4. ED ➔ EI (School Client Network)
+      // 4. ED ➔ EI (Jaringan Sekolah & LMS Leads)
       {
         id: "edge-ed-ei",
         source: "ED",
@@ -302,12 +287,12 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Jaringan Sekolah & Lead CRM" : "School Leads & LMS Integration",
         style: { stroke: "#f59e0b", strokeWidth: 2.5 },
-        labelStyle: { fill: "#fcd34d", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: amberTextFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
-      // 5. EBH ➔ HQ (B2B & Retail Sales Data Stream)
+      // 5. EBH ➔ HQ (Data Penjualan SIPLah & POS)
       {
         id: "edge-ebh-hq",
         source: "EBH",
@@ -317,12 +302,12 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Data Penjualan SIPLah & POS" : "SIPLah B2B & POS Sales Data",
         style: { stroke: "#3b82f6", strokeWidth: 2.5 },
-        labelStyle: { fill: "#93c5fd", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: textFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#3b82f6", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       },
 
-      // 6. ED ➔ HQ (Cloud User Analytics Telemetry)
+      // 6. ED ➔ HQ (Telemetri Cloud & User Analytics)
       {
         id: "edge-ed-hq",
         source: "ED",
@@ -332,51 +317,48 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
         animated: true,
         label: lang === "id" ? "Telemetri Cloud & Analitik User" : "Cloud SaaS Telemetry Stream",
         style: { stroke: "#f59e0b", strokeWidth: 2.5, strokeDasharray: "4 4" },
-        labelStyle: { fill: "#fcd34d", fontWeight: 700, fontSize: 10 },
-        labelBgStyle: { fill: "#0f172a", fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
+        labelStyle: { fill: amberTextFill, fontWeight: 700, fontSize: 10 },
+        labelBgStyle: { fill: bgFill, fillOpacity: 0.95, stroke: "#f59e0b", strokeWidth: 1.5, rx: 6, ry: 6 },
         labelBgPadding: [8, 4]
       }
     ];
-  }, [lang]);
-
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  useEffect(() => {
-    setEdges(initialEdges);
-  }, [initialEdges, setEdges]);
-
-  if (!mounted) return null;
+  }, [lang, isDark]);
 
   return (
-    <div className="w-full h-[500px] sm:h-[600px] md:h-[680px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-slate-900 dark:bg-[#070a12] overflow-hidden shadow-2xl relative">
-      {/* Legend Top Bar */}
-      <div className="absolute top-4 left-4 z-10 bg-slate-900/90 dark:bg-zinc-900/90 backdrop-blur-md px-4 py-2 rounded-xl border border-zinc-700/80 dark:border-zinc-800 text-xs flex items-center gap-3 shadow-md">
-        <div className="flex items-center gap-1.5 font-bold text-zinc-100">
-          <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
-          <span>{lang === "id" ? "Integrasi Pipa Data Real-Time" : "Real-Time Data Pipeline Flow"}</span>
-        </div>
-        <span className="text-zinc-600 dark:text-zinc-700">|</span>
-        <span className="text-[11px] text-zinc-400">
-          {lang === "id" ? "Gunakan mouse untuk zoom & pan" : "Drag to pan · Scroll to zoom"}
+    <div
+      className={`w-full h-[580px] sm:h-[680px] rounded-2xl border border-zinc-200/90 dark:border-zinc-800 transition-colors duration-300 overflow-hidden shadow-2xl relative ${
+        isDark ? "bg-slate-950" : "bg-[#f8f6f1]"
+      }`}
+    >
+      {/* Top Legend Bar */}
+      <div className="absolute top-4 left-4 z-20 flex items-center gap-3 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-zinc-200 dark:border-slate-800 backdrop-blur-md shadow-xs">
+        <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+        <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider font-mono">
+          {lang === "id" ? "Peta Integrasi Sinergi 5 Pillar TI" : "5 Pillars IT Synergy Topology"}
         </span>
       </div>
 
       <ReactFlow
         nodes={nodes}
         edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.25 }}
-        minZoom={0.4}
+        fitViewOptions={{ padding: 0.18 }}
+        minZoom={0.5}
         maxZoom={1.5}
         proOptions={{ hideAttribution: true }}
       >
-        <Background variant={BackgroundVariant.Dots} gap={24} size={1.5} color="#475569" className="opacity-60" />
-        <Controls className="!bg-white dark:!bg-zinc-900 !border-zinc-200 dark:!border-zinc-800 !rounded-xl !shadow-lg !text-zinc-800 dark:!text-zinc-200 [&_button]:!border-zinc-200 dark:[&_button]:!border-zinc-800 [&_button:hover]:!bg-zinc-100 dark:[&_button:hover]:!bg-zinc-800" />
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={20}
+          size={1}
+          color={isDark ? "#334155" : "#cbd5e1"}
+        />
+        <Controls
+          showInteractive={false}
+          className="!bg-white/90 dark:!bg-slate-900/90 !border-zinc-200 dark:!border-slate-800 !text-zinc-800 dark:!text-zinc-200 !rounded-xl overflow-hidden shadow-lg"
+        />
       </ReactFlow>
     </div>
   );
 }
-
