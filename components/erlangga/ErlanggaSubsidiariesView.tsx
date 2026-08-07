@@ -435,14 +435,19 @@ function SubsidiaryCardItem({ sub, lang }: { sub: any; lang: "id" | "en" }) {
             </p>
           </div>
 
-          {/* KPI HIGHLIGHT */}
-          <div className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0">
+          {/* KPI HIGHLIGHT (Vertical Bullet Points) */}
+          <div className="px-3.5 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0 space-y-1">
             <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
               {lang === "id" ? "Target Impact ROI TI" : "Target IT ROI Impact"}
             </p>
-            <p className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 mt-0.5">
-              {sub.kpiImpact}
-            </p>
+            <ul className="space-y-1 pt-0.5">
+              {sub.kpiImpact.split(" · ").map((item: string, idx: number) => (
+                <li key={idx} className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
