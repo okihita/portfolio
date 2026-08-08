@@ -389,18 +389,18 @@ export default function ErlanggaRoadmapView() {
 
           {/* SEARCH & FRAMEWORK GROUP FILTER TOOLBAR */}
           <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm space-y-5">
-            {/* REAL-TIME EXECUTION AUDIT PROGRESS BAR */}
-            <div className="p-4 sm:p-5 rounded-xl bg-slate-900 text-white border border-slate-800 shadow-md space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            {/* REAL-TIME EXECUTION AUDIT PROGRESS BAR (Dual Light/Dark Theme) */}
+            <div className="p-4 sm:p-5 rounded-xl bg-slate-100/90 dark:bg-slate-900 text-zinc-900 dark:text-white border border-zinc-200 dark:border-slate-800 shadow-md space-y-3 transition-colors duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-200 dark:border-slate-800 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-blue-300">
+                    <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-blue-600 dark:text-blue-300">
                       {lang === "id" ? "Kemajuan Audit Eksekusi Real-Time" : "Real-Time Execution Audit Progress"}
                     </span>
-                    <h4 className="text-base sm:text-lg font-bold text-zinc-100 mt-0.5 font-mono">
+                    <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-0.5 font-mono">
                       {completedCount} / {totalItemsCount} {lang === "id" ? "Inisiatif Selesai" : "Initiatives Completed"} ({progressPercent}%)
                     </h4>
                   </div>
@@ -409,13 +409,13 @@ export default function ErlanggaRoadmapView() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={checkAllPhase1}
-                    className="px-3 py-1.5 rounded-lg bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 border border-blue-500/40 text-xs font-semibold cursor-pointer transition-all"
+                    className="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/30 hover:bg-blue-100 dark:hover:bg-blue-600/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 text-xs font-semibold cursor-pointer transition-all"
                   >
                     {lang === "id" ? "Centang Bulan 1" : "Check Month 1"}
                   </button>
                   <button
                     onClick={resetAllProgress}
-                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold cursor-pointer transition-all"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 text-xs font-semibold cursor-pointer transition-all shadow-2xs"
                   >
                     {lang === "id" ? "Reset" : "Reset"}
                   </button>
@@ -423,7 +423,7 @@ export default function ErlanggaRoadmapView() {
               </div>
 
               {/* Progress Bar Track */}
-              <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 transition-all duration-500 rounded-full"
                   style={{ width: `${progressPercent}%` }}
