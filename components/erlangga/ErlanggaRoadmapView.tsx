@@ -245,9 +245,52 @@ export default function ErlanggaRoadmapView() {
     3: true
   });
 
+  // Persistent Checked Items State (localStorage)
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+
   useEffect(() => {
     setMounted(true);
+    try {
+      const saved = localStorage.getItem("erlangga_roadmap_checked_v1");
+      if (saved) {
+        setCheckedItems(JSON.parse(saved));
+      }
+    } catch {
+      // Fallback
+    }
   }, []);
+
+  const toggleItemCheck = (itemId: string) => {
+    setCheckedItems((prev) => {
+      const next = { ...prev, [itemId]: !prev[itemId] };
+      try {
+        localStorage.setItem("erlangga_roadmap_checked_v1", JSON.stringify(next));
+      } catch {}
+      return next;
+    });
+  };
+
+  const resetAllProgress = () => {
+    setCheckedItems({});
+    try {
+      localStorage.removeItem("erlangga_roadmap_checked_v1");
+    } catch {}
+  };
+
+  const checkAllPhase1 = () => {
+    const month1Data = COMPREHENSIVE_ROADMAP_CHECKLIST[1];
+    if (!month1Data) return;
+    const newChecked = { ...checkedItems };
+    month1Data.columns.forEach((col) => {
+      col.items.forEach((item) => {
+        newChecked[item.id] = true;
+      });
+    });
+    setCheckedItems(newChecked);
+    try {
+      localStorage.setItem("erlangga_roadmap_checked_v1", JSON.stringify(newChecked));
+    } catch {}
+  };
 
   const toggleLang = () => {
     setLang((prev) => (prev === "id" ? "en" : "id"));
@@ -262,6 +305,11 @@ export default function ErlanggaRoadmapView() {
 
   const t = TRANSLATIONS[lang];
   const detailedRoadmap = ROADMAP_DATA[lang];
+
+  // Calculate Progress Metrics
+  const totalItemsCount = 108;
+  const completedCount = Object.values(checkedItems).filter(Boolean).length;
+  const progressPercent = Math.min(100, Math.round((completedCount / totalItemsCount) * 100));
 
   // Helper function to check if an item matches selected framework group
   const isItemInFrameworkGroup = (item: ChecklistItem, groupKey: FrameworkGroupKey): boolean => {
@@ -341,6 +389,48 @@ export default function ErlanggaRoadmapView() {
 
           {/* SEARCH & FRAMEWORK GROUP FILTER TOOLBAR */}
           <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm space-y-5">
+            {/* REAL-TIME EXECUTION AUDIT PROGRESS BAR */}
+            <div className="p-4 sm:p-5 rounded-xl bg-slate-900 text-white border border-slate-800 shadow-md space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-blue-300">
+                      {lang === "id" ? "Kemajuan Audit Eksekusi Real-Time" : "Real-Time Execution Audit Progress"}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-bold text-zinc-100 mt-0.5 font-mono">
+                      {completedCount} / {totalItemsCount} {lang === "id" ? "Inisiatif Selesai" : "Initiatives Completed"} ({progressPercent}%)
+                    </h4>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={checkAllPhase1}
+                    className="px-3 py-1.5 rounded-lg bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 border border-blue-500/40 text-xs font-semibold cursor-pointer transition-all"
+                  >
+                    {lang === "id" ? "Centang Bulan 1" : "Check Month 1"}
+                  </button>
+                  <button
+                    onClick={resetAllProgress}
+                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold cursor-pointer transition-all"
+                  >
+                    {lang === "id" ? "Reset" : "Reset"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Progress Bar Track */}
+              <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 transition-all duration-500 rounded-full"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+            </div>
+
             {/* Search Input */}
             <div className="relative w-full">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -515,33 +605,67 @@ export default function ErlanggaRoadmapView() {
                               </div>
 
                               {/* Checklist Items List */}
-                              <div className="space-y-4 divide-y divide-zinc-100 dark:divide-zinc-800/60">
+                              <div className="space-y-3 divide-y divide-zinc-100 dark:divide-zinc-800/60">
                                 {filteredItems.length === 0 ? (
                                   <p className="text-xs text-zinc-400 italic py-4">
                                     {lang === "id" ? "Tidak ada inisiatif yang cocok dengan filter." : "No initiatives match selected filter."}
                                   </p>
                                 ) : (
-                                  filteredItems.map((item) => (
-                                    <div key={item.id} className="pt-4 first:pt-0 space-y-2.5">
-                                      <h6 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
-                                        {item.title[lang]}
-                                      </h6>
+                                  filteredItems.map((item) => {
+                                    const isChecked = Boolean(checkedItems[item.id]);
 
-                                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
-                                        {item.description[lang]}
-                                      </p>
+                                    return (
+                                      <div
+                                        key={item.id}
+                                        onClick={() => toggleItemCheck(item.id)}
+                                        className={`pt-3 first:pt-0 space-y-2 p-2.5 rounded-xl transition-all cursor-pointer border ${
+                                          isChecked
+                                            ? "bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-900/60"
+                                            : "bg-transparent border-transparent hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
+                                        }`}
+                                      >
+                                        <div className="flex items-start gap-2.5">
+                                          <input
+                                            type="checkbox"
+                                            checked={isChecked}
+                                            onChange={() => {}} // Handled by container onClick
+                                            className="mt-1 w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500 cursor-pointer shrink-0"
+                                          />
+                                          <div className="space-y-1.5 flex-1">
+                                            <h6
+                                              className={`text-xs sm:text-sm font-bold leading-snug transition-all ${
+                                                isChecked
+                                                  ? "line-through text-zinc-400 dark:text-zinc-500"
+                                                  : "text-zinc-900 dark:text-zinc-100"
+                                              }`}
+                                            >
+                                              {item.title[lang]}
+                                            </h6>
 
-                                      {/* Target KPI Callout Pill */}
-                                      <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                                        <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500">
-                                          {item.framework}
-                                        </span>
-                                        <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
-                                          {item.kpi[lang]}
-                                        </span>
+                                            <p
+                                              className={`text-xs leading-relaxed font-normal transition-all ${
+                                                isChecked
+                                                  ? "text-zinc-400 dark:text-zinc-500"
+                                                  : "text-zinc-600 dark:text-zinc-300"
+                                              }`}
+                                            >
+                                              {item.description[lang]}
+                                            </p>
+
+                                            {/* Target KPI Callout Pill */}
+                                            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                                              <span className="text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                                {item.framework}
+                                              </span>
+                                              <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
+                                                {item.kpi[lang]}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
-                                    </div>
-                                  ))
+                                    );
+                                  })
                                 )}
                               </div>
                             </div>
