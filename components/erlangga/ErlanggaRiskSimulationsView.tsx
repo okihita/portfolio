@@ -62,7 +62,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Menerapkan load balancing, pemrosesan antrean pesanan asynchronous, scaling read-replica basis data, dan frozen code window agar sistem tidak mengalami crash.",
       result: "Pemenuhan pesanan berjalan 100% lancar dengan visibilitas stok real-time.",
       prevention: "Kapasitas server otomatis dinaikkan 3x lipat 2 minggu sebelum puncak Juli.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_july_spike_risograph.jpg",
       timelineDate: "Senin, 14 Juli 2025",
       incidentTimeline: [
         {
@@ -105,7 +105,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Mengembangkan microservices cloud auto-scaling di GCP/AWS dengan CDN edge caching, terpisah dari basis data ERP transaksional.",
       result: "Uptime 100% selama ujian nasional dengan biaya cloud terkendali.",
       prevention: "Stress-testing beban 500k pengguna bersamaan dilakukan setiap kuartal.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg",
       timelineDate: "Rabu, 14 Mei 2025",
       incidentTimeline: [
         {
@@ -148,7 +148,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Menggunakan arsitektur WMS/POS offline-first berbasis edge caching lokal. Data tersinkronisasi otomatis saat internet pulih.",
       result: "Pengiriman buku cabang tetap berjalan tanpa hambatan meski jaringan publik terputus.",
       prevention: "Koneksi cadangan 4G/5G LTE otomatis aktif saat jalur fiber optik terputus.",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_wan_outage_risograph.jpg",
       timelineDate: "Kamis, 20 November 2025",
       incidentTimeline: [
         {
@@ -191,7 +191,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Menerapkan lapisan API gateway dua arah dengan mekanisme pessimistic locking stok sementara selama proses transaksi.",
       result: "Mencegah kesalahan penjualan ganda (double-booking) dan menjaga ketepatan alokasi stok.",
       prevention: "Pemberitahuan sisa stok otomatis dikirim ke ponsel sales reps secara real-time.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_crm_erp_sync_risograph.jpg",
       timelineDate: "Selasa, 9 September 2025",
       incidentTimeline: [
         {
@@ -234,7 +234,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Agent EDR otomatis mengisolasi perangkat dari jaringan internal cabang dalam kurun waktu kurang dari 30 detik.",
       result: "Serangan berhasil dicegah sepenuhnya tanpa menyebar ke peladen pusat HQ Ciracas.",
       prevention: "Kebijakan Zero Trust Network Access (ZTNA) dan pembaruan patch keamanan otomatis.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_secops_edr_risograph.jpg",
       timelineDate: "Jumat, 24 Oktober 2025",
       incidentTimeline: [
         {
@@ -277,7 +277,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Sistem DNS failover otomatis mengarahkan lalu lintas data ke Disaster Recovery Center cloud di AWS/GCP (RTO < 2 jam, RPO < 15 menit).",
       result: "Seluruh layanan penerbitan dan platform digital dapat diakses kembali tanpa kehilangan data transaksi.",
       prevention: "Simulasi pengalihan bencana (DRP Failover Test) wajib dijalankan setiap 6 bulan.",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_drc_failover_risograph.jpg",
       timelineDate: "Minggu, 15 Maret 2026",
       incidentTimeline: [
         {
@@ -328,7 +328,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Implement load balancing, queue-based order processing, database read-replica scaling, and peak-season frozen code windows.",
       result: "100% order fulfillment uninterrupted with real-time stock visibility.",
       prevention: "Auto-scaling capacity increased 3x 2 weeks prior to peak July season.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_july_spike_risograph.jpg",
       timelineDate: "Monday, July 14, 2025",
       incidentTimeline: [
         {
@@ -371,7 +371,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Deploy auto-scaling cloud microservices on GCP/AWS with CDN edge caching, decoupled from transactional ERP backends.",
       result: "100% uptime during national exam windows with optimized cloud expenditure.",
       prevention: "Quarterly stress testing simulating 500k concurrent exam takers.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg",
       timelineDate: "Wednesday, May 14, 2025",
       incidentTimeline: [
         {
@@ -414,7 +414,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Utilize offline-first WMS/POS local caching so warehouse staff continue scanning and shipping books, auto-syncing transactions once online.",
       result: "Zero disruption to warehouse shipments despite network outages.",
       prevention: "Automatic 4G/5G LTE failover links configured for all 40+ branch nodes.",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_wan_outage_risograph.jpg",
       timelineDate: "Thursday, November 20, 2025",
       incidentTimeline: [
         {
@@ -457,7 +457,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Implement bidirectional API gateway with pessimistic inventory locking during active checkout flows.",
       result: "Eliminates double-booking errors and ensures accurate stock allocation.",
       prevention: "Real-time stock threshold alerts sent directly to sales reps' mobile devices.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_crm_erp_sync_risograph.jpg",
       timelineDate: "Tuesday, September 9, 2025",
       incidentTimeline: [
         {
@@ -500,7 +500,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Endpoint EDR agent isolates the workstation from the branch LAN within 30 seconds.",
       result: "Threat completely contained without affecting central Ciracas HQ servers.",
       prevention: "Zero Trust Network Access (ZTNA) and automated security patch management.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_secops_edr_risograph.jpg",
       timelineDate: "Friday, October 24, 2025",
       incidentTimeline: [
         {
@@ -543,7 +543,7 @@ const ALL_RISK_SIMULATIONS_DATA = {
       action: "Automated DNS failover routes all enterprise traffic to AWS/GCP Cloud DRC (RTO < 2 hrs, RPO < 15 mins).",
       result: "All publishing and digital learning services restored with zero transaction data loss.",
       prevention: "Bi-annual automated Disaster Recovery (DRP) failover simulation drills.",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+      image: "/images/erlangga/risk_drc_failover_risograph.jpg",
       timelineDate: "Sunday, March 15, 2026",
       incidentTimeline: [
         {
@@ -658,7 +658,7 @@ export default function ErlanggaRiskSimulationsView() {
                 >
                   <div className="space-y-6">
                     {/* Illustration Header Image */}
-                    <div className="relative h-48 w-full bg-zinc-900 overflow-hidden">
+                    <div className="relative h-64 sm:h-72 md:h-80 w-full bg-zinc-900 overflow-hidden">
                       <img
                         src={item.image}
                         alt={item.title}
