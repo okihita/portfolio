@@ -657,26 +657,26 @@ export default function ErlanggaRiskSimulationsView() {
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/70 overflow-hidden flex flex-col justify-between shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
                 >
                   <div className="space-y-6">
-                    {/* Illustration Header Image */}
-                    <div className="relative h-64 sm:h-72 md:h-80 w-full bg-zinc-900 overflow-hidden">
+                    {/* Illustration Header Image (100% Unobscured Risograph Art) */}
+                    <div className="relative h-64 sm:h-72 md:h-80 w-full bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/80 dark:border-zinc-800">
                       <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent"></div>
-                      
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2">
-                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
-                          {item.tag}
-                        </span>
-                        <span className="text-[10px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-600 text-white shadow-xs">
-                          CASE STUDY #{caseStudyNum}
-                        </span>
-                      </div>
                     </div>
 
                     <div className="px-6 space-y-5">
+                      {/* Meta Pill Badges (Non-obstructing below image) */}
+                      <div className="flex items-center justify-between gap-2 pt-1">
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                          {item.tag}
+                        </span>
+                        <span className="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
+                          CASE STUDY #{caseStudyNum}
+                        </span>
+                      </div>
+
                       {/* Case Study Title */}
                       <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 leading-snug">
                         {item.title}
