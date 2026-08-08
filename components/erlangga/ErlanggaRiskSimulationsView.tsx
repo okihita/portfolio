@@ -5,14 +5,7 @@ import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import {
   CheckCircle2,
-  AlertTriangle,
-  Flame,
-  Zap,
   Mail,
-  ShieldAlert,
-  Server,
-  RefreshCw,
-  ArrowRight,
   ShieldCheck
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
@@ -63,7 +56,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
   id: [
     {
       id: "school-opening",
-      icon: Flame,
       tag: "Puncak Musim Juli",
       title: "1. Lonjakan Pesanan Musim Masuk Sekolah (Puncak Juli)",
       context: "Jutaan pesanan buku pelajaran dari toko buku dan sekolah membanjiri ERP Dynamics dan gudang cabang secara bersamaan.",
@@ -74,7 +66,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "exam-season",
-      icon: Zap,
       tag: "Erlangga Digital",
       title: "2. Lonjakan Trafik Ujian Online Nasional (CBT)",
       context: "Ratusan ribu siswa mengakses platform Erlangga Digital secara bersamaan untuk ujian online nasional.",
@@ -85,7 +76,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "branch-outage",
-      icon: AlertTriangle,
       tag: "Ketahanan Jaringan",
       title: "3. Putusnya Jaringan Fiber Optik Cabang Regional (e.g. Kupang / Medan)",
       context: "Kabel fiber optik terputus di cabang regional, memutuskan koneksi internet gudang ke Kantor Pusat.",
@@ -96,7 +86,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "data-conflict",
-      icon: RefreshCw,
       tag: "Integrasi ERP & CRM",
       title: "4. Konflik Sinkronisasi Data Penjualan CRM & Inventaris ERP",
       context: "Sales reps di lapangan memperbarui pesanan di Qontak CRM saat stok di Microsoft Dynamics ERP sedang terbatas.",
@@ -107,7 +96,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "security-threat",
-      icon: ShieldAlert,
       tag: "Keamanan SecOps",
       title: "5. Percobaan Serangan Ransomware / Zero-Day Endpoint Cabang",
       context: "Perangkat komputer cabang terdeteksi mengunduh berkas mencurigakan yang berpotensi menyebarkan malware.",
@@ -118,7 +106,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "drp-failover",
-      icon: Server,
       tag: "Pemulihan Bencana DRP",
       title: "6. Uji Pengalihan Pemulihan Bencana (DRC Cloud Failover)",
       context: "Peladen utama Data Center HQ Ciracas mengalami gangguan total akibat kegagalan daya atau krisis lokal.",
@@ -131,7 +118,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
   en: [
     {
       id: "school-opening",
-      icon: Flame,
       tag: "Peak July Season",
       title: "1. School Opening Season Order Spike (July Peak)",
       context: "Millions of textbook orders from bookstores and schools flood ERP Dynamics and branch warehouses simultaneously.",
@@ -142,7 +128,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "exam-season",
-      icon: Zap,
       tag: "Erlangga Digital",
       title: "2. National Exam Traffic Spike (CBT)",
       context: "Hundreds of thousands of students take online exams on Erlangga Digital simultaneously.",
@@ -153,7 +138,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "branch-outage",
-      icon: AlertTriangle,
       tag: "Network Resilience",
       title: "3. Regional Branch Fiber Cut (e.g. Kupang / Medan Warehouse)",
       context: "A major fiber cut disconnects a regional branch warehouse from HQ servers.",
@@ -164,7 +148,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "data-conflict",
-      icon: RefreshCw,
       tag: "ERP & CRM Integration",
       title: "4. CRM Sales & ERP Inventory Sync Conflict",
       context: "Field sales reps update bulk orders in Qontak CRM while ERP inventory levels are low.",
@@ -175,7 +158,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "security-threat",
-      icon: ShieldAlert,
       tag: "SecOps Security",
       title: "5. Ransomware / Zero-Day Branch Endpoint Intrusion Attempt",
       context: "A branch workstation detects an unauthorized file download attempting to spread internal malware.",
@@ -186,7 +168,6 @@ const ALL_RISK_SIMULATIONS_DATA = {
     },
     {
       id: "drp-failover",
-      icon: Server,
       tag: "DRP Disaster Recovery",
       title: "6. Primary Data Center Failover Test (DRC Cloud Switch)",
       context: "Primary HQ Ciracas data center experiences a total power or catastrophic hardware outage.",
@@ -259,65 +240,81 @@ export default function ErlanggaRiskSimulationsView() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {allSimulations.map((item) => {
-              const Icon = item.icon;
+            {allSimulations.map((item, index) => {
+              const caseStudyNum = String(index + 1).padStart(2, "0");
+
               return (
                 <div
                   key={item.id}
-                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden space-y-0 flex flex-col justify-between shadow-xs"
+                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/70 overflow-hidden flex flex-col justify-between shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
                 >
-                  <div className="space-y-5">
-                    {/* Illustration Image */}
+                  <div className="space-y-6">
+                    {/* Illustration Header Image */}
                     <div className="relative h-48 w-full bg-zinc-900 overflow-hidden">
                       <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                      <span className="absolute bottom-3 left-4 text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
-                        {item.tag}
-                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent"></div>
+                      
+                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2">
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
+                          {item.tag}
+                        </span>
+                        <span className="text-[10px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-600 text-white shadow-xs">
+                          CASE STUDY #{caseStudyNum}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="px-6 space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 mt-0.5">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-snug">{item.title}</h3>
-                      </div>
+                    <div className="px-6 space-y-5">
+                      {/* Case Study Title */}
+                      <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 leading-snug">
+                        {item.title}
+                      </h3>
 
-                      <div className="space-y-2">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-red-600 dark:text-red-400 block">
+                      {/* Block 1: Business Problem Context (Red) */}
+                      <div className="p-4 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200/60 dark:border-red-900/40 space-y-1.5">
+                        <span className="text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 block">
                           {lang === "id" ? "Konteks Masalah & Kebutuhan Bisnis:" : "Business Problem Context:"}
                         </span>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
                           {item.context}
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/70 dark:border-zinc-700/60 space-y-1">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
+                      {/* Block 2: IT Managerial Response Action (Blue) */}
+                      <div className="p-4 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 space-y-1.5">
+                        <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
                           {lang === "id" ? "Tindakan Respon Manajerial TI:" : "IT Managerial Response Action:"}
                         </span>
-                        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
                           {item.action}
                         </p>
                       </div>
 
-                      <div className="p-3.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm text-zinc-800 dark:text-zinc-200 space-y-1">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block">
+                      {/* Block 3: Long-Term Prevention Protocol (Amber) */}
+                      <div className="p-4 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 space-y-1.5">
+                        <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 block">
                           {lang === "id" ? "Protokol Pencegahan Jangka Panjang:" : "Long-Term Prevention Protocol:"}
                         </span>
-                        <p>{item.prevention}</p>
+                        <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                          {item.prevention}
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-6 pt-4 mt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 font-semibold">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-                    <span>{lang === "id" ? "Hasil Capaian Sistem:" : "System Resolution Benchmark:"} {item.result}</span>
+                  {/* Block 4: System Resolution Benchmark (Emerald Footer) */}
+                  <div className="p-5 mx-6 mb-6 mt-6 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/60 space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                      <span>{lang === "id" ? "Hasil Capaian Sistem:" : "System Resolution Benchmark:"}</span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed pl-6">
+                      {item.result}
+                    </p>
                   </div>
                 </div>
               );
