@@ -703,37 +703,46 @@ export default function ErlanggaRiskSimulationsView() {
                           </span>
                         </div>
 
-                        {/* Vertical Timeline Steps (100% Pixel-Exact Center Alignment) */}
-                        <div className="relative pl-6 space-y-4 before:absolute before:left-[6px] before:top-2.5 before:bottom-2.5 before:w-0.5 before:bg-blue-200 dark:before:bg-blue-800/80">
-                          {item.incidentTimeline.map((step, sIdx) => (
-                            <div key={sIdx} className="relative flex items-start gap-3">
-                              {/* Timeline Bullet Node (Perfect Center Match at 7px) */}
-                              <div className={`absolute -left-[24px] top-1 w-3.5 h-3.5 rounded-full border-2 ${
-                                step.badge === "ALERT"
-                                  ? "border-red-500 bg-red-100 dark:bg-red-950 text-red-500 shadow-xs shadow-red-500/50"
-                                  : step.badge === "ACTION"
-                                  ? "border-blue-600 bg-blue-100 dark:bg-blue-950 text-blue-600"
-                                  : step.badge === "MITIGATION"
-                                  ? "border-amber-500 bg-amber-100 dark:bg-amber-950 text-amber-500"
-                                  : "border-emerald-500 bg-emerald-100 dark:bg-emerald-950 text-emerald-500 shadow-xs shadow-emerald-500/50"
-                              }`} />
+                        {/* Vertical Timeline Steps (Line stops strictly at the last bullet node) */}
+                        <div className="relative pl-6 space-y-4">
+                          {item.incidentTimeline.map((step, sIdx) => {
+                            const isLast = sIdx === item.incidentTimeline.length - 1;
 
-                              <div className="space-y-1 flex-1">
-                                <div className="flex flex-wrap items-center justify-between gap-2">
-                                  <span className="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                                    {step.stepTitle}
-                                  </span>
-                                  <span className="text-[10px] font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded border border-blue-200/80 dark:border-blue-800/60">
-                                    {step.time}
-                                  </span>
+                            return (
+                              <div key={sIdx} className="relative flex items-start gap-3">
+                                {/* Inter-step Connecting Line Segment (Terminates at last bullet) */}
+                                {!isLast && (
+                                  <div className="absolute -left-[17px] top-3.5 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800/80 pointer-events-none" />
+                                )}
+
+                                {/* Timeline Bullet Node */}
+                                <div className={`absolute -left-[23px] top-1 w-3.5 h-3.5 rounded-full border-2 z-10 ${
+                                  step.badge === "ALERT"
+                                    ? "border-red-500 bg-red-100 dark:bg-red-950 text-red-500 shadow-xs shadow-red-500/50"
+                                    : step.badge === "ACTION"
+                                    ? "border-blue-600 bg-blue-100 dark:bg-blue-950 text-blue-600"
+                                    : step.badge === "MITIGATION"
+                                    ? "border-amber-500 bg-amber-100 dark:bg-amber-950 text-amber-500"
+                                    : "border-emerald-500 bg-emerald-100 dark:bg-emerald-950 text-emerald-500 shadow-xs shadow-emerald-500/50"
+                                }`} />
+
+                                <div className="space-y-1 flex-1">
+                                  <div className="flex flex-wrap items-center justify-between gap-2">
+                                    <span className="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                                      {step.stepTitle}
+                                    </span>
+                                    <span className="text-[10px] font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded border border-blue-200/80 dark:border-blue-800/60">
+                                      {step.time}
+                                    </span>
+                                  </div>
+
+                                  <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
+                                    {step.desc}
+                                  </p>
                                 </div>
-
-                                <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
-                                  {step.desc}
-                                </p>
                               </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </div>
 
