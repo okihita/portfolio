@@ -250,7 +250,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Prediksi Permintaan Berbasis ML & Print-On-Demand (POD) Presisi.",
       impact: "Memangkas pemborosan stok berlebih 35% & mempercepat siklus cetak ulang dari 14 hari menjadi 48 jam.",
       badge: "Efisiensi Cetak & Kecepatan",
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "edtech",
@@ -260,7 +260,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Paket Lisensi SaaS B2B Sekolah & Konten Digital Berlangganan.",
       impact: "Membuka arus pendapatan berulang (Recurring Revenue) dari 5.000+ sekolah mitra di seluruh Indonesia.",
       badge: "Pendapatan Digital Berulang (B2B SaaS)",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg"
     },
     {
       id: "logistics",
@@ -270,7 +270,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Routing Stok Presisi WMS/POS Real-Time & Pemenuhan Langsung ke Sekolah.",
       impact: "Memangkas siklus pengiriman 50% & menghilangkan potensi kerugian penjualan akibat stok habis.",
       badge: "Percepatan Perputaran Stok Cabang",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/eureka_logi_risograph.jpg"
     },
     {
       id: "commercial",
@@ -280,7 +280,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Integrasi Multi-Channel E-Commerce D2C & Otomatisasi Penjualan 24/7.",
       impact: "Menghubungkan katalog ke Tokopedia, Shopee, dan TikTok Shop secara otomatis dengan rekonsiliasi instan.",
       badge: "Penjualan Langsung D2C 24/7",
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     },
     {
       id: "higher-ed",
@@ -290,7 +290,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Portal Library Digital (e-Book License) & Berlangganan Kampus SaaS.",
       impact: "Monetisasi lisensi perpustakaan digital kampus & penetrasi pasar 4.500+ perguruan tinggi secara langsung.",
       badge: "Lisensi Perpustakaan Digital B2B",
-      image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/erlangga_pub_43.jpg"
     },
     {
       id: "training-center",
@@ -300,7 +300,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Platform Event Hybrid & LMS Sertifikasi Guru Terintegrasi Payment Gateway.",
       impact: "Menciptakan pendapatan baru dari biaya pendaftaran webinar/pelatihan guru berlisensi nasional (100k+ peserta).",
       badge: "Pendapatan Pelatihan Hybrid",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/erlass_inst_risograph.jpg"
     },
     {
       id: "printing-hub",
@@ -310,7 +310,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Portal B2B Job Tracking & Marketplace Kapasitas Cetak Pihak Ketiga.",
       impact: "Mengubah kapasitas idle mesin cetak pabrik menjadi pendapatan tambahan dari klien komersial eksternal.",
       badge: "Monetisasi Kapasitas Mesin Cetak",
-      image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/gap_print_risograph.jpg"
     }
   ],
   en: [
@@ -322,7 +322,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: ML Demand Forecasting & Precision Print-On-Demand (POD).",
       impact: "Cuts overprinting inventory waste by 35% & accelerates reprint turnarounds from 14 days to 48 hours.",
       badge: "Print Efficiency & Speed",
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "edtech",
@@ -332,7 +332,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: B2B School SaaS Licensing & Subscription Digital Content.",
       impact: "Generates recurring B2B digital revenue streams across 5,000+ partner schools nationwide.",
       badge: "B2B SaaS Recurring Revenue",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg"
     },
     {
       id: "logistics",
@@ -342,7 +342,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Real-Time WMS/POS Inventory Routing & Direct School Fulfillment.",
       impact: "Cuts delivery lead time by 50% & eliminates stockout revenue leakage across 40+ regional hubs.",
       badge: "Inventory Velocity Enabler",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/eureka_logi_risograph.jpg"
     },
     {
       id: "commercial",
@@ -352,7 +352,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Multi-Channel D2C E-Commerce Integration & Automated Sales.",
       impact: "Syncs inventory to Tokopedia, Shopee, and TikTok Shop with automated real-time invoice reconciliation.",
       badge: "24/7 Direct-to-Consumer Growth",
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     },
     {
       id: "higher-ed",
@@ -362,7 +362,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Digital Library Portal (e-Book Licensing) & Campus SaaS Subscriptions.",
       impact: "Monetizes campus digital library licenses & directly reaches 4,500+ universities nationwide.",
       badge: "B2B Digital Campus Licensing",
-      image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/erlangga_pub_43.jpg"
     },
     {
       id: "training-center",
@@ -372,7 +372,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Hybrid Event Platform & Teacher Certification LMS with Payment Gateways.",
       impact: "Creates new recurring revenues from certified teacher national training programs (100k+ attendees).",
       badge: "Hybrid Training Monetization",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/erlass_inst_risograph.jpg"
     },
     {
       id: "printing-hub",
@@ -382,7 +382,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: B2B Job Tracking Portal & Third-Party Printing Capacity Marketplace.",
       impact: "Converts off-peak idle printing press capacity into high-margin revenue from external commercial clients.",
       badge: "Press Capacity Monetization",
-      image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/gap_print_risograph.jpg"
     }
   ]
 };
@@ -399,7 +399,7 @@ const CASE_SCENARIOS_DATA = {
       context: "Jutaan pesanan buku pelajaran membanjiri ERP Dynamics dan gudang cabang secara bersamaan.",
       action: "Menerapkan load balancing, pemrosesan antrean pesanan, scaling read-replica basis data, dan frozen code window agar sistem tidak pernah crash.",
       result: "Pemenuhan pesanan berjalan lancar dengan visibilitas stok real-time.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_july_spike_risograph.jpg"
     },
     {
       id: "exam-season",
@@ -419,7 +419,7 @@ const CASE_SCENARIOS_DATA = {
       context: "Kabel fiber optik terputus di cabang regional (e.g. Kupang / Medan), memutuskan koneksi internet gudang ke HQ.",
       action: "Menggunakan arsitektur WMS/POS offline-first berbasis edge caching lokal. Data tersinkronisasi otomatis saat internet pulih.",
       result: "Pengiriman buku cabang tetap berjalan tanpa hambatan meski jaringan publik terputus.",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_wan_outage_risograph.jpg"
     }
   ],
   en: [
@@ -431,7 +431,7 @@ const CASE_SCENARIOS_DATA = {
       context: "Millions of textbook orders flood ERP Dynamics and branch warehouses simultaneously.",
       action: "Implement load balancing, queue-based order processing, database read-replica scaling, and peak-season frozen code windows.",
       result: "Order fulfillment runs uninterrupted with real-time stock visibility.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_july_spike_risograph.jpg"
     },
     {
       id: "exam-season",
@@ -441,7 +441,7 @@ const CASE_SCENARIOS_DATA = {
       context: "Hundreds of thousands of students take online exams on Erlangga Digital simultaneously.",
       action: "Deploy auto-scaling cloud microservices on GCP/AWS with CDN edge caching, decoupled from transactional ERP backends.",
       result: "100% uptime during national exam windows with optimized cloud expenditure.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg"
     },
     {
       id: "branch-outage",
@@ -451,7 +451,7 @@ const CASE_SCENARIOS_DATA = {
       context: "A major fiber cut disconnects a regional branch warehouse from HQ servers.",
       action: "Utilize offline-first WMS/POS local caching so warehouse staff continue scanning and shipping books, auto-syncing transactions once online.",
       result: "Zero disruption to warehouse shipments despite network outages.",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_wan_outage_risograph.jpg"
     }
   ]
 };
@@ -779,15 +779,17 @@ export default function ErlanggaPitchView() {
                 className="w-[88vw] max-w-[540px] sm:w-[540px] shrink-0 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative aspect-[16/9] w-full bg-zinc-900 overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/80 dark:border-zinc-800">
                     <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                    <span className="absolute bottom-4 left-5 text-xs font-bold px-3 py-1 rounded-md bg-blue-950/90 text-blue-300 border border-blue-700/60 backdrop-blur-xs">
-                      {bu.badge}
-                    </span>
                   </div>
 
                   <div className="p-7 sm:p-8 space-y-5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-bold px-3 py-1 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
+                        {bu.badge}
+                      </span>
+                    </div>
+
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">{bu.unit}</h3>
                       <span className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">{bu.subTitle}</span>
@@ -831,19 +833,20 @@ export default function ErlanggaPitchView() {
                   className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden space-y-0 flex flex-col justify-between shadow-xs"
                 >
                   <div className="space-y-4">
-                    <div className="relative aspect-[16/9] w-full bg-zinc-900 overflow-hidden">
+                    <div className="relative aspect-[16/9] w-full bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/80 dark:border-zinc-800">
                       <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-                      <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-950/80 text-zinc-200 border border-white/20 backdrop-blur-xs">
-                        {item.tag}
-                      </span>
                     </div>
 
-                    <div className="px-6 space-y-3">
+                    <div className="px-6 space-y-3 pt-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                          {item.tag}
+                        </span>
+                      </div>
                       <div className="flex items-center gap-2">
                         <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-400">
                           <Icon className="w-3.5 h-3.5" />
