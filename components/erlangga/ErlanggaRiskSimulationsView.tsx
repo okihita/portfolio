@@ -703,20 +703,20 @@ export default function ErlanggaRiskSimulationsView() {
                           </span>
                         </div>
 
-                        {/* Vertical Timeline Steps (Inter-step line segments stop strictly at center of last bullet) */}
+                        {/* Vertical Timeline Steps (Inter-step line segments connect touch-to-touch from 1st to last bullet) */}
                         <div className="relative pl-6 space-y-5">
                           {item.incidentTimeline.map((step, sIdx) => {
                             const isLast = sIdx === item.incidentTimeline.length - 1;
 
                             return (
                               <div key={sIdx} className="relative flex items-start gap-3">
-                                {/* Inter-step Connecting Line Segment (Starts at bullet center, extends to next bullet center; 0 line on last item) */}
+                                {/* Inter-step Connecting Line Segment (Connects dot to dot, stops cleanly at last bullet) */}
                                 {!isLast && (
-                                  <div className="absolute -left-[18px] top-2.5 bottom-[-20px] w-0.5 bg-blue-200 dark:bg-blue-800/80 pointer-events-none" />
+                                  <div className="absolute left-[-16.5px] top-2.5 -bottom-5 w-0.5 bg-blue-300 dark:bg-blue-700/80 pointer-events-none z-0" />
                                 )}
 
                                 {/* Timeline Bullet Node */}
-                                <div className={`absolute -left-[24px] top-1 w-3.5 h-3.5 rounded-full border-2 z-10 ${
+                                <div className={`absolute left-[-23px] top-1 w-3.5 h-3.5 rounded-full border-2 z-10 ${
                                   step.badge === "ALERT"
                                     ? "border-red-500 bg-red-100 dark:bg-red-950 text-red-500 shadow-xs shadow-red-500/50"
                                     : step.badge === "ACTION"
