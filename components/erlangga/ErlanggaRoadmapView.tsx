@@ -397,10 +397,10 @@ export default function ErlanggaRoadmapView() {
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-blue-600 dark:text-blue-300">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-blue-300">
                       {lang === "id" ? "Kemajuan Audit Eksekusi Real-Time" : "Real-Time Execution Audit Progress"}
                     </span>
-                    <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-0.5 font-mono">
+                    <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">
                       {completedCount} / {totalItemsCount} {lang === "id" ? "Inisiatif Selesai" : "Initiatives Completed"} ({progressPercent}%)
                     </h4>
                   </div>
