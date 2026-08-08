@@ -710,9 +710,9 @@ export default function ErlanggaRiskSimulationsView() {
 
                             return (
                               <div key={sIdx} className="relative flex items-start gap-3">
-                                {/* Inter-step Connecting Line Segment (Connects dot to dot, stops cleanly at last bullet) */}
+                                {/* Inter-step Connecting Line Segment (Connects dot to dot across 20px space-y-5 gap) */}
                                 {!isLast && (
-                                  <div className="absolute left-[-16px] -translate-x-1/2 top-[11px] -bottom-[11px] w-0.5 bg-blue-300 dark:bg-blue-700/80 pointer-events-none z-0" />
+                                  <div className="absolute left-[-16px] -translate-x-1/2 top-[11px] -bottom-[31px] w-0.5 bg-blue-300 dark:bg-blue-700/80 pointer-events-none z-0" />
                                 )}
 
                                 {/* Timeline Bullet Node */}
