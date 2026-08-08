@@ -703,19 +703,19 @@ export default function ErlanggaRiskSimulationsView() {
                           </span>
                         </div>
 
-                        {/* Vertical Timeline Steps */}
-                        <div className="relative pl-4 space-y-4 before:absolute before:left-1.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-200 dark:before:bg-blue-800/60">
+                        {/* Vertical Timeline Steps (100% Pixel-Exact Center Alignment) */}
+                        <div className="relative pl-6 space-y-4 before:absolute before:left-[6px] before:top-2.5 before:bottom-2.5 before:w-0.5 before:bg-blue-200 dark:before:bg-blue-800/80">
                           {item.incidentTimeline.map((step, sIdx) => (
                             <div key={sIdx} className="relative flex items-start gap-3">
-                              {/* Timeline Bullet Node */}
-                              <div className={`absolute -left-[18px] top-1 w-3 h-3 rounded-full border-2 bg-white dark:bg-zinc-900 ${
+                              {/* Timeline Bullet Node (Perfect Center Match at 7px) */}
+                              <div className={`absolute -left-[24px] top-1 w-3.5 h-3.5 rounded-full border-2 ${
                                 step.badge === "ALERT"
-                                  ? "border-red-500 shadow-xs shadow-red-500/50"
+                                  ? "border-red-500 bg-red-100 dark:bg-red-950 text-red-500 shadow-xs shadow-red-500/50"
                                   : step.badge === "ACTION"
-                                  ? "border-blue-600"
+                                  ? "border-blue-600 bg-blue-100 dark:bg-blue-950 text-blue-600"
                                   : step.badge === "MITIGATION"
-                                  ? "border-amber-500"
-                                  : "border-emerald-500 shadow-xs shadow-emerald-500/50"
+                                  ? "border-amber-500 bg-amber-100 dark:bg-amber-950 text-amber-500"
+                                  : "border-emerald-500 bg-emerald-100 dark:bg-emerald-950 text-emerald-500 shadow-xs shadow-emerald-500/50"
                               }`} />
 
                               <div className="space-y-1 flex-1">
