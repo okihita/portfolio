@@ -270,7 +270,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Routing Stok Presisi WMS/POS Real-Time & Pemenuhan Langsung ke Sekolah.",
       impact: "Memangkas siklus pengiriman 50% & menghilangkan potensi kerugian penjualan akibat stok habis.",
       badge: "Percepatan Perputaran Stok Cabang",
-      image: "/images/erlangga/eureka_logi_risograph.jpg"
+      image: "/images/erlangga/subsidiary_ebh_risograph.jpg"
     },
     {
       id: "commercial",
@@ -290,7 +290,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Portal Library Digital (e-Book License) & Berlangganan Kampus SaaS.",
       impact: "Monetisasi lisensi perpustakaan digital kampus & penetrasi pasar 4.500+ perguruan tinggi secara langsung.",
       badge: "Lisensi Perpustakaan Digital B2B",
-      image: "/images/erlangga/erlangga_pub_43.jpg"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "training-center",
@@ -300,7 +300,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Platform Event Hybrid & LMS Sertifikasi Guru Terintegrasi Payment Gateway.",
       impact: "Menciptakan pendapatan baru dari biaya pendaftaran webinar/pelatihan guru berlisensi nasional (100k+ peserta).",
       badge: "Pendapatan Pelatihan Hybrid",
-      image: "/images/erlangga/erlass_inst_risograph.jpg"
+      image: "/images/erlangga/subsidiary_erlass_risograph.jpg"
     },
     {
       id: "printing-hub",
@@ -310,7 +310,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Penggerak Profitabilitas: Portal B2B Job Tracking & Marketplace Kapasitas Cetak Pihak Ketiga.",
       impact: "Mengubah kapasitas idle mesin cetak pabrik menjadi pendapatan tambahan dari klien komersial eksternal.",
       badge: "Monetisasi Kapasitas Mesin Cetak",
-      image: "/images/erlangga/gap_print_risograph.jpg"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     }
   ],
   en: [
@@ -342,7 +342,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Real-Time WMS/POS Inventory Routing & Direct School Fulfillment.",
       impact: "Cuts delivery lead time by 50% & eliminates stockout revenue leakage across 40+ regional hubs.",
       badge: "Inventory Velocity Enabler",
-      image: "/images/erlangga/eureka_logi_risograph.jpg"
+      image: "/images/erlangga/subsidiary_ebh_risograph.jpg"
     },
     {
       id: "commercial",
@@ -362,7 +362,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Digital Library Portal (e-Book Licensing) & Campus SaaS Subscriptions.",
       impact: "Monetizes campus digital library licenses & directly reaches 4,500+ universities nationwide.",
       badge: "B2B Digital Campus Licensing",
-      image: "/images/erlangga/erlangga_pub_43.jpg"
+      image: "/images/erlangga/subsidiary_pe_risograph.jpg"
     },
     {
       id: "training-center",
@@ -372,7 +372,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: Hybrid Event Platform & Teacher Certification LMS with Payment Gateways.",
       impact: "Creates new recurring revenues from certified teacher national training programs (100k+ attendees).",
       badge: "Hybrid Training Monetization",
-      image: "/images/erlangga/erlass_inst_risograph.jpg"
+      image: "/images/erlangga/subsidiary_erlass_risograph.jpg"
     },
     {
       id: "printing-hub",
@@ -382,7 +382,7 @@ const ERLANGGA_BUSINESS_UNITS_DATA = {
       enablerValue: "Profit Enabler: B2B Job Tracking Portal & Third-Party Printing Capacity Marketplace.",
       impact: "Converts off-peak idle printing press capacity into high-margin revenue from external commercial clients.",
       badge: "Press Capacity Monetization",
-      image: "/images/erlangga/gap_print_risograph.jpg"
+      image: "/images/erlangga/subsidiary_gap_risograph.jpg"
     }
   ]
 };
