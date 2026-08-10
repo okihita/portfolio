@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import {
   CheckCircle2,
-  Mail,
-  ShieldCheck
+  Mail
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
 
@@ -588,21 +587,21 @@ const ALL_RISK_SIMULATIONS_DATA = {
 };
 
 export default function ErlanggaRiskSimulationsView() {
-  const [lang, setLang] = useState<Lang>("en");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const queryLang = params.get("lang");
-
-    if (queryLang === "en" || queryLang === "id") {
-      setLang(queryLang as Lang);
-      localStorage.setItem("erlangga_lang", queryLang);
-    } else {
-      setLang("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const queryLang = params.get("lang");
+      if (queryLang === "en" || queryLang === "id") {
+        return queryLang as Lang;
+      }
+      const saved = localStorage.getItem("erlangga_lang");
+      if (saved === "en" || saved === "id") {
+        return saved as Lang;
+      }
     }
-    setMounted(true);
-  }, []);
+    return "en";
+  });
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   const toggleLang = () => {
     const nextLang: Lang = lang === "id" ? "en" : "id";
@@ -621,7 +620,7 @@ export default function ErlanggaRiskSimulationsView() {
         {/* --- HERO SECTION --- */}
         <section className="space-y-8 border-b border-zinc-200/80 dark:border-zinc-800/80 pb-20">
           <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
               <span>{t.targetBadge}</span>
             </div>
@@ -639,7 +638,7 @@ export default function ErlanggaRiskSimulationsView() {
         {/* === 6 EXPANDED RISK SIMULATIONS === */}
         <section className="space-y-10">
           <div className="space-y-2">
-            <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
               {t.scenarioTag}
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -669,10 +668,10 @@ export default function ErlanggaRiskSimulationsView() {
                     <div className="px-6 space-y-5">
                       {/* Meta Pill Badges (Non-obstructing below image) */}
                       <div className="flex items-center justify-between gap-2 pt-1">
-                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                        <span className="text-sm font-bold px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
                           {item.tag}
                         </span>
-                        <span className="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
+                        <span className="text-sm font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
                           CASE STUDY #{caseStudyNum}
                         </span>
                       </div>
@@ -684,10 +683,10 @@ export default function ErlanggaRiskSimulationsView() {
 
                       {/* Block 1: Business Problem Context (Red) */}
                       <div className="p-4 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200/60 dark:border-red-900/40 space-y-1.5">
-                        <span className="text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 block">
+                        <span className="text-sm font-bold uppercase tracking-wider text-red-600 dark:text-red-400 block">
                           {lang === "id" ? "Konteks Masalah & Kebutuhan Bisnis:" : "Business Problem Context:"}
                         </span>
-                        <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
                           {item.context}
                         </p>
                       </div>
@@ -695,10 +694,10 @@ export default function ErlanggaRiskSimulationsView() {
                       {/* Block 2: IT Managerial Response Action Timeline (Blue) */}
                       <div className="p-4 sm:p-5 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 space-y-4">
                         <div className="flex items-center justify-between border-b border-blue-200/60 dark:border-blue-900/40 pb-2.5">
-                          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
+                          <span className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
                             {lang === "id" ? "Garis Waktu Respon Insiden TI (Incident Response Timeline):" : "IT Incident Response Action Timeline:"}
                           </span>
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                          <span className="text-sm font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                             {item.timelineDate}
                           </span>
                         </div>
@@ -728,15 +727,15 @@ export default function ErlanggaRiskSimulationsView() {
 
                                 <div className="space-y-1 flex-1">
                                   <div className="flex flex-wrap items-center justify-between gap-2">
-                                    <span className="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                                    <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                                       {step.stepTitle}
                                     </span>
-                                    <span className="text-[10px] font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded border border-blue-200/80 dark:border-blue-800/60">
+                                    <span className="text-sm font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded border border-blue-200/80 dark:border-blue-800/60">
                                       {step.time}
                                     </span>
                                   </div>
 
-                                  <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
+                                  <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
                                     {step.desc}
                                   </p>
                                 </div>
@@ -748,10 +747,10 @@ export default function ErlanggaRiskSimulationsView() {
 
                       {/* Block 3: Long-Term Prevention Protocol (Amber) */}
                       <div className="p-4 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 space-y-1.5">
-                        <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 block">
+                        <span className="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 block">
                           {lang === "id" ? "Protokol Pencegahan Jangka Panjang:" : "Long-Term Prevention Protocol:"}
                         </span>
-                        <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
                           {item.prevention}
                         </p>
                       </div>
@@ -760,11 +759,11 @@ export default function ErlanggaRiskSimulationsView() {
 
                   {/* Block 4: System Resolution Benchmark (Emerald Footer) */}
                   <div className="p-5 mx-6 mb-6 mt-6 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/60 space-y-1.5">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
                       <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
                       <span>{lang === "id" ? "Hasil Capaian Sistem:" : "System Resolution Benchmark:"}</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed pl-6">
+                    <p className="text-sm text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed pl-6">
                       {item.result}
                     </p>
                   </div>
@@ -780,7 +779,7 @@ export default function ErlanggaRiskSimulationsView() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
               {t.sec5Title}
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {t.sec5Desc}
             </p>
           </div>
@@ -788,7 +787,7 @@ export default function ErlanggaRiskSimulationsView() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="mailto:okihita@gmail.com?subject=Diskusi%20Manajemen%20Risiko%20-%20PT.%20Penerbit%20Erlangga"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-colors shadow-xs cursor-pointer"
             >
               <Mail className="w-4 h-4" />
               <span>{t.btnEmail}</span>
@@ -798,7 +797,7 @@ export default function ErlanggaRiskSimulationsView() {
               href="https://linkedin.com/in/okihita"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-sm transition-colors cursor-pointer"
             >
               <LinkedinIcon className="w-4 h-4 text-blue-500" />
               <span>{t.btnLinkedin}</span>
@@ -809,7 +808,7 @@ export default function ErlanggaRiskSimulationsView() {
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-zinc-200/80 dark:border-zinc-800/80 py-8 bg-white dark:bg-[#09090b]">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
           <div>
             <span>{t.footerTitle}</span> — <span>Okihita H. Sihaloho</span>
           </div>

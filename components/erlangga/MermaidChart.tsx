@@ -47,10 +47,11 @@ export default function MermaidChart({ chart, className = "" }: MermaidChartProp
           setSvgContent(svg);
           setError(null);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) {
           console.error("Mermaid rendering error:", err);
-          setError(err?.message || "Failed to render diagram");
+          const msg = err instanceof Error ? err.message : "Failed to render diagram";
+          setError(msg);
         }
       }
     }
@@ -66,7 +67,7 @@ export default function MermaidChart({ chart, className = "" }: MermaidChartProp
 
   if (error) {
     return (
-      <div className="p-4 rounded-xl bg-red-950/30 border border-red-800/50 text-red-300 text-xs font-mono">
+      <div className="p-4 rounded-xl bg-red-950/30 border border-red-800/50 text-red-300 text-sm font-mono">
         Error rendering diagram: {error}
       </div>
     );

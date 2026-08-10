@@ -96,11 +96,11 @@ function ErlanggaPipelineNodeComponent({ data }: NodeProps<ErlanggaPipelineNodeO
           </div>
           <div>
             <span
-              className={`px-2 py-0.5 rounded-full text-[10px] uppercase font-mono border ${layerTagStyles[layer]}`}
+              className={`px-2 py-0.5 rounded-full text-sm uppercase font-mono border ${layerTagStyles[layer]}`}
             >
               {typeof layerTag === "object" ? layerTag.en : layerTag}
             </span>
-            <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">{entity}</p>
+            <p className="text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">{entity}</p>
           </div>
         </div>
 
@@ -115,16 +115,16 @@ function ErlanggaPipelineNodeComponent({ data }: NodeProps<ErlanggaPipelineNodeO
 
       {/* NODE BODY */}
       <div className="pt-3 space-y-2">
-        <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
+        <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
           {typeof label === "object" ? label.en : label}
         </h4>
 
         {/* Metric Callout Pill */}
         <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/90 flex items-center justify-between gap-2">
-          <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono uppercase tracking-wider flex items-center gap-1">
+          <span className="text-sm text-zinc-500 dark:text-zinc-400 font-mono uppercase tracking-wider flex items-center gap-1">
             <Activity className="w-3 h-3 text-blue-600 dark:text-blue-400" /> Telemetry
           </span>
-          <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 font-mono">{metric}</span>
+          <span className="text-sm font-bold text-emerald-700 dark:text-emerald-400 font-mono">{metric}</span>
         </div>
       </div>
 

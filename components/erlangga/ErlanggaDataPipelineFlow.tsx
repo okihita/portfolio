@@ -402,7 +402,7 @@ export default function ErlanggaDataPipelineFlow({ lang }: ErlanggaDataPipelineF
       {/* Top Legend Bar */}
       <div className="absolute top-4 left-4 z-20 flex items-center gap-3 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-zinc-200 dark:border-slate-800 backdrop-blur-md shadow-xs">
         <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-        <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider font-mono">
+        <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider font-mono">
           {lang === "id" ? "Pipeline Data Enterprise Real-Time" : "Real-Time Enterprise Data Pipeline"}
         </span>
       </div>

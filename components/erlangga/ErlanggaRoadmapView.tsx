@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import { 
@@ -11,13 +11,11 @@ import {
   Filter,
   ChevronDown,
   ChevronUp,
-  Sparkles,
   CheckCircle2
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
 import { 
   COMPREHENSIVE_ROADMAP_CHECKLIST, 
-  MonthChecklistData, 
   ChecklistItem 
 } from "./roadmapChecklistData";
 
@@ -234,7 +232,7 @@ const ROADMAP_DATA = {
 
 export default function ErlanggaRoadmapView() {
   const [lang, setLang] = useState<Lang>("en");
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGroup, setSelectedGroup] = useState<FrameworkGroupKey>("all");
   
@@ -246,19 +244,17 @@ export default function ErlanggaRoadmapView() {
   });
 
   // Persistent Checked Items State (localStorage)
-  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
-
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const saved = localStorage.getItem("erlangga_roadmap_checked_v1");
-      if (saved) {
-        setCheckedItems(JSON.parse(saved));
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("erlangga_roadmap_checked_v1");
+        if (saved) return JSON.parse(saved);
+      } catch {
+        // Fallback
       }
-    } catch {
-      // Fallback
     }
-  }, []);
+    return {};
+  });
 
   const toggleItemCheck = (itemId: string) => {
     setCheckedItems((prev) => {
@@ -344,7 +340,7 @@ export default function ErlanggaRoadmapView() {
         {/* --- HERO SECTION --- */}
         <section className="space-y-8 pb-10">
           <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
               <span>{t.targetBadge}</span>
             </div>
@@ -364,7 +360,7 @@ export default function ErlanggaRoadmapView() {
               <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-xs text-zinc-400 ml-2">{t.bannerCaption}</span>
+              <span className="text-sm text-zinc-400 ml-2">{t.bannerCaption}</span>
             </div>
             <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
               <img
@@ -379,7 +375,7 @@ export default function ErlanggaRoadmapView() {
         {/* === DETAILED 90-DAY TACTICAL ROADMAP SECTION === */}
         <section className="space-y-12">
           <div className="space-y-3 max-w-3xl">
-            <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold block">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold block">
               {lang === "id" ? "Struktur Eksekusi Taktis" : "Tactical Execution Structure"}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -397,7 +393,7 @@ export default function ErlanggaRoadmapView() {
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-blue-300">
+                    <span className="text-sm uppercase font-bold tracking-wider text-blue-600 dark:text-blue-300">
                       {lang === "id" ? "Kemajuan Audit Eksekusi Real-Time" : "Real-Time Execution Audit Progress"}
                     </span>
                     <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">
@@ -409,13 +405,13 @@ export default function ErlanggaRoadmapView() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={checkAllPhase1}
-                    className="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/30 hover:bg-blue-100 dark:hover:bg-blue-600/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 text-xs font-semibold cursor-pointer transition-all"
+                    className="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/30 hover:bg-blue-100 dark:hover:bg-blue-600/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 text-sm font-semibold cursor-pointer transition-all"
                   >
                     {lang === "id" ? "Centang Bulan 1" : "Check Month 1"}
                   </button>
                   <button
                     onClick={resetAllProgress}
-                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 text-xs font-semibold cursor-pointer transition-all shadow-2xs"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 text-sm font-semibold cursor-pointer transition-all shadow-2xs"
                   >
                     {lang === "id" ? "Reset" : "Reset"}
                   </button>
@@ -439,7 +435,7 @@ export default function ErlanggaRoadmapView() {
                 placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               />
             </div>
 
@@ -447,7 +443,7 @@ export default function ErlanggaRoadmapView() {
             <div className="space-y-2 pt-1">
               <div className="flex items-center gap-2">
                 <Filter className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                <span className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {t.filterGroupLabel}
                 </span>
               </div>
@@ -458,7 +454,7 @@ export default function ErlanggaRoadmapView() {
                     <button
                       key={grp.key}
                       onClick={() => setSelectedGroup(grp.key)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
                         isActive
                           ? "bg-blue-600 text-white shadow-xs"
                           : "bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -499,10 +495,10 @@ export default function ErlanggaRoadmapView() {
                     <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                          <span className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
                             {lang === "id" ? `Bulan ${parseInt(ch.phase, 10)}` : `Month ${parseInt(ch.phase, 10)}`}
                           </span>
-                          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                          <span className="px-2.5 py-1 rounded-full text-sm font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                             {checklistMonthData?.totalItems || 36} {lang === "id" ? "Inisiatif Terperinci" : "Detailed Initiatives"}
                           </span>
                         </div>
@@ -516,20 +512,20 @@ export default function ErlanggaRoadmapView() {
                         </p>
 
                         {/* Why Rationale Box */}
-                        <div className="p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/30 text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
+                        <div className="p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/30 text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
                           {ch.whyRationale}
                         </div>
                       </div>
 
                       {/* Milestones Badge Row */}
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-700 dark:text-emerald-400 font-bold">
+                        <div className="flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400 font-bold">
                           <Award className="w-4 h-4 shrink-0 text-emerald-600" />
                           <span>{lang === "id" ? "Capaian Utama Month " + monthNum + ":" : "Key Month " + monthNum + " Milestones:"}</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
                           {ch.milestones.map((ms, mIdx) => (
-                            <span key={mIdx} className="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900">
+                            <span key={mIdx} className="px-2.5 py-1 rounded-md text-sm font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900">
                               {ms}
                             </span>
                           ))}
@@ -546,14 +542,14 @@ export default function ErlanggaRoadmapView() {
                         <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                           {lang === "id" ? `Checklist Audit & Inisiatif Eksekusi Terperinci (Bulan ${monthNum})` : `Detailed Audit & Execution Checklist (Month ${monthNum})`}
                         </span>
-                        <span className="text-xs text-zinc-500 font-medium hidden sm:inline">
+                        <span className="text-sm text-zinc-500 font-medium hidden sm:inline">
                           ({checklistMonthData.totalItems} items)
                         </span>
                       </div>
 
                       <button
                         onClick={() => toggleMonthExpand(monthNum)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-semibold text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-xs cursor-pointer transition-all"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-sm font-semibold text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-xs cursor-pointer transition-all"
                       >
                         <span>
                           {isExpanded ? t.collapseChecklist : t.expandChecklist}
@@ -593,13 +589,13 @@ export default function ErlanggaRoadmapView() {
                             >
                               {/* Column Header */}
                               <div className="space-y-2 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                                <span className="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/60 inline-block">
+                                <span className="px-2 py-0.5 rounded text-sm font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/60 inline-block">
                                   {col.framework}
                                 </span>
                                 <h5 className="text-base font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                                   {col.title[lang]}
                                 </h5>
-                                <span className="text-xs text-zinc-500 dark:text-zinc-400 block font-medium">
+                                <span className="text-sm text-zinc-500 dark:text-zinc-400 block font-medium">
                                   {filteredItems.length} {lang === "id" ? "Inisiatif Terdaftar" : "Initiatives Listed"}
                                 </span>
                               </div>
@@ -607,7 +603,7 @@ export default function ErlanggaRoadmapView() {
                               {/* Checklist Items List */}
                               <div className="space-y-3 divide-y divide-zinc-100 dark:divide-zinc-800/60">
                                 {filteredItems.length === 0 ? (
-                                  <p className="text-xs text-zinc-400 italic py-4">
+                                  <p className="text-sm text-zinc-400 italic py-4">
                                     {lang === "id" ? "Tidak ada inisiatif yang cocok dengan filter." : "No initiatives match selected filter."}
                                   </p>
                                 ) : (
@@ -633,7 +629,7 @@ export default function ErlanggaRoadmapView() {
                                           />
                                           <div className="space-y-1.5 flex-1">
                                             <h6
-                                              className={`text-xs sm:text-sm font-bold leading-snug transition-all ${
+                                              className={`text-sm font-bold leading-snug transition-all ${
                                                 isChecked
                                                   ? "line-through text-zinc-400 dark:text-zinc-500"
                                                   : "text-zinc-900 dark:text-zinc-100"
@@ -643,7 +639,7 @@ export default function ErlanggaRoadmapView() {
                                             </h6>
 
                                             <p
-                                              className={`text-xs leading-relaxed font-normal transition-all ${
+                                              className={`text-sm leading-relaxed font-normal transition-all ${
                                                 isChecked
                                                   ? "text-zinc-400 dark:text-zinc-500"
                                                   : "text-zinc-600 dark:text-zinc-300"
@@ -654,10 +650,10 @@ export default function ErlanggaRoadmapView() {
 
                                             {/* Target KPI Callout Pill */}
                                             <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                                              <span className="text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                              <span className="text-sm font-medium text-zinc-400 dark:text-zinc-500">
                                                 {item.framework}
                                               </span>
-                                              <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
+                                              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60">
                                                 {item.kpi[lang]}
                                               </span>
                                             </div>
@@ -686,7 +682,7 @@ export default function ErlanggaRoadmapView() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
               {t.ctaTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {t.ctaDesc}
             </p>
           </div>
@@ -694,7 +690,7 @@ export default function ErlanggaRoadmapView() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="mailto:okihita@gmail.com?subject=Diskusi%20Rencana%20Eksekusi%20-%20PT.%20Penerbit%20Erlangga"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-colors shadow-xs cursor-pointer"
             >
               <Mail className="w-4 h-4" />
               <span>{t.btnEmail}</span>
@@ -704,7 +700,7 @@ export default function ErlanggaRoadmapView() {
               href="https://linkedin.com/in/okihita"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-sm transition-colors cursor-pointer"
             >
               <LinkedinIcon className="w-4 h-4 text-blue-500" />
               <span>{t.btnLinkedin}</span>
@@ -715,7 +711,7 @@ export default function ErlanggaRoadmapView() {
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-zinc-200/80 dark:border-zinc-800/80 py-8 bg-white dark:bg-[#09090b]">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
           <div>
             <span>{t.footerTitle}</span> — <span>Okihita H. Sihaloho</span>
           </div>

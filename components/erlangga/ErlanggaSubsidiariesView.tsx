@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useSyncExternalStore } from "react";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
-import MermaidChart from "./MermaidChart";
 import ErlanggaEcosystemFlow from "./ErlanggaEcosystemFlow";
 import ErlanggaHistoricalTimeline from "./ErlanggaHistoricalTimeline";
 import ErlanggaDataPipelineFlow from "./ErlanggaDataPipelineFlow";
@@ -15,17 +13,10 @@ import {
   Smartphone,
   GraduationCap,
   CheckCircle2,
-  Clock,
   Building2,
   Cpu,
   Layers,
-  ArrowRight,
   Mail,
-  ShieldCheck,
-  TrendingUp,
-  Award,
-  Zap,
-  BarChart2,
   Globe
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/SocialIcons";
@@ -437,7 +428,7 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
           <div>
             <div className="mb-2">
-              <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-600 text-white shadow-xs">
+              <span className="px-2.5 py-0.5 rounded-md text-sm font-bold bg-blue-600 text-white shadow-xs">
                 {sub.badge}
               </span>
             </div>
@@ -451,12 +442,12 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
 
           {/* KPI HIGHLIGHT (Vertical Bullet Points) */}
           <div className="px-3.5 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 shrink-0 space-y-1">
-            <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
+            <p className="text-sm uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
               {lang === "id" ? "Target Impact ROI TI" : "Target IT ROI Impact"}
             </p>
             <ul className="space-y-1 pt-0.5">
               {sub.kpiImpact.split(" · ").map((item: string, idx: number) => (
-                <li key={idx} className="text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                <li key={idx} className="text-sm font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -470,11 +461,11 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
           {/* MODEL & PRODUCTS */}
           <div className="space-y-2 flex flex-col justify-between">
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5 text-blue-500" />
                 {lang === "id" ? "Model Bisnis & Imprint" : "Business Model & Portfolio"}
               </h4>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
                 {sub.businessModel}
               </p>
             </div>
@@ -482,7 +473,7 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
               {sub.imprints.map((imp: string, idx: number) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60"
+                  className="px-2 py-0.5 rounded text-sm font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60"
                 >
                   {imp}
                 </span>
@@ -493,13 +484,13 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
           {/* COST DRIVERS */}
           <div className="space-y-2 flex flex-col justify-between">
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5 text-amber-500" />
                 {lang === "id" ? "Struktur Biaya Utama" : "Key Cost Drivers"}
               </h4>
               <ul className="space-y-1.5">
                 {sub.costDrivers.map((cd: string, idx: number) => (
-                  <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                  <li key={idx} className="text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
                     <span>{cd}</span>
                   </li>
@@ -511,13 +502,13 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
           {/* IT PROFIT ENABLEMENT */}
           <div className="space-y-2 flex flex-col justify-between">
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                 <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 {lang === "id" ? "Pemampu Profit Berbasis TI" : "IT Profit Enablers"}
               </h4>
               <ul className="space-y-1.5">
                 {sub.itEnablers.map((it: string, idx: number) => (
-                  <li key={idx} className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
+                  <li key={idx} className="text-sm text-zinc-600 dark:text-zinc-300 flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                     <span>{it}</span>
                   </li>
@@ -546,11 +537,7 @@ export default function ErlanggaSubsidiariesView() {
     }
     return "en";
   });
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   const toggleLang = () => {
     const nextLang: Lang = lang === "id" ? "en" : "id";
@@ -570,7 +557,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* HERO SECTION MATCHING ERLANGGAPITCHVIEW */}
         <section className="space-y-10 pb-10">
           <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
               <span>{t.targetBadge}</span>
             </div>
@@ -583,7 +570,7 @@ export default function ErlanggaSubsidiariesView() {
               {t.heroHook}
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span>{t.authorMeta}</span>
@@ -597,7 +584,7 @@ export default function ErlanggaSubsidiariesView() {
               <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-xs text-zinc-400 ml-2">Erlangga Group — Integrated Ecosystem & Subsidiary Architecture</span>
+              <span className="text-sm text-zinc-400 ml-2">Erlangga Group — Integrated Ecosystem & Subsidiary Architecture</span>
             </div>
             <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
               <img
@@ -612,13 +599,13 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 1: INTERACTIVE XYFLOW ECOSYSTEM ARCHITECTURE */}
         <section className="space-y-8">
           <div className="space-y-2 max-w-3xl">
-            <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
               {t.archTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t.archTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
               {t.archSubtitle}
             </p>
           </div>
@@ -629,7 +616,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 2: 74-YEAR HISTORICAL TIMELINE (AWWWARDS STEPPER RAIL) */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
+            <span className="text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
               {t.timelineTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -643,7 +630,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 3: 5 CORE SUBSIDIARY PILLARS & PROFIT ENABLEMENT */}
         <section className="space-y-10">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
               {t.subsidiaryTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -661,7 +648,7 @@ export default function ErlanggaSubsidiariesView() {
         {/* SECTION 4: ENTERPRISE DATA PIPELINE REACT FLOW CANVAS */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
+            <span className="text-sm text-amber-600 dark:text-amber-400 uppercase tracking-wider font-bold">
               {t.synergyTag}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -710,7 +697,7 @@ export default function ErlanggaSubsidiariesView() {
               </a>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
               <p>{t.footerTitle}</p>
               <p className="font-mono">{t.footerBranch}</p>
             </div>

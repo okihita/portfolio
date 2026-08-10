@@ -219,7 +219,7 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
           badgeColor: "purple",
           handles: {
             targets: [
-              { id: "ei-top-in", position: Position.Bottom, style: { background: "#f59e0b" } }
+              { id: "ei-top-in", position: Position.Right, style: { background: "#f59e0b" } }
             ]
           }
         }
@@ -346,7 +346,7 @@ export default function ErlanggaEcosystemFlow({ lang }: ErlanggaEcosystemFlowPro
       {/* Top Legend Bar */}
       <div className="absolute top-4 left-4 z-20 flex items-center gap-3 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-zinc-200 dark:border-slate-800 backdrop-blur-md shadow-xs">
         <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
-        <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider font-mono">
+        <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider font-mono">
           {lang === "id" ? "Peta Integrasi Sinergi 5 Pillar TI" : "5 Pillars IT Synergy Topology"}
         </span>
       </div>

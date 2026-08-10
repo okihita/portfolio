@@ -237,21 +237,15 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
     const timer = setInterval(() => {
       setSegmentProgress((prev) => {
         if (prev + stepIncrement >= 100) {
-          return 100;
+          setActiveIndex((idx) => (idx + 1) % totalSteps);
+          return 0;
         }
         return prev + stepIncrement;
       });
     }, intervalMs);
 
     return () => clearInterval(timer);
-  }, [isPlaying, isHovered]);
-
-  useEffect(() => {
-    if (segmentProgress >= 100) {
-      setSegmentProgress(0);
-      setActiveIndex((prev) => (prev + 1) % totalSteps);
-    }
-  }, [segmentProgress, totalSteps]);
+  }, [isPlaying, isHovered, totalSteps]);
 
   const baseProgressPercent = (activeIndex / (totalSteps - 1)) * 100;
   const activeSegmentPercent = (1 / (totalSteps - 1)) * (segmentProgress / 100) * 100;
@@ -271,11 +265,11 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
         <div className="flex items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800/80 pb-4">
           <div className="flex items-center gap-2.5">
             <Clock className="w-4 h-4 text-amber-500" />
-            <span className="text-xs font-bold uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
+            <span className="text-sm font-bold uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
               {lang === "id" ? "Garis Waktu Transformasi 74 Tahun" : "74-Year Heritage Timeline"}
             </span>
             {isHovered && isPlaying && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 hidden sm:inline-block">
+              <span className="px-2 py-0.5 rounded text-sm font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 hidden sm:inline-block">
                 {lang === "id" ? "Diberhentikan (Hover)" : "Paused on Hover"}
               </span>
             )}
@@ -285,7 +279,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsPlaying((prev) => !prev)}
-              className="px-2.5 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-2.5 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-sm font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
               title={isPlaying ? "Pause Autoplay" : "Start Autoplay"}
             >
               {isPlaying ? (
@@ -309,7 +303,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            <span className="text-xs font-mono text-zinc-400 font-bold px-1">
+            <span className="text-sm font-mono text-zinc-400 font-bold px-1">
               {activeIndex + 1} / {totalSteps}
             </span>
 
@@ -349,7 +343,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                 >
                   {/* Year Node Box (Constant border-2 for ZERO Layout Shift) */}
                   <div
-                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm font-mono tracking-tight transition-all duration-300 border-2 ${
+                    className={`px-3.5 h-10 min-w-[56px] rounded-xl flex items-center justify-center font-bold text-sm font-mono tracking-tight transition-all duration-300 border-2 ${
                       isActive
                         ? "bg-blue-600 text-white border-blue-600 dark:border-blue-500 shadow-lg shadow-blue-500/40 ring-4 ring-blue-500/30"
                         : isPast
@@ -362,7 +356,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
 
                   {/* Year Tag Label */}
                   <span
-                    className={`text-[11px] font-bold transition-colors ${
+                    className={`text-sm font-bold transition-colors ${
                       isActive
                         ? "text-blue-600 dark:text-blue-400"
                         : "text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200"
@@ -393,7 +387,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
             <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] dark:bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
 
             <div className="flex items-center justify-between gap-4 relative z-10">
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 tracking-wider uppercase">
+              <span className="px-3 py-1 rounded-full text-sm font-mono font-bold bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 tracking-wider uppercase">
                 {activeEvent.eraBadge[lang]}
               </span>
               <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-amber-600 dark:text-amber-400 font-mono">
@@ -405,7 +399,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
               {activeEvent.title[lang]}
             </h3>
 
-            <p className="text-xs sm:text-sm font-semibold text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5 relative z-10">
+            <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5 relative z-10">
               <Building2 className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" />
               <span>{activeEvent.entity[lang]}</span>
             </p>
@@ -420,7 +414,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
 
             {/* Highlights Grid */}
             <div className="space-y-3 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
                 <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 <span>{lang === "id" ? "Pencapaian Utama & Pilar Operasional:" : "Key Milestones & Operational Pillars:"}</span>
               </h4>
@@ -429,7 +423,7 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
                 {activeEvent.highlights.map((hl, hIdx) => (
                   <div
                     key={hIdx}
-                    className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800 text-xs text-zinc-800 dark:text-zinc-200 font-medium flex items-start gap-2"
+                    className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 font-medium flex items-start gap-2"
                   >
                     <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                     <span>{hl[lang]}</span>
@@ -440,11 +434,11 @@ export default function ErlanggaHistoricalTimeline({ lang }: ErlanggaHistoricalT
 
             {/* IT Impact Callout Pill (Terracotta & Cobalt Accent) */}
             <div className="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/60 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-900 dark:text-amber-300">
+              <div className="flex items-center gap-2 text-sm font-bold text-amber-900 dark:text-amber-300">
                 <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
                 <span>{lang === "id" ? "Dampak Transformasi TI:" : "IT Transformation Impact:"}</span>
               </div>
-              <span className="px-3 py-1 rounded-lg text-xs font-extrabold bg-blue-600 text-white shadow-xs">
+              <span className="px-3 py-1 rounded-lg text-sm font-extrabold bg-blue-600 text-white shadow-xs">
                 {activeEvent.itImpact[lang]}
               </span>
             </div>

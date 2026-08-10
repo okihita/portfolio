@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
@@ -409,7 +409,7 @@ const CASE_SCENARIOS_DATA = {
       context: "Ratusan ribu siswa mengakses platform Erlangga Digital secara bersamaan untuk ujian nasional.",
       action: "Mengembangkan microservices cloud auto-scaling di GCP/AWS dengan CDN edge caching, terpisah dari basis data ERP transaksional.",
       result: "Uptime 100% selama ujian nasional dengan biaya cloud terkendali.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+      image: "/images/erlangga/risk_cbt_surge_risograph.jpg"
     },
     {
       id: "branch-outage",
@@ -570,21 +570,21 @@ const ALIGNMENT_MATRIX_DATA = {
 };
 
 export default function ErlanggaPitchView() {
-  const [lang, setLang] = useState<Lang>("en");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const queryLang = params.get("lang");
-
-    if (queryLang === "en" || queryLang === "id") {
-      setLang(queryLang as Lang);
-      localStorage.setItem("erlangga_lang", queryLang);
-    } else {
-      setLang("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const queryLang = params.get("lang");
+      if (queryLang === "en" || queryLang === "id") {
+        return queryLang as Lang;
+      }
+      const saved = localStorage.getItem("erlangga_lang");
+      if (saved === "en" || saved === "id") {
+        return saved as Lang;
+      }
     }
-    setMounted(true);
-  }, []);
+    return "en";
+  });
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   const toggleLang = () => {
     const nextLang: Lang = lang === "id" ? "en" : "id";
@@ -617,7 +617,7 @@ export default function ErlanggaPitchView() {
         {/* --- HERO SECTION --- */}
         <section className="space-y-10 pb-10">
           <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
               <span>{t.targetBadge}</span>
             </div>
@@ -630,7 +630,7 @@ export default function ErlanggaPitchView() {
               {t.heroHook}
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span>{t.authorMeta}</span>
@@ -644,7 +644,7 @@ export default function ErlanggaPitchView() {
               <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-xs text-zinc-400 ml-2">Erlangga Group — Executive Command Center (PowerBI Live Preview)</span>
+              <span className="text-sm text-zinc-400 ml-2">Erlangga Group — Executive Command Center (PowerBI Live Preview)</span>
             </div>
             <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
               <img
@@ -661,7 +661,7 @@ export default function ErlanggaPitchView() {
           <div className="max-w-[1500px] mx-auto space-y-10">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="space-y-2">
-                <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
+                <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">
                   {t.storyTag}
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -687,7 +687,7 @@ export default function ErlanggaPitchView() {
 
                     <div className="p-6 sm:p-7 space-y-5">
                       <div className="space-y-3">
-                        <span className="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block">
+                        <span className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block">
                           {lang === "id" ? `Bulan ${ch.chapter}` : `Month ${ch.chapter}`}
                         </span>
                         <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
@@ -701,11 +701,11 @@ export default function ErlanggaPitchView() {
                   </div>
 
                   <div className="p-6 pt-4 space-y-2">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-700 dark:text-emerald-400 font-bold">
+                    <div className="flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400 font-bold">
                       <Award className="w-4 h-4 shrink-0 text-emerald-600" />
                       <span>{lang === "id" ? "Capaian Utama:" : "Key Milestones:"}</span>
                     </div>
-                    <ul className="space-y-1 pl-6 list-disc text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-medium">
+                    <ul className="space-y-1 pl-6 list-disc text-sm text-zinc-700 dark:text-zinc-300 font-medium">
                       {ch.milestones.map((ms, idx) => (
                         <li key={idx}>{ms}</li>
                       ))}
@@ -718,7 +718,7 @@ export default function ErlanggaPitchView() {
             <div className="pt-2 flex justify-center">
               <Link
                 href="/erlangga/roadmap"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
               >
                 <span>{lang === "id" ? "Buka Peta Jalan 3-Bulan & Rencana Eksekusi Lengkap" : "Open Full 3-Month Roadmap & Execution Plan"}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -742,7 +742,7 @@ export default function ErlanggaPitchView() {
         <section className="space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div className="space-y-2 max-w-2xl">
-              <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+              <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
                 {t.unitsTag}
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -785,14 +785,14 @@ export default function ErlanggaPitchView() {
 
                   <div className="p-7 sm:p-8 space-y-5">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-bold px-3 py-1 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
+                      <span className="text-sm font-bold px-3 py-1 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
                         {bu.badge}
                       </span>
                     </div>
 
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">{bu.unit}</h3>
-                      <span className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">{bu.subTitle}</span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">{bu.subTitle}</span>
                     </div>
 
                     <div className="p-4 sm:p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm sm:text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
@@ -816,7 +816,7 @@ export default function ErlanggaPitchView() {
         {/* === SIMULATION CASE SCENARIOS === */}
         <section className="space-y-10">
           <div className="space-y-2">
-            <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
               {t.scenarioTag}
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -843,7 +843,7 @@ export default function ErlanggaPitchView() {
 
                     <div className="px-6 space-y-3 pt-2">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                        <span className="text-sm font-semibold px-2.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
                           {item.tag}
                         </span>
                       </div>
@@ -864,7 +864,7 @@ export default function ErlanggaPitchView() {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-4 flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                  <div className="p-6 pt-4 flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400 font-medium">
                     <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
                     <span>{item.result}</span>
                   </div>
@@ -877,7 +877,7 @@ export default function ErlanggaPitchView() {
           <div className="pt-2 flex justify-center">
             <Link
               href="/erlangga/risk-simulations"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
             >
               <span>{lang === "id" ? "Lihat Semua Simulasi Risiko (6)" : "See All Risk Simulations (6)"}</span>
               <ArrowRight className="w-4 h-4" />
@@ -888,7 +888,7 @@ export default function ErlanggaPitchView() {
         {/* --- RISK MITIGATION MATRIX --- */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
               {t.riskTag}
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -898,9 +898,9 @@ export default function ErlanggaPitchView() {
 
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
-                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-xs text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
+                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-sm text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
                     <th className="py-4 px-5 font-semibold">{t.thRisk}</th>
                     <th className="py-4 px-5 font-semibold">{t.thImpact}</th>
                     <th className="py-4 px-5 font-semibold">{t.thMitigation}</th>
@@ -923,7 +923,7 @@ export default function ErlanggaPitchView() {
         {/* --- ROI BENCHMARKS --- */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
               {t.roiTag}
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -937,7 +937,7 @@ export default function ErlanggaPitchView() {
                 <span className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 block tracking-tight">
                   {item.metric}
                 </span>
-                <span className="text-xs text-zinc-600 dark:text-zinc-400 block font-medium">
+                <span className="text-sm text-zinc-600 dark:text-zinc-400 block font-medium">
                   {item.label}
                 </span>
               </div>
@@ -948,7 +948,7 @@ export default function ErlanggaPitchView() {
         {/* --- CANDIDATE FIT MATRIX --- */}
         <section className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
               {t.fitTag}
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -958,9 +958,9 @@ export default function ErlanggaPitchView() {
 
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
-                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-xs text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
+                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-sm text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
                     <th className="py-4 px-5 font-semibold">{t.thReq}</th>
                     <th className="py-4 px-5 font-semibold">{t.thMatch}</th>
                     <th className="py-4 px-5 font-semibold">{t.thStatus}</th>
@@ -972,7 +972,7 @@ export default function ErlanggaPitchView() {
                       <td className="py-4 px-5 font-medium text-zinc-900 dark:text-zinc-100 max-w-xs">{row.requirement}</td>
                       <td className="py-4 px-5 text-zinc-600 dark:text-zinc-300 max-w-md">{row.candidateMatch}</td>
                       <td className="py-4 px-5">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-sm font-medium border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
                           <CheckCircle2 className="w-3 h-3" />
                           {row.status}
                         </span>
@@ -991,7 +991,7 @@ export default function ErlanggaPitchView() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
               {t.sec5Title}
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {t.sec5Desc}
             </p>
           </div>
@@ -999,7 +999,7 @@ export default function ErlanggaPitchView() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="mailto:okihita@gmail.com?subject=Diskusi%20IT%20Manager%20-%20PT.%20Penerbit%20Erlangga"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-colors shadow-xs cursor-pointer"
             >
               <Mail className="w-4 h-4" />
               <span>{t.btnEmail}</span>
@@ -1009,7 +1009,7 @@ export default function ErlanggaPitchView() {
               href="https://linkedin.com/in/okihita"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-sm transition-colors cursor-pointer"
             >
               <LinkedinIcon className="w-4 h-4 text-blue-500" />
               <span>{t.btnLinkedin}</span>
@@ -1020,7 +1020,7 @@ export default function ErlanggaPitchView() {
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-zinc-200/80 dark:border-zinc-800/80 py-8 bg-white dark:bg-[#09090b]">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
           <div>
             <span>{t.footerTitle}</span> — <span>Okihita H. Sihaloho</span>
           </div>
