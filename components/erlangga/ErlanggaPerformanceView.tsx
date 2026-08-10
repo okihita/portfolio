@@ -514,51 +514,7 @@ export default function ErlanggaPerformanceView() {
       {/* GLOBAL HEADER WITH NAVIGATION & LANG TOGGLE */}
       <Header navItems={ERLANGGA_NAV_ITEMS} lang={lang} onToggleLang={toggleLang} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-24">
-        {/* --- HERO SECTION --- */}
-        <section className="space-y-8 border-b border-zinc-200/80 dark:border-zinc-800/80 pb-16">
-          <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-              <span>{t.targetBadge}</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
-              {t.heroTitle}
-            </h1>
-
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
-              {t.heroDesc}
-            </p>
-
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span>{t.authorMeta}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Master 16:9 Performance Hero Blueprint Banner */}
-          <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl">
-            <div className="h-9 bg-zinc-100 dark:bg-zinc-950/80 border-b border-zinc-200 dark:border-zinc-800 px-4 flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-400/80 inline-block"></span>
-              <span className="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
-              <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
-              <span className="text-sm text-zinc-400 ml-2">
-                PT. Penerbit Erlangga — IT Qualifications & Executive Benchmarks
-              </span>
-            </div>
-            <div className="relative aspect-[16/9] w-full bg-[#f8f6f0] dark:bg-[#090d14] overflow-hidden">
-              <img
-                src="/images/erlangga/hero_risograph.jpg"
-                alt="Erlangga IT Performance Benchmarks & Qualification Matrix"
-                className="w-full h-full object-contain object-center transition-opacity"
-              />
-            </div>
-          </div>
-        </section>
-
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
         {/* === SECTION 1: KEY PERFORMANCE BENCHMARKS & TARGET ROI === */}
         <section className="space-y-8">
           <div className="space-y-2 max-w-3xl">
