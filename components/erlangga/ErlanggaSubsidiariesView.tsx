@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useSyncExternalStore } from "react";
+import React, { useState } from "react";
 import Header from "@/components/Header";
 import { ERLANGGA_NAV_ITEMS } from "./erlanggaNav";
 import ErlanggaEcosystemFlow from "./ErlanggaEcosystemFlow";
@@ -522,28 +522,11 @@ function SubsidiaryCardItem({ sub, lang }: { sub: SubsidiaryItem; lang: "id" | "
   );
 }
 
-export default function ErlanggaSubsidiariesView() {
-  const [lang, setLang] = useState<Lang>(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const queryLang = params.get("lang");
-      if (queryLang === "en" || queryLang === "id") {
-        return queryLang;
-      }
-      const saved = localStorage.getItem("erlangga_lang");
-      if (saved === "en" || saved === "id") {
-        return saved as Lang;
-      }
-    }
-    return "en";
-  });
-  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+import ErlanggaFooter from "./ErlanggaFooter";
+import { useErlanggaLang } from "./useErlanggaLang";
 
-  const toggleLang = () => {
-    const nextLang: Lang = lang === "id" ? "en" : "id";
-    setLang(nextLang);
-    localStorage.setItem("erlangga_lang", nextLang);
-  };
+export default function ErlanggaSubsidiariesView() {
+  const { lang, toggleLang, mounted } = useErlanggaLang();
 
   const t = TRANSLATIONS[lang];
   const subsidiaries = SUBSIDIARIES_DATA[lang];
@@ -696,13 +679,11 @@ export default function ErlanggaSubsidiariesView() {
                 <span>{t.btnPortfolio}</span>
               </a>
             </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 pt-8">
-              <p>{t.footerTitle}</p>
-            </div>
           </div>
         </section>
       </main>
+
+      <ErlanggaFooter lang={lang} />
     </div>
   );
 }
