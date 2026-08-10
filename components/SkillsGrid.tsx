@@ -61,7 +61,7 @@ export default function SkillsGrid() {
                       )}
                       {skill.name}
                     </span>
-                    <span className="font-mono text-[10px] text-zinc-500 font-medium">{skill.level}</span>
+                    <span className="font-mono text-xs text-zinc-500 font-medium">{skill.level}</span>
                   </div>
                 ))}
               </div>

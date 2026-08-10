@@ -46,7 +46,7 @@ export default function Projects() {
                 >
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-zinc-200/80 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300">
+                      <span className="px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-zinc-200/80 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300">
                         {project.category}
                       </span>
                       <span className="text-xs text-zinc-500 font-mono">Project 0{idx + 1}</span>
@@ -70,7 +70,7 @@ export default function Projects() {
                         key={mIdx}
                         className="p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800/80 space-y-0.5"
                       >
-                        <div className="text-[10px] font-mono text-zinc-500">{metric.label}</div>
+                        <div className="text-xs font-mono text-zinc-500">{metric.label}</div>
                         <div className="text-sm font-bold font-mono text-zinc-900 dark:text-zinc-100">
                           {metric.value}
                         </div>
@@ -80,7 +80,7 @@ export default function Projects() {
 
                   {/* Engineering Achievements Preview */}
                   <div className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
-                    <div className="font-mono text-[11px] text-zinc-500 uppercase tracking-wider">
+                    <div className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
                       Key Feats
                     </div>
                     <ul className="space-y-1.5">
@@ -98,7 +98,7 @@ export default function Projects() {
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400"
+                        className="px-2 py-0.5 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400"
                       >
                         {tech}
                       </span>
