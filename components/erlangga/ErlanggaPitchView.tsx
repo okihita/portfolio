@@ -1011,6 +1011,21 @@ export default function ErlanggaPitchView() {
               </table>
             </div>
           </div>
+
+          {/* See Full 16-Point Performance & Qualification Analysis Button */}
+          <div className="pt-2 flex justify-center">
+            <Link
+              href="/erlangga/performance"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
+            >
+              <span>
+                {lang === "id"
+                  ? "Buka Matriks Keselarasan 16 Persyaratan Kualifikasi Lengkap"
+                  : "Open Full 16-Point Qualification Alignment Matrix"}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </section>
 
         {/* --- CALL TO ACTION --- */}

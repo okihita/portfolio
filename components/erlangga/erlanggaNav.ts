@@ -29,4 +29,11 @@ export const ERLANGGA_NAV_ITEMS: HeaderNavItem[] = [
       en: "Risk Simulations",
     },
   },
+  {
+    href: "/erlangga/performance",
+    label: {
+      id: "Kinerja & Kualifikasi",
+      en: "Performance & Alignment",
+    },
+  },
 ];
