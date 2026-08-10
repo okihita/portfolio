@@ -824,6 +824,21 @@ export default function ErlanggaPitchView() {
               );
             })}
           </div>
+
+          {/* See All Subsidiaries & Profit Enabler Breakdown Button */}
+          <div className="pt-4 flex justify-center">
+            <Link
+              href="/erlangga/subsidiaries"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-semibold transition-all shadow-xs cursor-pointer hover:gap-3"
+            >
+              <span>
+                {lang === "id"
+                  ? "Transformasi TI Erlangga: Dari Pusat Biaya ke Pemampu Profit"
+                  : "Erlangga IT Transformation: From Cost Center to Profit Enabler"}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </section>
 
         {/* === SIMULATION CASE SCENARIOS === */}
