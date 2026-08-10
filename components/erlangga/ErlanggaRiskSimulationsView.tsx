@@ -23,6 +23,12 @@ const TRANSLATIONS = {
     scenarioTag: "Studi Kasus Penanganan Risiko",
     scenarioTitle: "6 Simulasi Penanganan Risiko Operasional Utama Erlangga",
     
+    riskTag: "Matriks Mitigasi Risiko TI Enterprise",
+    riskTitle: "Matriks Pengelolaan Risiko & Strategi Mitigasi Terstruktur",
+    thRisk: "Risiko TI Enterprise",
+    thImpact: "Dampak Bisnis",
+    thMitigation: "Strategi Mitigasi TI",
+
     sec5Title: "Siap Memimpin Manajemen Risiko & Keandalan Teknologi Erlangga",
     sec5Desc: "Saya siap mendiskusikan strategi mitigasi risiko ini dan memperagakan kerangka kerja ketahanan sistem Erlangga Group.",
 
@@ -39,6 +45,12 @@ const TRANSLATIONS = {
     scenarioTag: "Risk Management Case Studies",
     scenarioTitle: "6 Core Erlangga Operational Risk Simulations",
 
+    riskTag: "Enterprise IT Risk Mitigation Matrix",
+    riskTitle: "Enterprise IT Risk Management & Structured Mitigation Matrix",
+    thRisk: "Enterprise IT Risk",
+    thImpact: "Business Impact",
+    thMitigation: "IT Mitigation Strategy",
+
     sec5Title: "Ready to Drive Technical Risk Management for Erlangga",
     sec5Desc: "I welcome the opportunity to discuss these risk mitigation strategies and demonstrate system resilience frameworks for Erlangga Group.",
 
@@ -47,6 +59,43 @@ const TRANSLATIONS = {
     footerTitle: "PT. Penerbit Erlangga IT Strategic Proposal",
     footerBranch: "Branch: erlangga"
   }
+};
+
+const RISK_MATRIX_DATA = {
+  id: [
+    {
+      risk: "Resistensi Karyawan terhadap Sistem Komputerisasi Baru",
+      impact: "Adopsi sistem lambat dan timbul kesalahan pemrosesan manual.",
+      mitigation: "Pelatihan terstruktur di cabang, panduan pengguna intuitif, dan peluncuran bertahap (phased rollout)."
+    },
+    {
+      risk: "Vendor Lock-in & Inflasi Biaya Lisensi SaaS/ERP",
+      impact: "Ketergantungan biaya lisensi tahunan yang membengkak.",
+      mitigation: "Membangun lapisan middleware API-first sehingga logika bisnis tetap dimiliki Erlangga."
+    },
+    {
+      risk: "Ancaman Keamanan Siber & Kebocoran Data Perusahaan",
+      impact: "Kerusakan reputasi brand dan risiko regulasi data.",
+      mitigation: "Menerapkan keamanan Zero Trust, proteksi EDR di seluruh endpoint cabang, dan kontrol akses RBAC."
+    }
+  ],
+  en: [
+    {
+      risk: "Employee Resistance to New Computerized Workflows",
+      impact: "Slow system adoption and manual operational errors.",
+      mitigation: "Conduct hands-on branch training, create simple user guides, and implement gradual phased rollouts."
+    },
+    {
+      risk: "SaaS & ERP Vendor Lock-in & Licensing Inflation",
+      impact: "Uncontrolled growth in annual software licensing costs.",
+      mitigation: "Build API-first middleware abstractions so business logic remains owned by Erlangga."
+    },
+    {
+      risk: "Cyber Security Threats & Corporate Data Leaks",
+      impact: "Reputational damage and regulatory non-compliance.",
+      mitigation: "Enforce Zero Trust network access, endpoint EDR protection, and strict role-based access control."
+    }
+  ]
 };
 
 // --- 6 EXPANDED RISK SIMULATIONS DATA WITH INCIDENT RESPONSE TIMELINES ---
@@ -611,6 +660,7 @@ export default function ErlanggaRiskSimulationsView() {
 
   const t = TRANSLATIONS[lang];
   const allSimulations = ALL_RISK_SIMULATIONS_DATA[lang];
+  const riskMatrix = RISK_MATRIX_DATA[lang];
 
   return (
     <div className={`min-h-screen bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300 transition-opacity duration-150 ${mounted ? "opacity-100" : "opacity-0"}`}>
@@ -770,6 +820,41 @@ export default function ErlanggaRiskSimulationsView() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* --- ENTERPRISE IT RISK MITIGATION MATRIX --- */}
+        <section className="space-y-8">
+          <div className="space-y-2">
+            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
+              {t.riskTag}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+              {t.riskTitle}
+            </h2>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-sm text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
+                    <th className="py-4 px-5 font-semibold">{t.thRisk}</th>
+                    <th className="py-4 px-5 font-semibold">{t.thImpact}</th>
+                    <th className="py-4 px-5 font-semibold">{t.thMitigation}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-200/80 dark:divide-zinc-800/80">
+                  {riskMatrix.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/40 transition-colors">
+                      <td className="py-4 px-5 font-medium text-zinc-900 dark:text-zinc-100 max-w-xs">{row.risk}</td>
+                      <td className="py-4 px-5 text-zinc-600 dark:text-zinc-400 max-w-xs">{row.impact}</td>
+                      <td className="py-4 px-5 text-zinc-700 dark:text-zinc-300 max-w-md">{row.mitigation}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 

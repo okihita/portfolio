@@ -456,45 +456,6 @@ const CASE_SCENARIOS_DATA = {
   ]
 };
 
-// --- RISK MITIGATION MATRIX ---
-
-const RISK_MATRIX_DATA = {
-  id: [
-    {
-      risk: "Resistensi Karyawan terhadap Sistem Komputerisasi Baru",
-      impact: "Adopsi sistem lambat dan timbul kesalahan pemrosesan manual.",
-      mitigation: "Pelatihan terstruktur di cabang, panduan pengguna intuitif, dan peluncuran bertahap (phased rollout)."
-    },
-    {
-      risk: "Vendor Lock-in & Inflasi Biaya Lisensi SaaS/ERP",
-      impact: "Ketergantungan biaya lisensi tahunan yang membengkak.",
-      mitigation: "Membangun lapisan middleware API-first sehingga logika bisnis tetap dimiliki Erlangga."
-    },
-    {
-      risk: "Ancaman Keamanan Siber & Kebocoran Data Perusahaan",
-      impact: "Kerusakan reputasi brand dan risiko regulasi data.",
-      mitigation: "Menerapkan keamanan Zero Trust, proteksi EDR di seluruh endpoint cabang, dan kontrol akses RBAC."
-    }
-  ],
-  en: [
-    {
-      risk: "Employee Resistance to New Computerized Workflows",
-      impact: "Slow system adoption and manual operational errors.",
-      mitigation: "Conduct hands-on branch training, create simple user guides, and implement gradual phased rollouts."
-    },
-    {
-      risk: "SaaS & ERP Vendor Lock-in & Licensing Inflation",
-      impact: "Uncontrolled growth in annual software licensing costs.",
-      mitigation: "Build API-first middleware abstractions so business logic remains owned by Erlangga."
-    },
-    {
-      risk: "Cyber Security Threats & Corporate Data Leaks",
-      impact: "Reputational damage and regulatory non-compliance.",
-      mitigation: "Enforce Zero Trust network access, endpoint EDR protection, and strict role-based access control."
-    }
-  ]
-};
-
 // --- ROI METRICS ---
 
 const ROI_BENCHMARKS_DATA = {
@@ -605,7 +566,6 @@ export default function ErlanggaPitchView() {
   const storyChapters = EXECUTIVE_STORY_DATA[lang];
   const businessUnits = ERLANGGA_BUSINESS_UNITS_DATA[lang];
   const caseScenarios = CASE_SCENARIOS_DATA[lang];
-  const riskMatrix = RISK_MATRIX_DATA[lang];
   const roiBenchmarks = ROI_BENCHMARKS_DATA[lang];
   const alignmentMatrix = ALIGNMENT_MATRIX_DATA[lang];
 
@@ -910,41 +870,6 @@ export default function ErlanggaPitchView() {
               <span>{lang === "id" ? "Lihat Semua Simulasi Risiko (6)" : "See All Risk Simulations (6)"}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-        </section>
-
-        {/* --- RISK MITIGATION MATRIX --- */}
-        <section className="space-y-8">
-          <div className="space-y-2">
-            <span className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-wider font-semibold">
-              {t.riskTag}
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-              {t.riskTitle}
-            </h2>
-          </div>
-
-          <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-xs">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 text-sm text-zinc-500 dark:text-zinc-400 uppercase font-semibold">
-                    <th className="py-4 px-5 font-semibold">{t.thRisk}</th>
-                    <th className="py-4 px-5 font-semibold">{t.thImpact}</th>
-                    <th className="py-4 px-5 font-semibold">{t.thMitigation}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-zinc-200/80 dark:divide-zinc-800/80">
-                  {riskMatrix.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/40 transition-colors">
-                      <td className="py-4 px-5 font-medium text-zinc-900 dark:text-zinc-100 max-w-xs">{row.risk}</td>
-                      <td className="py-4 px-5 text-zinc-600 dark:text-zinc-400 max-w-xs">{row.impact}</td>
-                      <td className="py-4 px-5 text-zinc-700 dark:text-zinc-300 max-w-md">{row.mitigation}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         </section>
 
