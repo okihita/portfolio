@@ -773,45 +773,56 @@ export default function ErlanggaPitchView() {
             ref={carouselRef}
             className="w-screen relative left-1/2 -translate-x-1/2 flex gap-5 sm:gap-6 overflow-x-auto pb-4 pt-2 px-4 sm:px-6 lg:px-[calc((100vw-1280px)/2+1.5rem)] scroll-smooth scrollbar-none"
           >
-            {businessUnits.map((bu) => (
-              <div
-                key={bu.id}
-                className="w-[88vw] max-w-[580px] sm:w-[580px] shrink-0 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-sm flex flex-col sm:flex-row justify-between"
-              >
-                {/* Left Portrait Image Container (Aspect 3:4 Original Artwork Ratio) */}
-                <div className="relative w-full sm:w-[220px] aspect-[3/4] shrink-0 bg-[#f8f6f0] dark:bg-zinc-950 overflow-hidden border-b sm:border-b-0 sm:border-r border-zinc-200/80 dark:border-zinc-800">
-                  <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
-                </div>
+            {businessUnits.map((bu) => {
+              const cleanEnabler = bu.enablerValue.replace(/^(Profit Enabler|Pemampu Profit):\s*/i, "");
 
-                {/* Right Details Content Container */}
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-sm font-bold px-3 py-1 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
+              return (
+                <div
+                  key={bu.id}
+                  className="w-[85vw] max-w-[350px] sm:w-[350px] shrink-0 rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Header Image Container (Aspect 3:4 Original Risograph Poster) */}
+                    <div className="relative aspect-[3/4] w-full bg-[#f8f6f0] dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/80 dark:border-zinc-800">
+                      {/* Solid Non-Glassmorphism Badge Overlay */}
+                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-md text-sm font-bold bg-white dark:bg-zinc-900 text-blue-700 dark:text-blue-300 border border-zinc-200 dark:border-zinc-700 shadow-xs z-10">
                         {bu.badge}
                       </span>
+                      <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
                     </div>
 
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">{bu.unit}</h3>
-                      <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">{bu.subTitle}</span>
-                    </div>
+                    {/* Card Body Details */}
+                    <div className="p-6 space-y-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 leading-snug">{bu.unit}</h3>
+                        <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">{bu.subTitle}</p>
+                      </div>
 
-                    <div className="p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
-                      <span className="font-semibold block text-emerald-700 dark:text-emerald-400 mb-1">
-                        {lang === "id" ? "Transformasi Akselerasi TI:" : "IT Acceleration Enabler:"}
-                      </span>
-                      {bu.enablerValue}
-                    </div>
-                  </div>
+                      {/* IT Acceleration Enabler Callout Box */}
+                      <div className="p-3.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/50 space-y-1">
+                        <span className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block">
+                          {lang === "id" ? "Pemampu Akselerasi TI" : "IT Acceleration Enabler"}
+                        </span>
+                        <p className="text-sm text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed">
+                          {cleanEnabler}
+                        </p>
+                      </div>
 
-                  <div className="pt-2 flex items-center gap-2.5 text-sm text-blue-700 dark:text-blue-400 font-semibold border-t border-zinc-100 dark:border-zinc-800/80">
-                    <TrendingUp className="w-4 h-4 text-blue-600 shrink-0" />
-                    <span>{lang === "id" ? "Dampak Bisnis:" : "Business Impact:"} {bu.impact}</span>
+                      {/* Key Business Impact Box */}
+                      <div className="p-3.5 rounded-xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 space-y-1">
+                        <div className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+                          <TrendingUp className="w-4 h-4 text-blue-600 shrink-0" />
+                          <span>{lang === "id" ? "Dampak Bisnis Utama" : "Key Business Impact"}</span>
+                        </div>
+                        <p className="text-sm text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed">
+                          {bu.impact}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
