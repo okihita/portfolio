@@ -776,14 +776,16 @@ export default function ErlanggaPitchView() {
             {businessUnits.map((bu) => (
               <div
                 key={bu.id}
-                className="w-[88vw] max-w-[540px] sm:w-[540px] shrink-0 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-sm flex flex-col justify-between"
+                className="w-[88vw] max-w-[580px] sm:w-[580px] shrink-0 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden shadow-sm flex flex-col sm:flex-row justify-between"
               >
-                <div>
-                  <div className="relative aspect-[16/9] w-full bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/80 dark:border-zinc-800">
-                    <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
-                  </div>
+                {/* Left Portrait Image Container (Aspect 3:4 Original Artwork Ratio) */}
+                <div className="relative w-full sm:w-[220px] aspect-[3/4] shrink-0 bg-[#f8f6f0] dark:bg-zinc-950 overflow-hidden border-b sm:border-b-0 sm:border-r border-zinc-200/80 dark:border-zinc-800">
+                  <img src={bu.image} alt={bu.unit} className="w-full h-full object-cover object-center" />
+                </div>
 
-                  <div className="p-7 sm:p-8 space-y-5">
+                {/* Right Details Content Container */}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-4">
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-sm font-bold px-3 py-1 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
                         {bu.badge}
@@ -795,18 +797,18 @@ export default function ErlanggaPitchView() {
                       <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">{bu.subTitle}</span>
                     </div>
 
-                    <div className="p-4 sm:p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm sm:text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
-                      <span className="font-semibold block text-emerald-700 dark:text-emerald-400 mb-1.5">
+                    <div className="p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/30 text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
+                      <span className="font-semibold block text-emerald-700 dark:text-emerald-400 mb-1">
                         {lang === "id" ? "Transformasi Akselerasi TI:" : "IT Acceleration Enabler:"}
                       </span>
                       {bu.enablerValue}
                     </div>
                   </div>
-                </div>
 
-                <div className="p-7 sm:p-8 pt-4 flex items-center gap-3 text-sm sm:text-base text-blue-700 dark:text-blue-400 font-semibold">
-                  <TrendingUp className="w-5 h-5 text-blue-600 shrink-0" />
-                  <span>{lang === "id" ? "Dampak Bisnis:" : "Business Impact:"} {bu.impact}</span>
+                  <div className="pt-2 flex items-center gap-2.5 text-sm text-blue-700 dark:text-blue-400 font-semibold border-t border-zinc-100 dark:border-zinc-800/80">
+                    <TrendingUp className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>{lang === "id" ? "Dampak Bisnis:" : "Business Impact:"} {bu.impact}</span>
+                  </div>
                 </div>
               </div>
             ))}
