@@ -992,9 +992,6 @@ export default function ErlanggaPitchView() {
           <div>
             <span>{t.footerTitle}</span> — <span>Okihita H. Sihaloho</span>
           </div>
-          <div>
-            <span>{t.footerBranch}</span>
-          </div>
         </div>
       </footer>
     </div>

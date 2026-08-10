@@ -697,9 +697,8 @@ export default function ErlanggaSubsidiariesView() {
               </a>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 pt-8">
               <p>{t.footerTitle}</p>
-              <p className="font-mono">{t.footerBranch}</p>
             </div>
           </div>
         </section>
