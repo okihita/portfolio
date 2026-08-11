@@ -115,4 +115,4 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 
 #section("Interests & Certifications")
 - *Certifications:* GCP Cloud Architect (In Progress)
-- *Passions:* Marathon runner (preparing for international marathons), certified open-water diver, analytical writing, voice actor for major streaming platforms.
+- *Passions:* Dedicated gymgoer & fitness/health enthusiast, marathon runner (preparing for international marathons), certified open-water diver, analytical writing, voice actor for major streaming platforms.
