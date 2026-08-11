@@ -59,12 +59,12 @@ Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on softw
 Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 Ultra on private VPS) and 24/7 agent swarm deployments for continuous task execution and rapid product iteration. Known for clear technical communication, empathetic team leadership, native-level business English, a relentless can-do attitude, and meticulous attention to detail with clean SOLID/DRY architecture standards—bringing technical rigor, operational clarity, and high-energy team culture.
 
 #section("Technical Skills")
+- *AI & Autonomous Agents:* Self-Hosted AI Agent Swarms (Hermes/VPS + DeepSeek 0731 Ultra), Smartwatch / Telegram Bot Remote Coding Workflows, Vercel AI SDK v4, RAG Architecture, Vector DBs (`pgvector`), Gemini API, Vision OCR
 - *Core Languages:* TypeScript, Python, Rust, Go, Kotlin, C++, Swift, SQL
-- *Mobile Engineering:* React Native (iOS & Android), Android Native (Jetpack Compose, Hilt, Clean Architecture)
-- *Web & Desktop:* Next.js, React 19, Tauri 2.0 (Rust + React), Astro, TailwindCSS v4, D3-geo
-- *Cloud & Infrastructure:* GCP (Cloud Architect in progress), AWS (EC2, Lambda, S3, ECS), Azure Functions, VPS Orchestration, Cloudflare, Vercel, Supabase (`pgvector`), Docker, CI/CD
-- *AI & Agent Swarms:* Self-Hosted AI Agent Swarms (Hermes/VPS + DeepSeek 0731 Ultra), Smartwatch / Telegram Bot Remote Coding Workflows, Vercel AI SDK v4, RAG Architecture, Vector DBs, Gemini API, Vision OCR
-- *Enterprise Software:* Microsoft Dynamics ERP, SDLC Governance, SecOps
+- *Web & Fullstack Architecture:* Next.js, React 19, Tauri 2.0 (Rust + React), TailwindCSS v4, Astro, D3-geo
+- *Mobile Engineering:* React Native (iOS & Android), Android Native (Jetpack Compose, MVVM, Hilt, Clean Architecture)
+- *Cloud & Infrastructure:* GCP (Cloud Architect in progress), AWS (EC2, Lambda, S3, ECS), Cloudflare, Vercel, Supabase, VPS Orchestration, Docker, CI/CD, Azure Functions
+- *Enterprise Software & Governance:* Microsoft Dynamics ERP, SDLC Governance, SecOps, ITIL v4
 
 #section("Work Experience")
 
