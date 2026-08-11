@@ -5,15 +5,15 @@
 
 #set text(
   font: ("Helvetica Neue", "Helvetica", "Arial"),
-  size: 9.2pt,
+  size: 9.1pt,
   fill: rgb("#1e293b")
 )
 
 // Relaxed line height for easy reading & visual elegance
-#set par(justify: false, leading: 0.68em)
+#set par(justify: false, leading: 0.66em)
 
 // Bullet list styling
-#set list(spacing: 0.65em, marker: text(fill: rgb("#2563eb"))[•])
+#set list(spacing: 0.6em, marker: text(fill: rgb("#2563eb"))[•])
 
 // Header
 #align(center)[
@@ -34,7 +34,7 @@
   text(size: 10.5pt, weight: "bold", fill: rgb("#1e40af"))[#upper(title)]
   v(-4pt)
   line(length: 100%, stroke: 0.8pt + rgb("#cbd5e1"))
-  v(5pt)
+  v(4pt)
 }
 
 // Job Entry Macro
@@ -65,9 +65,10 @@ Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on softw
 #section("Work Experience")
 
 #entry("Indie Engineer & AI Tech Consultant", "Fullstack & Mobile Lead", "Jan 2025 – Present", "Jakarta, Indonesia")
+- *CineRadar (Creator & Lead Architect):* Built an AI-orchestrated national cinema intelligence platform aggregating showtimes across 496 theatres and 83 cities from 3 major cinema chains, engineering resilient scraper agents and a high-availability Next.js 16 real-time analytics dashboard (`cineradar-id.vercel.app`).
 - *Zenius EdTech Mobile App:* Solo-architected and launched the brand-new cross-platform React Native mobile app (`net.zenius.mobile.android`) from greenfield codebase to production on Google Play Store, reducing cold-start latency to sub-second on entry-level mobile devices via Hermes engine tuning and bundle splitting.
+- *EngageMedia Digital Rights Suite:* Architected 2 regional civic-tech AI platforms for Southeast Asia across 11 nations—building *D.R.O.N.E.* (an AI policy observatory with Supabase `pgvector` RAG, Vercel AI SDK v4, and D3 vector mapping) and *MMAAII* (a bilingual AI incident & legal regulations matrix deployed on Cloudflare Pages).
 - *PAKDE (Solo Creator):* Built a gamified, 100% offline-first cooperative productivity suite for Indonesian village cooperatives using Tauri 2.0 (Rust + React 19), automating SAK EP double-entry accounting for cross-platform Windows/macOS desktop apps (`pakde.vercel.app`).
-- *D.R.O.N.E. (EngageMedia):* Spearheaded technical architecture for Southeast Asia’s 11-nation digital rights policy observatory utilizing Next.js 16, Supabase `pgvector` semantic search, Vercel AI SDK v4, and D3 cartographic maps (`drone.engagemedia.org`).
 - *Competitive AI Engineering:* Ranked *Top 15 / ~150 engineers* in RedAI Triathlon 2025 (Red Asia x AWS AI competition) and *Top 5 / ~100 teams* in Amartha x GDG Jakarta Hackathon (building an AI WhatsApp financial coach for micro-entrepreneurs).
 
 #v(6pt)
@@ -103,8 +104,8 @@ Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on softw
 #text(size: 8.5pt, fill: rgb("#64748b"))[Top Technology Institute in Indonesia | STEI ITB]
 
 #section("Notable High-Impact Projects")
-- *CineRadar* (`cineradar-id.vercel.app`): Full-stack cinema intelligence platform aggregating showtimes across 496 theatres and 83 cities from 3 major cinema chains, delivering 99.9% daily data availability via resilient web scrapers.
-- *Erlangga Group Strategic Proposal* (`okihita.com/erlangga`): Full-stack executive pitch site featuring a 17-point qualification alignment matrix, 90-day IT strategy, 6 risk simulation case studies, and interactive enterprise data pipeline flowcharts.
+- *BijakMengeluh* (`bijakmengeluh.id`): AI-powered civic engagement platform helping citizens draft structured complaint letters and route them to appropriate Indonesian government agencies. Includes DPR members scraper sub-project.
+- *Verlo:* Universal React Native (Expo 57) offline-first workout logger & 360° BDNF/Longevity tracker featuring 150+ exercise database.
 
 #section("Interests & Certifications")
 - *Certifications:* GCP Cloud Architect (In Progress)
