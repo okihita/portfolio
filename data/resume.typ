@@ -75,7 +75,7 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 - *EngageMedia Digital Rights Suite:* Architected 2 regional civic-tech AI platforms for Southeast Asia across 11 nations—building *D.R.O.N.E.* (an AI policy observatory with Supabase `pgvector` RAG, Vercel AI SDK v4, and D3 vector mapping) and *MMAAII* (a bilingual AI incident & legal regulations matrix deployed on Cloudflare Pages).
 - *PAKDE (Solo Creator):* Built a gamified, 100% offline-first cooperative productivity suite for Indonesian village cooperatives using Tauri 2.0 (Rust + React 19), automating SAK EP double-entry accounting for cross-platform Windows/macOS desktop apps (`pakde.vercel.app`).
 - *Competitive AI Engineering:* Ranked *Top 15 / ~150 engineers* in RedAI Triathlon 2025 (Red Asia x AWS AI competition) and *Top 5 / ~100 teams* in Amartha x GDG Jakarta Hackathon (building an AI WhatsApp financial coach for micro-entrepreneurs).
-- *Tech Coaching & Product Mentorship:* Mentoring developers and student teams to build and ship production software—coaching *Verlo* (`verlo.id` --- universal gym & nutrition tracker), *Transit Flow* (`transit-flow-fe.vercel.app`), and *Nusa Cipta* (`nusacipta.aprilwang.id`).
+- *Tech Coaching & Product Mentorship:* Mentoring developers and student teams to build and ship production software—coaching *Verlo* (`verlo.id` --- universal gym & nutrition tracker), *Transit Flow* (`transit-flow-fe.vercel.app` --- real-time station congestion & spatial GIS engine), and *Nusa Cipta* (`nusacipta.aprilwang.id` --- one-stop IP & patent management portal).
 
 #v(6pt)
 
