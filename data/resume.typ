@@ -63,8 +63,8 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 - *Core Languages:* TypeScript, Python, Rust, Go, Kotlin, C++, Swift, SQL
 - *Web & Fullstack Architecture:* Next.js, React 19, Tauri 2.0 (Rust + React), TailwindCSS v4, Astro, D3-geo
 - *Mobile Engineering:* React Native (iOS & Android), Android Native (Jetpack Compose, MVVM, Hilt, Clean Architecture)
-- *Cloud & Infrastructure:* GCP (Cloud Architect in progress), AWS (EC2, Lambda, S3, ECS), Cloudflare, Vercel, Supabase, VPS Orchestration, Docker, CI/CD, Azure Functions
-- *Enterprise Software & Governance:* Microsoft Dynamics ERP, SDLC Governance, SecOps, ITIL v4
+- *Cloud & Infrastructure:* GCP (Cloud Architect in progress), AWS (EC2, Lambda, S3, ECS, RDS, DynamoDB, CloudFront), Cloudflare, Vercel, Supabase, VPS Orchestration, Docker, CI/CD, Azure Functions
+- *Enterprise Software & Governance:* Microsoft Dynamics ERP, SDLC Governance, SecOps
 
 #section("Work Experience")
 
