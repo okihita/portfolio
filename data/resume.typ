@@ -1,60 +1,60 @@
 #set page(
   paper: "a4",
-  margin: (x: 1.6cm, y: 1.5cm)
+  margin: (x: 1.55cm, y: 1.45cm)
 )
 
 #set text(
   font: ("Helvetica Neue", "Helvetica", "Arial"),
-  size: 9.1pt,
+  size: 9.2pt,
   fill: rgb("#1e293b")
 )
 
-// Relaxed line height for easy reading & visual elegance
-#set par(justify: false, leading: 0.66em)
+// Precision vertical rhythm and line leading for optimal legibility & breathing room
+#set par(justify: false, leading: 0.58em)
 
-// Bullet list styling
-#set list(spacing: 0.6em, marker: text(fill: rgb("#2563eb"))[•])
+// Bullet list styling with harmonious spacing
+#set list(spacing: 0.52em, marker: text(fill: rgb("#2563eb"))[•])
 
 // Header
 #align(center)[
-  #text(size: 19pt, weight: "bold", fill: rgb("#0f172a"))[Okihita H. Sihaloho, S.T.] \
+  #text(size: 19.5pt, weight: "bold", fill: rgb("#0f172a"))[Okihita H. Sihaloho, S.T.] \
   #v(-1pt)
   #text(size: 10pt, weight: "bold", fill: rgb("#2563eb"))[AI-Supercharged Tech Lead & Product Architect] \
-  #v(2pt)
+  #v(2.5pt)
   #text(size: 8.8pt, fill: rgb("#475569"))[
     Jakarta, Indonesia #text(fill: rgb("#cbd5e1"))[|] okihita\@gmail.com #text(fill: rgb("#cbd5e1"))[|] okihita.com #text(fill: rgb("#cbd5e1"))[|] linkedin.com/in/okihita #text(fill: rgb("#cbd5e1"))[|] github.com/okihita
   ]
 ]
 
-#v(4pt)
+#v(3pt)
 
 // Section Header Macro
 #let section(title) = {
-  v(8pt)
+  v(6.5pt)
   text(size: 10.5pt, weight: "bold", fill: rgb("#1e40af"))[#upper(title)]
-  v(-4pt)
-  line(length: 100%, stroke: 0.8pt + rgb("#cbd5e1"))
-  v(4pt)
+  v(-3.5pt)
+  line(length: 100%, stroke: 0.7pt + rgb("#cbd5e1"))
+  v(3.5pt)
 }
 
 // Job Entry Macro
 #let entry(title, role, dates, location) = {
-  v(4pt)
+  v(3.5pt)
   grid(
     columns: (1fr, auto),
-    row-gutter: 3pt,
+    row-gutter: 2.5pt,
     [*#title* #text(fill: rgb("#2563eb"))[-- *#role*]],
     [*#dates*]
   )
-  v(-2pt)
+  v(-2.5pt)
   text(size: 8.5pt, fill: rgb("#64748b"))[#location]
-  v(3pt)
+  v(2.5pt)
 }
 
 #section("Professional Summary")
 Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on software engineering leadership*—from scaling mobile banking super-apps serving *25M+ users* to architecting enterprise portals for *170,000+ employees*, building B2B national cinema intelligence dashboards with high-intensity automated scraping, solo-building React Native apps for iOS and Android, and engineering offline-first desktop suites (Rust/Tauri) and AI/LLM platforms. Combines deep technical execution (Next.js, TypeScript, Rust, Python, Go, AWS/GCP) with C-suite strategic consulting experience from *Accenture*. B.Eng. in Computer Science from Institut Teknologi Bandung (ITB).
 
-#v(4pt)
+#v(3.5pt)
 
 Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 Ultra on private VPS) and 24/7 agent swarm deployments for continuous task execution and rapid product iteration. Known for clear technical communication, empathetic team leadership, native-level business English, a relentless can-do attitude, and meticulous attention to detail with clean SOLID/DRY architecture standards—bringing technical rigor, operational clarity, and high-energy team culture.
 
@@ -77,7 +77,7 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 - *Competitive AI Engineering & Hackathons:* Actively competing in premier AI hackathons—ranked *Top 15 / ~150 engineers* in RedAI Triathlon 2025 (Red Asia x AWS AI competition) and *Top 5 / ~100 teams* in Amartha x GDG Jakarta Hackathon (building an AI WhatsApp financial coach for micro-entrepreneurs).
 - *Tech Coaching & Product Mentorship:* Mentoring developers and student teams to build and ship production software—coaching *BesokUjian* (K-12 study planner & exam prep question bank), *Verlo* (`verlo.id` --- universal gym & nutrition tracker), *Transit Flow* (`transit-flow-fe.vercel.app` --- spatial GIS engine to reduce real-time congestion), and *Nusa Cipta* (`nusacipta.aprilwang.id` --- IP management portal).
 
-#v(6pt)
+#v(5pt)
 
 #entry("Business Integration Lead (Accenture)", "Tech Lead & Consultant", "Aug 2022 – Dec 2024", "Jakarta, Indonesia")
 - *Mobile Banking Super-App (Squad Lead #1):* Led mobile squad deploying 6 mission-critical features—including NFC Tap-to-Pay, QRIS payments, and digital KYC verification—to *25M+ Android users* while ensuring 100% backward compatibility across legacy Android OS versions.
@@ -85,18 +85,18 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 - *FMCG MNC Corporate Portal (Engineering Lead):* Managed a 3-engineer squad building an enterprise management portal for an MNC with *170,000+ corporate employees*, leveraging Azure Cloud Functions, serverless APIs, and microservices architecture.
 - *Global NGO Digital Transformation:* Served as sole technical consultant for the Indonesian branch of a 100+ year old global NGO, translating operational bottlenecks into technical blueprints and presenting directly to C-level steering committees.
 
-#v(6pt)
+#v(5pt)
 
 #entry("Android Lead (Zenius)", "Engineering Manager & Mobile Lead", "Oct 2021 – May 2022", "Jakarta, Indonesia")
 - *Interactive Live-Streaming Engine:* Hands-on architected and deployed mission-critical interactive live-streaming feature (Agora.io SDK), powering real-time tutoring for *10M+ active students* during peak national exam surges.
 - *Team Management & Mentorship:* Managed and coached 7 direct Android engineers, enforcing clean code standards, unit testing (Mockito/Espresso), and reducing overall APK bundle size by *25%*.
 
-#v(6pt)
+#v(5pt)
 
 #entry("Android Lead & Product Owner (MusigPro)", "Mobile Lead", "May 2020 – Aug 2021", "Remote, Singapore")
 - *Karaoke Super-App:* Single-handedly built a mobile karaoke Android application from greenfield codebase to production release, engineering offline audio storage, media manipulation, and real-time pitch detection algorithms.
 
-#v(6pt)
+#v(5pt)
 
 #entry("Android Lead (SHOX)", "Mobile Squad Lead", "Mar 2019 – Feb 2020", "Jakarta, Indonesia")
 - *AI-Powered E-Commerce Mobile App:* Architected a shoppable fashion inspiration app with user-generated content, managing cross-border engineering squads in China and India while implementing MVVM, Clean Architecture, and full Firebase/CleverTap analytics observability.
