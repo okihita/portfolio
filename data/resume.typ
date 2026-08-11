@@ -52,26 +52,26 @@
 }
 
 #section("Professional Summary")
-Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on software engineering leadership*—from scaling mobile banking super-apps serving *25M+ users* to architecting enterprise portals for *170,000+ employees*, solo-building React Native mobile apps, and engineering offline-first desktop suites (Rust/Tauri) and AI/LLM platforms. Combines deep technical execution (Kotlin/Android, Next.js 16, TypeScript, Rust, Python, AWS/GCP) with C-suite strategic consulting experience from *Accenture*. B.Eng. in Computer Science from *Institut Teknologi Bandung (ITB)*.
+Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on software engineering leadership*—from scaling mobile banking super-apps serving *25M+ users* to architecting enterprise portals for *170,000+ employees*, building B2B national cinema intelligence dashboards with high-intensity automated scraping, solo-building React Native apps compiling natively to iOS and Android, and engineering offline-first desktop suites (Rust/Tauri) and AI/LLM platforms. Combines deep technical execution (Kotlin/Android, Next.js, TypeScript, Rust, Python, AWS/GCP) with C-suite strategic consulting experience from *Accenture*. B.Eng. in Computer Science from Institut Teknologi Bandung (ITB).
 
 #v(4pt)
 
-Leverages self-hosted autonomous AI dev workflows (Hermes on VPS via Telegram) for 10x engineering velocity. Known for clear technical communication, empathetic team leadership, native-level business English, and meticulous attention to detail with clean SOLID/DRY architecture standards—bringing technical rigor, operational clarity, and high-energy team culture.
+Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 Ultra on private VPS) and 24/7 agent swarm deployments for continuous task execution and rapid product iteration. Known for clear technical communication, empathetic team leadership, native-level business English, and meticulous attention to detail with clean SOLID/DRY architecture standards—bringing technical rigor, operational clarity, and high-energy team culture.
 
 #section("Technical Skills")
 - *Core Languages:* Kotlin, TypeScript, Rust, Python, Go, C++, Swift, SQL
-- *Mobile Engineering:* React Native (iOS & Android), Android Native (Jetpack Compose, Hilt, Clean Architecture), iOS (Swift), ExoPlayer
-- *Web & Desktop:* Next.js 16 (App Router), React 19, Tauri 2.0 (Rust + React), Astro, TailwindCSS v4, D3-geo
+- *Mobile Engineering:* React Native (compiling natively to iOS & Android), Android Native (Jetpack Compose, Hilt, Clean Architecture), ExoPlayer
+- *Web & Desktop:* Next.js (App Router), React 19, Tauri 2.0 (Rust + React), Astro, TailwindCSS v4, D3-geo
 - *Cloud & Infrastructure:* GCP (Cloud Architect in progress), AWS (EC2, Lambda, S3, ECS), Azure Functions, Supabase (`pgvector`), Docker, CI/CD
-- *AI & LLM Integration:* Self-Hosted AI Agents (Hermes/VPS), Vercel AI SDK v4, RAG Architecture, Vector DBs, Gemini API, OpenAI API, Vision OCR
+- *AI & Agent Swarms:* Self-Hosted AI Agent Swarms (Hermes/VPS + DeepSeek 0731 Ultra), Vercel AI SDK v4, RAG Architecture, Vector DBs, Gemini API, Vision OCR
 - *Enterprise Software:* Microsoft Dynamics ERP, Qontak CRM, Darwinbox HRMS, PowerBI, SDLC Governance, SecOps
 
 #section("Work Experience")
 
 #entry("Indie Engineer & AI Tech Consultant", "Fullstack & Mobile Lead", "Jan 2025 – Present", "Jakarta, Indonesia")
-- *CineRadar (B2B Platform Architect):* Architected a B2B cinema intelligence platform aggregating *10,000+ daily showtimes* and real-time seating layouts across 496 theatres, engineering ticket purchase heatmaps, multi-agent AI scrapers, and a Supabase-authenticated enterprise dashboard.
-- *Zenius EdTech Mobile App:* Solo-architected and launched the brand-new cross-platform React Native mobile app (`net.zenius.mobile.android`) from greenfield to production, achieving *10,000+ downloads*, a *4.8★ Play Store rating*, and an industry-leading *0.19% crash rate* via Hermes engine optimization.
-- *AI Agent Productivity Infrastructure:* Deployed a self-hosted autonomous AI agent framework (Hermes on private VPS via Telegram interface) to orchestrate remote code execution, automated build verification, and instant test suite execution via natural language prompts.
+- *CineRadar (B2B Platform Architect):* Architected a B2B cinema intelligence platform aggregating *10,000+ daily showtimes* and real-time seating layouts across 496 theatres, engineering ticket purchase heatmaps, high-intensity multi-agent scrapers, and a Supabase-authenticated enterprise dashboard.
+- *Zenius EdTech Mobile App:* Solo-architected and launched the brand-new React Native mobile app (`net.zenius.mobile.android`) compiling natively to iOS and Android, achieving *10,000+ downloads*, a *4.8★ Play Store rating*, and an industry-leading *0.19% crash rate* via Hermes engine tuning.
+- *AI Agent Productivity Infrastructure:* Deployed a self-hosted autonomous AI agent swarm framework (Hermes + DeepSeek 0731 Ultra on private VPS via Telegram) for 24/7 task execution, automated build verification, and instant test suite orchestration via natural language prompts.
 - *EngageMedia Digital Rights Suite:* Architected 2 regional civic-tech AI platforms for Southeast Asia across 11 nations—building *D.R.O.N.E.* (an AI policy observatory with Supabase `pgvector` RAG, Vercel AI SDK v4, and D3 vector mapping) and *MMAAII* (a bilingual AI incident & legal regulations matrix deployed on Cloudflare Pages).
 - *PAKDE (Solo Creator):* Built a gamified, 100% offline-first cooperative productivity suite for Indonesian village cooperatives using Tauri 2.0 (Rust + React 19), automating SAK EP double-entry accounting for cross-platform Windows/macOS desktop apps (`pakde.vercel.app`).
 - *Competitive AI Engineering:* Ranked *Top 15 / ~150 engineers* in RedAI Triathlon 2025 (Red Asia x AWS AI competition) and *Top 5 / ~100 teams* in Amartha x GDG Jakarta Hackathon (building an AI WhatsApp financial coach for micro-entrepreneurs).
