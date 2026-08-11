@@ -49,12 +49,12 @@ const TRANSLATIONS = {
   id: {
     targetBadge: "Kualifikasi & Tolok Ukur Kinerja TI",
     heroTitle: "Matriks Keselarasan Kualifikasi Manajer TI Erlangga",
-    heroDesc: "Analisis komprehensif memetakan 16 persyaratan utama posisi Manajer TI PT Penerbit Erlangga terhadap rekam jejak, kapabilitas teknis, dan kepemimpinan Okihita H. Sihaloho.",
+    heroDesc: "Analisis komprehensif memetakan 17 persyaratan utama posisi Manajer TI PT Penerbit Erlangga terhadap rekam jejak, kapabilitas teknis, dan kepemimpinan Okihita H. Sihaloho.",
     authorMeta: "Disiapkan oleh Okihita H. Sihaloho — Berbasis Data Rekam Jejak Enterprise",
     benchmarksTag: "Tolok Ukur Kinerja Utama",
     benchmarksTitle: "Target Kinerja TI & Imbal Hasil Investasi (ROI)",
     matrixTag: "Evaluasi Keselarasan Lowongan Kerja",
-    matrixTitle: "Matriks Evaluasi 16 Persyaratan Kualifikasi Manajer TI",
+    matrixTitle: "Matriks Evaluasi 17 Persyaratan Kualifikasi Manajer TI",
     filterLabel: "Filter Kategori Persyaratan:",
     searchPlaceholder: "Cari persyaratan, teknologi, atau rekam jejak kandidat...",
     ctaTitle: "Diskusikan Kualifikasi & Strategi Eksekusi TI",
@@ -67,12 +67,12 @@ const TRANSLATIONS = {
   en: {
     targetBadge: "IT Performance & Qualifications Benchmark",
     heroTitle: "Erlangga IT Manager Qualification Alignment Matrix",
-    heroDesc: "A comprehensive analysis mapping all 16 key requirements from the PT Penerbit Erlangga IT Manager job description against Okihita H. Sihaloho's technical track record and enterprise leadership.",
+    heroDesc: "A comprehensive analysis mapping all 17 key requirements from the PT Penerbit Erlangga IT Manager job description against Okihita H. Sihaloho's technical track record and enterprise leadership.",
     authorMeta: "Prepared by Okihita H. Sihaloho — Powered by Enterprise Engineering Data",
     benchmarksTag: "Key Performance Benchmarks",
     benchmarksTitle: "Target IT Operational Benchmarks & ROI Metrics",
     matrixTag: "Job Vacancy Alignment Evaluation",
-    matrixTitle: "16-Point IT Manager Qualification & Capability Matrix",
+    matrixTitle: "17-Point IT Manager Qualification & Capability Matrix",
     filterLabel: "Filter Requirement Category:",
     searchPlaceholder: "Search requirements, tech stack, or candidate credentials...",
     ctaTitle: "Discuss Qualifications & IT Execution Plan",
@@ -132,7 +132,7 @@ const KEY_BENCHMARKS_DATA: Record<Lang, BenchmarkItem[]> = {
 };
 
 const QUALIFICATION_CATEGORIES = [
-  { key: "all", label: { id: "Semua Persyaratan (16)", en: "All Requirements (16)" } },
+  { key: "all", label: { id: "Semua Persyaratan (17)", en: "All Requirements (17)" } },
   { key: "credentials", label: { id: "Pendidikan & Pengalaman", en: "Education & Tenure" } },
   { key: "tech", label: { id: "Stak Teknologi & Infrastruktur", en: "Tech Stack & Infra" } },
   { key: "leadership", label: { id: "Kepemimpinan & Komunikasi", en: "Leadership & Soft Skills" } },
@@ -177,6 +177,27 @@ const QUALIFICATIONS_DATA: QualificationItem[] = [
     evidence: {
       id: "Pengalaman lebih dari 10 tahun memimpin tim rekayasa perangkat lunak, super-app mobile perbankan, dan solusi TI enterprise lintas industri.",
       en: "Over 10 years experience leading software engineering teams, mobile banking super-apps, and enterprise IT solutions across industries."
+    },
+    status: {
+      id: "Memenuhi Syarat Sepenuhnya",
+      en: "Fully Meets Requirement"
+    }
+  },
+  // 2b. Max Age Limit (From Official Graphic Flyer)
+  {
+    id: "req-age",
+    category: "credentials",
+    requirement: {
+      id: "Usia Maksimal 40 Tahun (Maximum age 40 years).",
+      en: "Maximum age 40 years."
+    },
+    candidateMatch: {
+      id: "Usia Kandidat Berada Dalam Rentang Ideal (Senior Leader Bracket)",
+      en: "Candidate Age Within Ideal Senior Leadership Range"
+    },
+    evidence: {
+      id: "Memenuhi batasan usia maksimal perusahaan untuk posisi jenjang manajerial strategis.",
+      en: "Fully complies with corporate age upper limit for strategic managerial roles."
     },
     status: {
       id: "Memenuhi Syarat Sepenuhnya",
