@@ -3,7 +3,7 @@
   margin: (x: 1.6cm, y: 1.5cm)
 )
 #set text(
-  font: ("Inter", "Helvetica", "Arial", "Liberation Sans"),
+  font: ("Helvetica Neue", "Helvetica", "Arial"),
   size: 9.5pt,
   fill: rgb("#111827")
 )
