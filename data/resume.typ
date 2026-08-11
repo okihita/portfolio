@@ -52,7 +52,11 @@
 }
 
 #section("Professional Summary")
-Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on software engineering leadership*—from scaling mobile banking super-apps serving *25M+ users* to architecting enterprise portals for *170,000+ employees*, solo-building React Native mobile apps, and engineering offline-first desktop suites (Rust/Tauri) and AI/LLM platforms. Leverages self-hosted autonomous AI dev workflows (Hermes on VPS via Telegram) for 10x engineering velocity. B.Eng. in Computer Science from *Institut Teknologi Bandung (ITB)*.
+Results-driven *Tech Lead & Product Architect* with *10+ years of hands-on software engineering leadership*—from scaling mobile banking super-apps serving *25M+ users* to architecting enterprise portals for *170,000+ employees*, solo-building React Native mobile apps, and engineering offline-first desktop suites (Rust/Tauri) and AI/LLM platforms. Combines deep technical execution (Kotlin/Android, Next.js 16, TypeScript, Rust, Python, AWS/GCP) with C-suite strategic consulting experience from *Accenture*. B.Eng. in Computer Science from *Institut Teknologi Bandung (ITB)*.
+
+#v(4pt)
+
+Leverages self-hosted autonomous AI dev workflows (Hermes on VPS via Telegram) for 10x engineering velocity. Known for clear technical communication, empathetic team leadership, native-level business English, and meticulous attention to detail with clean SOLID/DRY architecture standards—bringing technical rigor, operational clarity, and high-energy team culture.
 
 #section("Technical Skills")
 - *Core Languages:* Kotlin, TypeScript, Rust, Python, Go, C++, Swift, SQL
