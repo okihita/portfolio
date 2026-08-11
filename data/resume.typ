@@ -68,7 +68,7 @@ Leverages self-hosted autonomous AI dev workflows (Hermes running DeepSeek 0731 
 
 #section("Work Experience")
 
-#entry("Indie Engineer & AI Tech Consultant", "Fullstack & Mobile Lead", "Jan 2025 – Present", "Jakarta, Indonesia")
+#entry("Indie Engineer & AI Tech Consultant", "Principal AI & Systems Architect", "Jan 2025 – Present", "Jakarta, Indonesia")
 - *CineRadar (B2B Platform Architect):* Architected a B2B cinema intelligence platform aggregating *10,000+ daily showtimes* and real-time seating layouts across 496 theatres, reverse-engineering undocumented API endpoints and building high-intensity multi-agent scrapers, ticket purchase heatmaps, and a Supabase enterprise dashboard.
 - *Zenius EdTech Mobile App:* Solo-architected and launched the brand-new React Native mobile app (`net.zenius.mobile.android`) for iOS and Android from greenfield to production, achieving *10,000+ downloads*, a *4.8★ Play Store rating*, and an industry-leading *0.19% crash rate* via Hermes engine tuning.
 - *AI Agent Productivity Infrastructure:* Deployed a self-hosted autonomous AI agent swarm framework (Hermes + DeepSeek 0731 Ultra on private VPS) integrated with a custom Telegram bot and Smartwatch voice/touch interface for remote 24/7 coding execution, automated build verification, and instant test suite orchestration.
