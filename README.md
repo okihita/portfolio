@@ -13,7 +13,7 @@
 [![React Native](https://img.shields.io/badge/React_Native-Cross_Platform-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactnative.dev/)
 [![Tauri](https://img.shields.io/badge/Tauri_2.0-Rust-FFC131?style=for-the-badge&logo=tauri&logoColor=black)](https://tauri.app/)
 
-[🌐 Live Portfolio Website](https://okihita.vercel.app) • [📄 Contact Okihita](mailto:okihita@gmail.com) • [💼 LinkedIn Profile](https://linkedin.com/in/okihita)
+[🌐 Live Portfolio Website](https://okihita.com) • [📄 Contact Okihita](mailto:okihita@gmail.com) • [💼 LinkedIn Profile](https://linkedin.com/in/okihita)
 
 </div>
 
