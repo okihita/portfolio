@@ -392,13 +392,117 @@ export default function ProjectMockup({
 
             <div className="p-2.5 rounded bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between text-[11px]">
               <div className="text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
-                <span className="text-blue-600 dark:text-blue-400 font-bold">[SYSTEM LOG]</span>
+                <span className="text-blue-600 dark:text-blue-400 font-bold">SYSTEM LOG:</span>
                 <span>Services operational.</span>
               </div>
               <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Status: 200 OK</span>
             </div>
           </div>
         )}
+      </div>
+    );
+  }
+
+  // Custom Terminal Telemetry for sERPent
+  if (project.id === "serpent") {
+    return (
+      <div className="rounded-lg overflow-hidden border border-zinc-300 dark:border-zinc-800 bg-slate-900 dark:bg-zinc-950 shadow-xl flex flex-col font-mono text-xs">
+        <div className="bg-slate-800 dark:bg-zinc-900 border-b border-slate-700 dark:border-zinc-800 px-3.5 py-2.5 flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+          </div>
+          <div className="text-slate-300 dark:text-zinc-400 text-[11px] font-semibold flex items-center gap-1.5">
+            <TerminalIcon className="w-3.5 h-3.5 text-emerald-400" />
+            serpent-core --workflows=omnichannel
+          </div>
+          <span className="text-[10px] text-slate-400 dark:text-zinc-500">Medusa v2 / Vision AI</span>
+        </div>
+
+        <div className="p-4 bg-[#0f172a] dark:bg-[#0a0a0d] text-slate-200 dark:text-zinc-300 space-y-2 min-h-[260px] font-mono leading-relaxed">
+          <div className="text-slate-400 dark:text-zinc-500">$ serpent-daemon --cluster --active</div>
+          <div className="text-emerald-400">OK Event bus active. Subscribed to inventory & POS webhooks.</div>
+          <div className="text-slate-300 dark:text-zinc-400 text-[11px]">
+            INGEST POST /api/v1/receipts (Multipart 3.2MB) -&gt; Vision OCR parsed
+          </div>
+          <div className="text-amber-300/90 text-[11px]">
+            EXTRACT vendor=&quot;Toko Berkah&quot;, total=Rp 450.000, confidence=0.984
+          </div>
+          <div className="text-blue-400 text-[11px]">
+            MEDUSA_V2 subscriber order.created -&gt; ACID inventory reservation locked
+          </div>
+          <div className="py-2 grid grid-cols-3 gap-2 text-[11px]">
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">Core Backend</div>
+              <div className="font-bold text-slate-100 dark:text-zinc-100 text-sm">Medusa v2</div>
+            </div>
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">AI Vision OCR</div>
+              <div className="font-bold text-emerald-400 text-sm">&lt; 0.9s</div>
+            </div>
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">Inventory Sync</div>
+              <div className="font-bold text-blue-400 text-sm">ACID Locked</div>
+            </div>
+          </div>
+          <div className="text-slate-300 dark:text-zinc-400 flex items-center gap-2 pt-1">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>Distributed Redis inventory lock active. POS-to-storefront synchronized.</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Custom Terminal Telemetry for CineRadar
+  if (project.id === "cineradar") {
+    return (
+      <div className="rounded-lg overflow-hidden border border-zinc-300 dark:border-zinc-800 bg-slate-900 dark:bg-zinc-950 shadow-xl flex flex-col font-mono text-xs">
+        <div className="bg-slate-800 dark:bg-zinc-900 border-b border-slate-700 dark:border-zinc-800 px-3.5 py-2.5 flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-600 dark:bg-zinc-700 inline-block" />
+          </div>
+          <div className="text-slate-300 dark:text-zinc-400 text-[11px] font-semibold flex items-center gap-1.5">
+            <TerminalIcon className="w-3.5 h-3.5 text-blue-400" />
+            cineradar-daemon --cluster --active
+          </div>
+          <span className="text-[10px] text-slate-400 dark:text-zinc-500">Python / Redis / Playwright</span>
+        </div>
+
+        <div className="p-4 bg-[#0f172a] dark:bg-[#0a0a0d] text-slate-200 dark:text-zinc-300 space-y-2 min-h-[260px] font-mono leading-relaxed">
+          <div className="text-slate-400 dark:text-zinc-500">$ cineradar-daemon --workers=32 --schedule=continuous</div>
+          <div className="text-emerald-400">OK 496/496 commercial endpoints polled across 83 cities.</div>
+          <div className="text-slate-300 dark:text-zinc-400 text-[11px]">
+            PROXY Rotated residential pool to node-sea-id-0412 (RTT: 38ms)
+          </div>
+          <div className="text-cyan-300/90 text-[11px]">
+            WAF TLS fingerprint spoofed (JA3/JA4). Zero 429 rate-limit drops
+          </div>
+          <div className="text-blue-400 text-[11px]">
+            CACHE Redis edge SET cinema:cgv:jakarta:001 (TTL: 300s, 11ms)
+          </div>
+          <div className="py-2 grid grid-cols-3 gap-2 text-[11px]">
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">Theatres Ingested</div>
+              <div className="font-bold text-slate-100 dark:text-zinc-100 text-sm">496 Endpoints</div>
+            </div>
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">Nationwide Reach</div>
+              <div className="font-bold text-emerald-400 text-sm">83 Cities</div>
+            </div>
+            <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">
+              <div className="text-slate-400 dark:text-zinc-500 text-[10px]">Availability</div>
+              <div className="font-bold text-blue-400 text-sm">99.9% Uptime</div>
+            </div>
+          </div>
+          <div className="text-slate-300 dark:text-zinc-400 flex items-center gap-2 pt-1">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
+            <span>Anti-bot proxy rotation active. Edge schedule mesh synchronized.</span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -423,7 +527,7 @@ export default function ProjectMockup({
         <div className="text-slate-400 dark:text-zinc-500">$ agentic-cli status --active</div>
         <div className="text-emerald-400">✓ Multimodal LLM Agent Engine online. Listening on Webhooks.</div>
         <div className="text-slate-300 dark:text-zinc-400">
-          [INFO] WhatsApp Business API connected. Ledger OCR module ready.
+          INFO: WhatsApp Business API connected. Ledger OCR module ready.
         </div>
         <div className="py-2 grid grid-cols-3 gap-2 text-[11px]">
           <div className="p-2 rounded bg-slate-800/80 dark:bg-zinc-900 border border-slate-700 dark:border-zinc-800">

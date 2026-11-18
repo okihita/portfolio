@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Okihita | Superstack Engineer",
-  description: "Portfolio of Okihita H. Sihaloho, Tech Lead & Senior Software Engineer specializing in React Native, Next.js, AI/LLM agentic workflows, Android super-apps, and low-latency systems.",
-  keywords: ["Okihita H. Sihaloho", "Tech Lead", "Software Engineer", "React Native", "Next.js", "Kotlin", "TypeScript", "AI Engineer", "Android Super-App"],
+  title: "Okihita | Staff Systems Architect & AI Engineering Lead",
+  description: "Portfolio of Okihita H. Sihaloho, Staff Systems Architect & Tech Lead specializing in Distributed AI Systems, Autonomous Workflows, High-Concurrency Platforms, and 25M+ Scale Resilience.",
+  keywords: ["Okihita H. Sihaloho", "Staff Systems Architect", "Tech Lead", "Software Engineer", "Distributed Systems", "AI Engineer", "Next.js", "TypeScript", "Python", "Autonomous Agents"],
   authors: [{ name: "Okihita H. Sihaloho" }],
   icons: {
     icon: "/icon.svg",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "Okihita | Superstack Engineer",
-    description: "Architecting resilient web platforms, React Native mobile apps, and agentic AI systems.",
+    title: "Okihita | Staff Systems Architect & AI Engineering Lead",
+    description: "Architecting distributed AI platforms, autonomous workflows, and 25M+ scale systems.",
     type: "website",
   },
 };

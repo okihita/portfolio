@@ -46,10 +46,10 @@ export interface ExperienceItem {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Okihita H. Sihaloho",
-    title: "AI-Supercharged Tech Lead & Full-Stack Systems Engineer",
+    title: "Staff Systems Architect & AI Engineering Lead",
     location: "Jakarta, Indonesia",
-    status: "Open for Tech Lead & Senior/Staff Roles",
-    bio: "Hands-on Tech Lead with 10+ years shipping production software—from Android super-apps serving 25M+ users to solo-building brand new React Native mobile apps, offline-first desktop apps (Rust/Tauri), AI-powered platforms, and Web3/IoT systems. Delivers SOLID, maintainable, strictly linted, and observed clean code while remaining highly aligned with business values.",
+    status: "Open for Staff, Tech Lead & Systems Architect Roles",
+    bio: "Hands-on Systems Architect and Tech Lead with 10+ years shipping mission-critical production software—from distributed media intelligence and multimodal ERP engines to high-concurrency banking platforms serving 25M+ users, offline-first systems (Rust/Tauri), and autonomous agent workflows. Delivers SOLID, maintainable, strictly linted, and observed clean code while remaining highly aligned with business values.",
     contacts: {
       email: "okihita@gmail.com",
       github: "https://github.com/okihita",
@@ -59,6 +59,92 @@ export const PORTFOLIO_DATA = {
   },
 
   projects: [
+    {
+      id: "serpent",
+      title: "sERPent — Multimodal Retail ERP & Headless Commerce",
+      category: "Systems & Cloud",
+      tagline: "Headless E-Commerce OS with Multimodal Vision AI Ingestion",
+      description:
+        "Enterprise-grade retail operating system and headless commerce engine engineered for omnichannel direct-to-consumer operations. Combines a high-performance Medusa.js v2 commerce backend with custom multimodal Vision AI microservices—converting physical handwritten receipts, supplier invoices, and field notes into relational PostgreSQL schemas while synchronizing real-time inventory between physical pop-up bazars and online storefronts.",
+      mockType: "terminal",
+      metrics: [
+        { label: "Core Engine", value: "Medusa v2 + Next.js" },
+        { label: "AI Extraction", value: "Multimodal Vision OCR" },
+        { label: "Inventory Sync", value: "Sub-Second ACID" },
+      ],
+      engineeringFeats: [
+        "Architected custom Medusa.js v2 commerce workflows, event-driven pub/sub subscriber pipelines, and transactional inventory reservations with strict ACID compliance.",
+        "Built a multimodal Vision AI ingestion pipeline that extracts unstructured handwritten field notes, physical receipts, and supplier invoices directly into structured PostgreSQL database records.",
+        "Designed real-time inventory locking and reconciliation between mobile point-of-sale (POS) bazar events and high-concurrency online flash-sale checkouts.",
+        "Integrated Meta WhatsApp Cloud API for automated order confirmations, dynamic QR-code entry passes for events, and real-time shipping tracking.",
+      ],
+      techStack: [
+        "Medusa.js v2",
+        "TypeScript",
+        "Node.js",
+        "Next.js 16",
+        "Python (Vision AI)",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Tailwind CSS v4",
+      ],
+      architectureDetails: {
+        problem:
+          "Omnichannel retail operations suffer catastrophic inventory drift, manual invoice entry bottlenecks, and high latency when reconciling physical pop-up bazars with online e-commerce storefronts.",
+        solution:
+          "Deployed a decoupled headless Medusa v2 core with custom transactional workflows, event bus pub/sub synchronization, and a Vision AI microservice for rapid optical data extraction.",
+        keyTradeoff:
+          "Chose headless decoupled commerce (Medusa + Next.js) over monolithic SaaS (Odoo/Shopify) to gain complete UX performance control and native AI pipeline extensibility, accepting the upfront overhead of custom module orchestration.",
+      },
+      links: {
+        live: "https://cahayahati.okihita.com",
+        github: "https://github.com/okihita/serpent",
+      },
+    },
+    {
+      id: "cineradar",
+      title: "CineRadar — Distributed Media Intelligence Engine",
+      category: "Systems & Cloud",
+      tagline: "Nationwide Cinema Network Scraper & Real-Time Aggregation Mesh",
+      description:
+        "High-throughput distributed data extraction and media intelligence platform continuously aggregating real-time seat availability, ticket pricing, and showtimes across 496 commercial movie theatres in 83 Indonesian cities from 3 major cinema chains. Built with resilient anti-bot evasion, distributed residential proxy rotation, and automated schema normalization.",
+      mockType: "terminal",
+      metrics: [
+        { label: "Theatres Ingested", value: "496 Endpoints" },
+        { label: "Nationwide Coverage", value: "83 Cities" },
+        { label: "Ingestion Availability", value: "99.9% Uptime" },
+      ],
+      engineeringFeats: [
+        "Engineered an adversarial web extraction pipeline reverse-engineering closed private mobile endpoints and dynamic frontend firewalls across 3 major cinema chains.",
+        "Architected distributed scraper workers with automated fingerprint randomization, residential proxy rotation, and adaptive backoff algorithms to prevent rate-limit blocks and IP flagging.",
+        "Implemented high-throughput data normalization converting erratic cinema ticketing layouts into standardized, strongly-typed PostgreSQL schemas with Redis edge caching.",
+        "Constructed an executive media intelligence portal with geospatial clustering, real-time seat occupancy heatmaps, and low-latency schedule lookup.",
+      ],
+      techStack: [
+        "Python",
+        "FastAPI",
+        "Playwright",
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Redis (Upstash)",
+        "PostgreSQL",
+        "Docker",
+      ],
+      architectureDetails: {
+        problem:
+          "Commercial cinema platforms employ aggressive WAFs, undocumented rate limits, and fragmented payload schemas, making real-time nationwide aggregation across 496 theaters prone to blockades and schema drift.",
+        solution:
+          "Constructed decoupled Python worker daemons utilizing residential proxy rotation, request signature spoofing, and automated dead-letter queues feeding a Redis-cached PostgreSQL database with Next.js ISR.",
+        keyTradeoff:
+          "Prioritized fault-tolerant proxy health pooling and jittered polling windows over continuous WebSocket socket flooding to eliminate IP bans and maintain 99.9% scraping reliability.",
+      },
+      links: {
+        live: "https://cineradar-id.vercel.app",
+        github: "https://github.com/okihita/cineradar",
+      },
+    },
     {
       id: "zenius-mobile",
       title: "Zenius (EdTech) Mobile App",
@@ -112,46 +198,57 @@ export const PORTFOLIO_DATA = {
       },
     },
     {
-      id: "serpent",
-      title: "sERPent — Multimodal Retail ERP & Headless Commerce",
-      category: "Systems & Cloud",
-      tagline: "Headless E-Commerce OS with Multimodal Vision AI Ingestion",
+      id: "bank-super-app",
+      title: "BNI wondr & Mandiri Livin' Mobile Super-Apps",
+      category: "Mobile (Android)",
+      tagline: "Lead Mobile Engineer for Tier-1 Indonesian Digital Banking Platforms",
       description:
-        "Enterprise-grade retail operating system and headless commerce engine engineered for omnichannel direct-to-consumer operations. Combines a high-performance Medusa.js v2 commerce backend with custom multimodal Vision AI microservices—converting physical handwritten receipts, supplier invoices, and field notes into relational PostgreSQL schemas while synchronizing real-time inventory between physical pop-up bazars and online storefronts.",
-      mockType: "browser",
+        "Architected and led mobile engineering squads at Accenture for tier-1 national bank flagship super-apps—wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin). Engineered Android NFC tap-to-pay engines, modern Jetpack Compose UI modules, and robust native features serving 25M+ active users.",
+      mockType: "carousel",
+      images: [
+        "/images/bni-wondr/shot1.webp",
+        "/images/bni-wondr/shot2.webp",
+        "/images/bni-wondr/shot3.webp",
+        "/images/bni-wondr/shot4.webp",
+        "/images/livin-mandiri/shot1.webp",
+        "/images/livin-mandiri/shot2.webp",
+        "/images/livin-mandiri/shot3.webp",
+        "/images/livin-mandiri/shot4.webp",
+        "/images/livin-mandiri/shot5.webp",
+      ],
       metrics: [
-        { label: "Core Engine", value: "Medusa v2 + Next.js" },
-        { label: "AI Extraction", value: "Multimodal Vision OCR" },
-        { label: "Inventory Sync", value: "Sub-Second ACID" },
+        { label: "Active Scale", value: "25M+ Users" },
+        { label: "Engineering Role", value: "Lead Mobile Engineer" },
+        { label: "NFC Uptime", value: "99.99% Reliability" },
       ],
       engineeringFeats: [
-        "Architected custom Medusa.js v2 commerce workflows, event-driven pub/sub subscriber pipelines, and transactional inventory reservations with strict ACID compliance.",
-        "Built a multimodal Vision AI ingestion pipeline that extracts unstructured handwritten field notes, physical receipts, and supplier invoices directly into structured PostgreSQL database records.",
-        "Designed real-time inventory locking and reconciliation between mobile point-of-sale (POS) bazar events and high-concurrency online flash-sale checkouts.",
-        "Integrated Meta WhatsApp Cloud API for automated order confirmations, dynamic QR-code entry passes for events, and real-time shipping tracking.",
+        "Lead mobile engineer at Accenture delivering core modules for wondr by BNI, and Livin' by Mandiri.",
+        "Engineered high-security Android Host Card Emulation (HCE) NFC tap-to-pay payments for millions of daily retail transactions.",
+        "Migrated legacy banking architectures to Jetpack Compose, Kotlin Hilt DI, and native Java/Kotlin codebase modules with strict zero-downtime compliance.",
       ],
       techStack: [
-        "Medusa.js v2",
-        "TypeScript",
-        "Node.js",
-        "Next.js 16",
-        "Python (Vision AI)",
-        "PostgreSQL",
-        "Redis",
-        "Docker",
-        "Tailwind CSS v4",
+        "Kotlin",
+        "Java",
+        "Android NFC / HCE",
+        "Jetpack Compose",
+        "Hilt",
+        "Dagger2",
+        "Clean Architecture",
       ],
       architectureDetails: {
         problem:
-          "Omnichannel retail operations suffer catastrophic inventory drift, manual invoice entry bottlenecks, and high latency when reconciling physical pop-up bazars with online e-commerce storefronts.",
+          "Orchestrating mission-critical banking transactions, biometric authentication, and NFC payment payloads across millions of fragmented devices for BNI and Bank Mandiri without breaking legacy backward compatibility.",
         solution:
-          "Deployed a decoupled headless Medusa v2 core with custom transactional workflows, event bus pub/sub synchronization, and a Vision AI microservice for rapid optical data extraction.",
+          "Designed decoupled feature-module architectures with strict DI boundaries, encrypted local payload persistence, and automated hardware integration test suites.",
         keyTradeoff:
-          "Chose headless decoupled commerce (Medusa + Next.js) over monolithic SaaS (Odoo/Shopify) to gain complete UX performance control and native AI pipeline extensibility, accepting the upfront overhead of custom module orchestration.",
+          "Maintained dual-path legacy Dagger + Hilt bridges to allow incremental modern UI migrations without risky full-codebase refactors.",
       },
       links: {
-        live: "https://cahayahati.okihita.com",
-        github: "https://github.com/okihita/serpent",
+        playstores: [
+          { label: "wondr by BNI", url: "https://play.google.com/store/apps/details?id=id.bni.wondr&hl=id" },
+          { label: "Livin' by Mandiri", url: "https://play.google.com/store/apps/details?id=id.bmri.livin&hl=id" },
+        ],
+        github: "https://github.com/okihita",
       },
     },
     {
@@ -242,103 +339,6 @@ export const PORTFOLIO_DATA = {
       links: {
         live: "https://mmaaii.engagemedia.org/en/",
         github: "https://gitlab.com/emopentech/mmaaii",
-      },
-    },
-        {
-      id: "cineradar",
-      title: "CineRadar — Distributed Media Intelligence Engine",
-      category: "Systems & Cloud",
-      tagline: "Nationwide Cinema Network Scraper & Real-Time Aggregation Mesh",
-      description:
-        "High-throughput distributed data extraction and media intelligence platform continuously aggregating real-time seat availability, ticket pricing, and showtimes across 496 commercial movie theatres in 83 Indonesian cities from 3 major cinema chains. Built with resilient anti-bot evasion, distributed residential proxy rotation, and automated schema normalization.",
-      mockType: "browser",
-      metrics: [
-        { label: "Theatres Ingested", value: "496 Endpoints" },
-        { label: "Nationwide Coverage", value: "83 Cities" },
-        { label: "Ingestion Availability", value: "99.9% Uptime" },
-      ],
-      engineeringFeats: [
-        "Engineered an adversarial web extraction pipeline reverse-engineering closed private mobile endpoints and dynamic frontend firewalls across 3 major cinema chains.",
-        "Architected distributed scraper workers with automated fingerprint randomization, residential proxy rotation, and adaptive backoff algorithms to prevent rate-limit blocks and IP flagging.",
-        "Implemented high-throughput data normalization converting erratic cinema ticketing layouts into standardized, strongly-typed PostgreSQL schemas with Redis edge caching.",
-        "Constructed an executive media intelligence portal with geospatial clustering, real-time seat occupancy heatmaps, and low-latency schedule lookup.",
-      ],
-      techStack: [
-        "Python",
-        "FastAPI",
-        "Playwright",
-        "Next.js 16",
-        "React 19",
-        "TypeScript",
-        "Redis (Upstash)",
-        "PostgreSQL",
-        "Docker",
-      ],
-      architectureDetails: {
-        problem:
-          "Commercial cinema platforms employ aggressive WAFs, undocumented rate limits, and fragmented payload schemas, making real-time nationwide aggregation across 496 theaters prone to blockades and schema drift.",
-        solution:
-          "Constructed decoupled Python worker daemons utilizing residential proxy rotation, request signature spoofing, and automated dead-letter queues feeding a Redis-cached PostgreSQL database with Next.js ISR.",
-        keyTradeoff:
-          "Prioritized fault-tolerant proxy health pooling and jittered polling windows over continuous WebSocket socket flooding to eliminate IP bans and maintain 99.9% scraping reliability.",
-      },
-      links: {
-        live: "https://cineradar-id.vercel.app",
-        github: "https://github.com/okihita/cineradar",
-      },
-    },
-    {
-      id: "bank-super-app",
-      title: "BNI wondr & Mandiri Livin' Mobile Super-Apps",
-      category: "Mobile (Android)",
-      tagline: "Lead Mobile Engineer for Tier-1 Indonesian Digital Banking Platforms",
-      description:
-        "Architected and led mobile engineering squads at Accenture for tier-1 national bank flagship super-apps—wondr by BNI (id.bni.wondr) and Livin' by Mandiri (id.bmri.livin). Engineered Android NFC tap-to-pay engines, modern Jetpack Compose UI modules, and robust native features serving 25M+ active users.",
-      mockType: "carousel",
-      images: [
-        "/images/bni-wondr/shot1.webp",
-        "/images/bni-wondr/shot2.webp",
-        "/images/bni-wondr/shot3.webp",
-        "/images/bni-wondr/shot4.webp",
-        "/images/livin-mandiri/shot1.webp",
-        "/images/livin-mandiri/shot2.webp",
-        "/images/livin-mandiri/shot3.webp",
-        "/images/livin-mandiri/shot4.webp",
-        "/images/livin-mandiri/shot5.webp",
-      ],
-      metrics: [
-        { label: "Active Scale", value: "25M+ Users" },
-        { label: "Engineering Role", value: "Lead Mobile Engineer" },
-        { label: "NFC Uptime", value: "99.99% Reliability" },
-      ],
-      engineeringFeats: [
-        "Lead mobile engineer at Accenture delivering core modules for wondr by BNI, and Livin' by Mandiri.",
-        "Engineered high-security Android Host Card Emulation (HCE) NFC tap-to-pay payments for millions of daily retail transactions.",
-        "Migrated legacy banking architectures to Jetpack Compose, Kotlin Hilt DI, and native Java/Kotlin codebase modules with strict zero-downtime compliance.",
-      ],
-      techStack: [
-        "Kotlin",
-        "Java",
-        "Android NFC / HCE",
-        "Jetpack Compose",
-        "Hilt",
-        "Dagger2",
-        "Clean Architecture",
-      ],
-      architectureDetails: {
-        problem:
-          "Orchestrating mission-critical banking transactions, biometric authentication, and NFC payment payloads across millions of fragmented devices for BNI and Bank Mandiri without breaking legacy backward compatibility.",
-        solution:
-          "Designed decoupled feature-module architectures with strict DI boundaries, encrypted local payload persistence, and automated hardware integration test suites.",
-        keyTradeoff:
-          "Maintained dual-path legacy Dagger + Hilt bridges to allow incremental modern UI migrations without risky full-codebase refactors.",
-      },
-      links: {
-        playstores: [
-          { label: "wondr by BNI", url: "https://play.google.com/store/apps/details?id=id.bni.wondr&hl=id" },
-          { label: "Livin' by Mandiri", url: "https://play.google.com/store/apps/details?id=id.bmri.livin&hl=id" },
-        ],
-        github: "https://github.com/okihita",
       },
     },
     {
@@ -472,21 +472,21 @@ export const PORTFOLIO_DATA = {
   experience: [
     {
       period: "JAN 2025 — PRESENT",
-      role: "Indie Engineer & Tech Consultant",
-      company: "Fullstack Development & AI Systems",
+      role: "Independent Systems Architect & Tech Consultant",
+      company: "Distributed Systems & AI Platforms",
       location: "Jakarta, Indonesia",
       summary:
-        "Building AI-powered applications, React Native mobile apps, Rust desktop apps, and web intelligence platforms.",
+        "Architecting high-scale distributed systems, autonomous AI agent pipelines, multimodal ERP engines, and cross-platform platforms.",
       highlights: [
+        "Architected sERPent (cahayahati.okihita.com), an enterprise headless commerce & ERP engine with Medusa.js v2 and multimodal Vision AI invoice parsing.",
+        "Founded CineRadar (cineradar-id.vercel.app), a high-throughput media intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Solo-created and launched the brand new cross-platform Zenius EdTech mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
         "Developed MMAAII (mmaaii.engagemedia.org/en/), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
-        "Architected sERPent (cahayahati.okihita.com), an enterprise headless commerce & ERP engine with Medusa.js v2 and multimodal Vision AI invoice parsing.",
-        "Founded CineRadar (cineradar-id.vercel.app), a high-throughput media intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Placed Top 5 (out of ~100 teams) at Amartha x GDG Jakarta for AI WhatsApp Financial Coach with OCR ledger processing.",
         "Placed Top 15 (out of ~150 engineers) at RedAI Triathlon 2025 (Red Asia x AWS AI engineering competition).",
       ],
-      techUsed: ["React Native", "Tauri 2.0", "Rust", "Astro", "Next.js", "Python", "LLM Agents", "Cloudflare"],
+      techUsed: ["Python", "Next.js", "Redis", "Medusa.js v2", "LLM Agents", "React Native", "Rust", "Tauri 2.0"],
     },
     {
       period: "AUG 2022 — DEC 2024",

@@ -10,18 +10,18 @@ export default function Hero() {
           {/* Category Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-zinc-700 dark:text-zinc-400 bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-blue-500" />
-            AI Systems, Mobile Platforms, and Technical Leadership
+            Distributed Systems, Autonomous AI, and Technical Leadership
           </div>
 
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
-            Architecting Android super-apps, React Native platforms, and AI workflows.
+            Engineering Distributed AI Systems, Autonomous Workflows, and High-Scale Platforms.
           </h1>
 
           {/* Subtitle */}
           <div className="space-y-4">
             <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-              Hands-on Tech Lead with 10+ years shipping production software—from Android banking engines serving 25M+ active users to solo-building brand new React Native mobile apps, and agentic LLM systems.
+              Hands-on Tech Lead and Systems Architect with 10+ years shipping mission-critical production software—from distributed media intelligence and multimodal ERP engines to high-concurrency banking platforms serving 25M+ users.
             </p>
             <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
               Dedicated to producing SOLID, maintainable, strictly linted, and observed clean code. Highly aligned with business value, and able to produce the highest results with minimum supervision and direction.
@@ -31,10 +31,10 @@ export default function Hero() {
           {/* Core Technical Highlights Pills */}
           <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-zinc-700 dark:text-zinc-300">
             <span className="px-2.5 py-1 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 shadow-2xs">
-              <Cpu className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> React Native & Kotlin
+              <Cpu className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Distributed Systems & Python
             </span>
             <span className="px-2.5 py-1 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 shadow-2xs">
-              <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Next.js
+              <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Next.js & TypeScript
             </span>
             <span className="px-2.5 py-1 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 shadow-2xs">
               <Terminal className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" /> Agentic AI & LLMs
@@ -65,15 +65,15 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-white/70 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs">
           <div className="space-y-1">
             <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">10+</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Years Software Engineering</div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">Years Systems Engineering</div>
           </div>
           <div className="space-y-1">
             <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">25M+</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Active Mobile Bank Users</div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">High-Concurrency Users (Core & Edge)</div>
           </div>
           <div className="space-y-1">
-            <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">100% Solo</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Zenius EdTech Mobile App</div>
+            <div className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100">Sub-Second</div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">Distributed State & Multi-Agent Locking</div>
           </div>
         </div>
       </div>
