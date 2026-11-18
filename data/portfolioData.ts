@@ -141,7 +141,7 @@ export const PORTFOLIO_DATA = {
           "Prioritized fault-tolerant proxy health pooling and jittered polling windows over continuous WebSocket socket flooding to eliminate IP bans and maintain 99.9% scraping reliability.",
       },
       links: {
-        live: "https://cineradar-id.vercel.app",
+        live: "https://cineradar.id",
         github: "https://github.com/okihita/cineradar",
       },
     },
@@ -479,7 +479,7 @@ export const PORTFOLIO_DATA = {
         "Architecting high-scale distributed systems, autonomous AI agent pipelines, multimodal ERP engines, and cross-platform platforms.",
       highlights: [
         "Architected sERPent (cahayahati.okihita.com), an enterprise headless commerce & ERP engine with Medusa.js v2 and multimodal Vision AI invoice parsing.",
-        "Founded CineRadar (cineradar-id.vercel.app), a high-throughput media intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
+        "Founded CineRadar (cineradar.id), a high-throughput media intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Solo-created and launched the brand new cross-platform Zenius EdTech mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
         "Developed MMAAII (mmaaii.engagemedia.org/en/), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
