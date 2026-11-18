@@ -112,6 +112,49 @@ export const PORTFOLIO_DATA = {
       },
     },
     {
+      id: "serpent",
+      title: "sERPent — Multimodal Retail ERP & Headless Commerce",
+      category: "Systems & Cloud",
+      tagline: "Headless E-Commerce OS with Multimodal Vision AI Ingestion",
+      description:
+        "Enterprise-grade retail operating system and headless commerce engine engineered for omnichannel direct-to-consumer operations. Combines a high-performance Medusa.js v2 commerce backend with custom multimodal Vision AI microservices—converting physical handwritten receipts, supplier invoices, and field notes into relational PostgreSQL schemas while synchronizing real-time inventory between physical pop-up bazars and online storefronts.",
+      mockType: "browser",
+      metrics: [
+        { label: "Core Engine", value: "Medusa v2 + Next.js" },
+        { label: "AI Extraction", value: "Multimodal Vision OCR" },
+        { label: "Inventory Sync", value: "Sub-Second ACID" },
+      ],
+      engineeringFeats: [
+        "Architected custom Medusa.js v2 commerce workflows, event-driven pub/sub subscriber pipelines, and transactional inventory reservations with strict ACID compliance.",
+        "Built a multimodal Vision AI ingestion pipeline that extracts unstructured handwritten field notes, physical receipts, and supplier invoices directly into structured PostgreSQL database records.",
+        "Designed real-time inventory locking and reconciliation between mobile point-of-sale (POS) bazar events and high-concurrency online flash-sale checkouts.",
+        "Integrated Meta WhatsApp Cloud API for automated order confirmations, dynamic QR-code entry passes for events, and real-time shipping tracking.",
+      ],
+      techStack: [
+        "Medusa.js v2",
+        "TypeScript",
+        "Node.js",
+        "Next.js 16",
+        "Python (Vision AI)",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Tailwind CSS v4",
+      ],
+      architectureDetails: {
+        problem:
+          "Omnichannel retail operations suffer catastrophic inventory drift, manual invoice entry bottlenecks, and high latency when reconciling physical pop-up bazars with online e-commerce storefronts.",
+        solution:
+          "Deployed a decoupled headless Medusa v2 core with custom transactional workflows, event bus pub/sub synchronization, and a Vision AI microservice for rapid optical data extraction.",
+        keyTradeoff:
+          "Chose headless decoupled commerce (Medusa + Next.js) over monolithic SaaS (Odoo/Shopify) to gain complete UX performance control and native AI pipeline extensibility, accepting the upfront overhead of custom module orchestration.",
+      },
+      links: {
+        live: "https://cahayahati.okihita.com",
+        github: "https://github.com/okihita/serpent",
+      },
+    },
+    {
       id: "pakde-tauri",
       title: "PAKDE — Village Coop Suite",
       category: "Systems & Cloud",
@@ -201,44 +244,47 @@ export const PORTFOLIO_DATA = {
         github: "https://gitlab.com/emopentech/mmaaii",
       },
     },
-    {
+        {
       id: "cineradar",
-      title: "CineRadar",
-      category: "Web App",
-      tagline: "Full-Stack Cinema Intelligence & Showtime Aggregation Platform",
+      title: "CineRadar — Distributed Media Intelligence Engine",
+      category: "Systems & Cloud",
+      tagline: "Nationwide Cinema Network Scraper & Real-Time Aggregation Mesh",
       description:
-        "Consumer-facing Next.js movie tracker and admin dashboard aggregating 496 theatres across 83 Indonesian cities from 3 major cinema chains with real-time showtime intelligence.",
+        "High-throughput distributed data extraction and media intelligence platform continuously aggregating real-time seat availability, ticket pricing, and showtimes across 496 commercial movie theatres in 83 Indonesian cities from 3 major cinema chains. Built with resilient anti-bot evasion, distributed residential proxy rotation, and automated schema normalization.",
       mockType: "browser",
       metrics: [
-        { label: "Theatres Tracked", value: "496" },
-        { label: "Cities Covered", value: "83" },
-        { label: "Data Availability", value: "99.9%" },
+        { label: "Theatres Ingested", value: "496 Endpoints" },
+        { label: "Nationwide Coverage", value: "83 Cities" },
+        { label: "Ingestion Availability", value: "99.9% Uptime" },
       ],
       engineeringFeats: [
-        "Engineered a resilient visual web scraping pipeline ensuring 99.9% daily showtime data availability across 3 major cinema chains.",
-        "Built consumer-facing Next.js platform with geospatial analytics, cinema network indexing, and instant theatre filtering.",
-        "Designed lightweight edge caching layer for instant schedule lookup with zero database thrashing.",
+        "Engineered an adversarial web extraction pipeline reverse-engineering closed private mobile endpoints and dynamic frontend firewalls across 3 major cinema chains.",
+        "Architected distributed scraper workers with automated fingerprint randomization, residential proxy rotation, and adaptive backoff algorithms to prevent rate-limit blocks and IP flagging.",
+        "Implemented high-throughput data normalization converting erratic cinema ticketing layouts into standardized, strongly-typed PostgreSQL schemas with Redis edge caching.",
+        "Constructed an executive media intelligence portal with geospatial clustering, real-time seat occupancy heatmaps, and low-latency schedule lookup.",
       ],
       techStack: [
-        "Next.js 16",
-        "TypeScript",
-        "React 19",
-        "Tailwind CSS v4",
         "Python",
-        "Vercel",
+        "FastAPI",
+        "Playwright",
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Redis (Upstash)",
         "PostgreSQL",
+        "Docker",
       ],
       architectureDetails: {
         problem:
-          "Fragmented showtime schedules across multiple cinema chain platforms made instant movie tracking across 83 cities difficult for Indonesian moviegoers.",
+          "Commercial cinema platforms employ aggressive WAFs, undocumented rate limits, and fragmented payload schemas, making real-time nationwide aggregation across 496 theaters prone to blockades and schema drift.",
         solution:
-          "Constructed automated Python/Playwright scraping workers feeding a Next.js App Router frontend with incremental static regeneration (ISR) and Redis edge caching.",
+          "Constructed decoupled Python worker daemons utilizing residential proxy rotation, request signature spoofing, and automated dead-letter queues feeding a Redis-cached PostgreSQL database with Next.js ISR.",
         keyTradeoff:
-          "Sacrificed sub-second scrape frequency for 15-minute batched interval updates to stay respectful of origin rate limits while maintaining 99.9% availability.",
+          "Prioritized fault-tolerant proxy health pooling and jittered polling windows over continuous WebSocket socket flooding to eliminate IP bans and maintain 99.9% scraping reliability.",
       },
       links: {
-        github: "https://github.com/okihita/cineradar",
         live: "https://cineradar-id.vercel.app",
+        github: "https://github.com/okihita/cineradar",
       },
     },
     {
@@ -435,7 +481,8 @@ export const PORTFOLIO_DATA = {
         "Solo-created and launched the brand new cross-platform Zenius EdTech mobile app (net.zenius.mobile.android) on Google Play Store (July 2026; iOS build pending App Store publication).",
         "Engineered PAKDE (pakde.vercel.app), a gamified offline-first village cooperative suite in Rust, Tauri 2.0, and SQLite.",
         "Developed MMAAII (mmaaii.engagemedia.org/en/), a bilingual AI incident monitoring platform with EngageMedia using Astro & Cloudflare Pages.",
-        "Founded CineRadar (cineradar-id.vercel.app), a cinema intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
+        "Architected sERPent (cahayahati.okihita.com), an enterprise headless commerce & ERP engine with Medusa.js v2 and multimodal Vision AI invoice parsing.",
+        "Founded CineRadar (cineradar-id.vercel.app), a high-throughput media intelligence platform aggregating 496 theatres across 83 cities with 99.9% data availability.",
         "Placed Top 5 (out of ~100 teams) at Amartha x GDG Jakarta for AI WhatsApp Financial Coach with OCR ledger processing.",
         "Placed Top 15 (out of ~150 engineers) at RedAI Triathlon 2025 (Red Asia x AWS AI engineering competition).",
       ],
